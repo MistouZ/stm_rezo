@@ -18,9 +18,6 @@ $usermanager = new UsersManager($bdd);
 /*récupération des objets en base*/
 $company = $companymanager->getByNameData($companyNameData);
 
-print_r($usermanager);
-
-
 ?>
 
 <div class="row">
@@ -65,6 +62,7 @@ print_r($usermanager);
                                     <?php
                                         foreach ($usermanager as $user)
                                         {
+                                            print_r($user);
                                             if($user->getIsSeller() == 1)
                                             {
                                                 echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
