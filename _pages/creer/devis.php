@@ -97,10 +97,9 @@ $taxmanager = new TaxManager($bdd);
                                                 <select class="bs-select form-control" id="folder" name="folder" data-live-search="true" data-size="8">
                                                     <option value="">Choisissez un dossier...</option>
                                                     <?php
-                                                        foreach ($foldermanager as $folder){
-                                                            
-                                                    ?>
-                                                    <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
+                                                        foreach ($foldermanager as $folder){                                                            
+                                                        ?>
+                                                        <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
                                                     <?php
                                                     }
                                                     ?>
@@ -226,12 +225,12 @@ $taxmanager = new TaxManager($bdd);
                                                         <select id="taxeDevis1" class="taxe form-control" name="taxeDevis[1]">
                                                             <option value="">Sélectionnez ...</option>
                                                             <?php
-                                                            $taxmanager = $taxmanager->getListByCustomer($folder->getCustomerId());
+                                                            /*$taxmanager = $taxmanager->getListByCustomer($folder->getCustomerId());
                                                             foreach ($taxmanager as $tax){
                                                                ?>
                                                                 <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                 <?php
-                                                            }
+                                                            }*/
                                                             ?>
                                                         </select>
                                                     </div>
