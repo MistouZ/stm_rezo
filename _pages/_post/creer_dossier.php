@@ -8,6 +8,7 @@
 
 include("../../_cfg/cfg.php");
 
+print_r($_POST);
 
 if(isset($_POST['valider'])){
     $label = $_POST["label"];
