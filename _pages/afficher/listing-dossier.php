@@ -19,10 +19,7 @@ $folder = new Folder($array);
 $foldermanager = new FoldersManager($bdd);
 $user = new Users($array);
 $usermanager = new UsersManager($bdd);
-$customer = new Customers($array);
-$customermanager = new CustomersManager($bdd);
-$contact = new Contact($array);
-$contactmanager = new ContactManager($bdd);
+
 
 $credential = $userlogged->getCredential();
 /*récupération des objets en base*/
@@ -78,7 +75,6 @@ else{
                         <tr>
                             <th class="all">Numéro de Dossier</th>
                             <th class="min-phone-l">Intitulé du dossier</th>
-                            <th class="min-tablet">Client</th>
                             <th class="desktop">Afficher</th>
                             <th class="min-tablet">Modifier</th>
                             <?php if($credential == "A"){
@@ -88,7 +84,6 @@ else{
                                 echo "<th class=\"min-tablet\">Supprimer</th>";
                              }?>
                             <th class="none">Commercial</th>
-                            <th class="none">Contact</th>
                             <th class="none">Statut du dossier</th>
                             <th class="none">Date de création</th>
                         </tr>
@@ -97,9 +92,7 @@ else{
                     <?php
                     foreach ($foldermanager as $folder)
                     {
-                       $customer = $customermanager->getByID($folder->getCustomerId());
                        $user = $usermanager->get($folder->getSeller());
-                       $contact = $contactmanager->getById($folder->getContactId());
                         if($folder->getIsActive() == 1)
                         {
                             $actif = "Ouvert";
@@ -128,7 +121,6 @@ else{
                             }
                             ?>
                             <td><?php echo $user->getName().' '.$user->getFirstName(); ?></td>
-                            <td><?php echo $contact->getFirstname()." ".$contact->getName(); ?></td>
                             <td><span class="label label-<?php echo $label; ?>" ><?php echo $actif;?></span></td>
                             <td><?php echo  $date = date('d/m/y', strtotime( $folder->getDate()));;?></td>
                         </tr>

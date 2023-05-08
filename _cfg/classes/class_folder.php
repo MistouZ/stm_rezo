@@ -15,8 +15,6 @@ class Folder extends Features
     private $date;
     private $description;
     private $companyId;
-    private $customerId;
-    private $contactId;
     private $seller;
 
     /**
@@ -138,40 +136,8 @@ class Folder extends Features
     {
         $this->companyId = $companyId;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getCustomerId()
-    {
-        return $this->customerId;
-    }
-
-    /**
-     * @param mixed $customerId
-     */
-    public function setCustomerId($customerId)
-    {
-        $this->customerId = $customerId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContactId()
-    {
-        return $this->contactId;
-    }
-
-    /**
-     * @param mixed $contactId
-     */
-    public function setContactId($contactId)
-    {
-        $this->contactId = $contactId;
-    }
-
-    /**
+    
+     /**
      * @return mixed
      */
     public function getSeller()
