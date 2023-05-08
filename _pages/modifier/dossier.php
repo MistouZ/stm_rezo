@@ -20,57 +20,11 @@ $companymanager = new CompaniesManager($bdd);
 $user = new Users($array);
 $usermanager = new UsersManager($bdd);
 
-$customer = new Customers($array);
-$customermanager = new CustomersManager($bdd);
-$listingCustomers = $customermanager->getList();
-
-
-//récupération des contacts du client
-$arrayContact = array();
-$contacts = new Contact($arrayContact);
-$contactmanager = new ContactManager($bdd);
-$contactByCustomers = $contactmanager->getList($folder->getCustomerId());
-
 /*récupération des objets en base*/
 $company = $companymanager->getByNameData($companyNameData);
 $usermanager = $usermanager->getListByCompany($company->getIdcompany());
-$customermanager = $customermanager->getListByCompany($company->getIdcompany());
-
-$tableauClient = array();
-
-foreach ($customermanager as $customer) {
-    $tempContact = array();
-    $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
-    if(!empty($tableauContacts)){
-        foreach($tableauContacts as $tableauContact){
-                $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();               
-        }
-        $tableauClient[$customer->getIdCustomer()] = $tempContact;
-    }
-}
 
 ?>
-
-<script>
-    function changeSelect(selected){
-      //on recupere le php
-      var data = <?php echo json_encode($tableauClient); ?>;
-      console.log("selected.value : "+selected.value+", data[selected.value] : "+data[selected.value]);
-      var monSelectB = document.getElementById("contact-select");
-      //on efface tous les children options
-      while (monSelectB.firstChild) {
-        monSelectB.removeChild(monSelectB.firstChild);
-      }
-      //on rajoute les nouveaux children options
-      for(var i in data[selected.value]){
-        var opt = document.createElement("option");
-        opt.value = i;
-        opt.innerHTML = data[selected.value][i]; 
-        
-        monSelectB.appendChild(opt);
-      }
-    }
-  </script>
 
 <div class="row">
     <div class="col-md-12">
@@ -126,45 +80,6 @@ foreach ($customermanager as $customer) {
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3" for="customer-select">Client
-                                <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                                <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
-                                    <option value="">--Choississez le client--</option>
-                                    <?php
-                                        foreach($customermanager as $customer){
-                                            if($customer->getIdCustomer() == $folder->getCustomerId()){
-                                                echo "<option value=" . $customer->getIdCustomer() . " selected=\"selected\">".$customer->getName()."</option>";
-                                            }else{
-                                                echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3" for="contact-select">Contact
-                                <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                                <select id="contact-select" name="contact-select" class="form-control">
-                                    <option value="">--Choississez le contact--</option>
-                                    <?php
-                                        foreach($contactByCustomers as $contacts){
-                                            if($contacts->getIdContact() == $folder->getContactId()){
-                                                echo "<option value=" . $contacts->getIdContact() . " selected=\"selected\">".$contacts->getFirstname().' '.$contacts->getName()."</option>";
-                                            }else{
-                                                echo "<option value=" . $contacts->getIdContact() . ">".$contacts->getFirstname().' '.$contacts->getName()."</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                     </div>
                      <input type="hidden" id="idFolder" name="idFolder" value="<?php echo $idFolder; ?>">
                      <input type="hidden" id="folderNumber" name="folderNumber" value="<?php echo $folder->getFolderNumber(); ?>">
                     <div class="form-actions">

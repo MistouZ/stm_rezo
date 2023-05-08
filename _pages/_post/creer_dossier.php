@@ -14,8 +14,6 @@ if(isset($_POST['valider'])){
     $description = $_POST["description"];
     $seller = $_POST["seller-select"];
     $date = date("Y-m-d");
-    $customerId = $_POST["customer-select"];
-    $contactId = $_POST["contact-select"];
     $companyId = $_POST["idcompany"];
 
     $isActive = 1;
@@ -26,9 +24,7 @@ if(isset($_POST['valider'])){
         'isActive' => $isActive,
         'description' => $description,
         'seller' => $seller,
-        'companyId' => $companyId,
-        'customerId' => $customerId,
-        'contactId' => $contactId
+        'companyId' => $companyId
     );
 
 
