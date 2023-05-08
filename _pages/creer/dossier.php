@@ -17,6 +17,7 @@ $usermanager = new UsersManager($bdd);
 
 /*récupération des objets en base*/
 $company = $companymanager->getByNameData($companyNameData);
+$usermanager = $usermanager->getListByCompany($company->getIdcompany());
 
 ?>
 
