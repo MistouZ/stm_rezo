@@ -34,6 +34,25 @@ $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
 ?>
+<script>
+    function changeSelect(selected){
+      //on recupere le php
+      var data = <?php echo json_encode($tableauClient); ?>;
+      console.log("selected.value : "+selected.value+", data[selected.value] : "+data[selected.value]);
+      var monSelectB = document.getElementById("contact-select");
+      //on efface tous les children options
+      while (monSelectB.firstChild) {
+        monSelectB.removeChild(monSelectB.firstChild);
+      }
+      //on rajoute les nouveaux children options
+      for(var i in data[selected.value]){
+        var opt = document.createElement("option");
+        opt.value = i;
+        opt.innerHTML = data[selected.value][i]; 
+        monSelectB.appendChild(opt);
+      }
+    }
+</script>
 <div class="row">
     <div class="col-md-12">
         <?php if($retour == "error") { ?>
@@ -118,8 +137,32 @@ $taxmanager = new TaxManager($bdd);
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body" style="display: block;">
-                                                        <h5 style="font-weight: 800;">Client : <span id="spanCustomer"></span></h5>
-                                                        <h5 style="font-weight: 800;">Contact : <span id="spanContact"></span></h5>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3" for="customer-select">Client
+                                                                <span class="required"> * </span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
+                                                                    <option value="">--Choississez le client--</option>
+                                                                    <?php
+                                                                        foreach($customermanager as $customer)
+                                                                        {
+                                                                            echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
+                                                                        }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-3" for="contact-select">Contact
+                                                                    <span class="required"> * </span>
+                                                                </label>
+                                                                <div class="col-md-4">
+                                                                    <select id="contact-select" name="contact-select" class="form-control">
+                                                                        <option value="">--Choississez le contact--</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                         </div> 
                                                     </div>
                                                 </div>
                                             </div>
