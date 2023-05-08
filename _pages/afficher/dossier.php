@@ -34,8 +34,8 @@ $folder = $foldermanager->get($folderId);
 
 $company = $companymanager->getByNameData($companyNameData);
 $user = $usermanager->get($folder->getSeller());
-$customer = $customermanager->getById($folder->getCustomerId());
-$contact = $contactmanager->getById($folder->getContactId());
+//$customer = $customermanager->getById($folder->getCustomerId());
+//$contact = $contactmanager->getById($folder->getContactId());
 $quotations = $quotationmanager->getByFolderId($folderId);
 $costs = $costManager->getByFolderId($folderId);
 
@@ -113,36 +113,6 @@ switch($type){
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12">
-                <div class="portlet blue-hoki box">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fas fa-user-tie"></i>Informations client </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="row static-info">
-                            <div class="col-md-5 name"> Client: </div>
-                            <div class="col-md-7 value"> <?php echo $customer->getName(); ?> </div>
-                        </div>
-                        <div class="row static-info">
-                            <div class="col-md-5 name"> Adresse: </div>
-                            <div class="col-md-7 value"> <?php echo $customer->getInvoiceAddress(); ?> </div>
-                        </div>
-                        <div class="row static-info">
-                            <div class="col-md-5 name"> Contact: </div>
-                            <div class="col-md-7 value"> <?php echo $contact->getFirstname()." ".$contact->getName(); ?> </div>
-                        </div>
-                        <div class="row static-info">
-                            <div class="col-md-5 name"> Téléphone: </div>
-                            <div class="col-md-7 value"> <?php echo $contact->getPhoneNumber(); ?> </div>
-                        </div>
-                        <div class="row static-info">
-                            <div class="col-md-5 name"> Mail: </div>
-                            <div class="col-md-7 value"> <?php echo $contact->getEmailAddress(); ?> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="portlet box green">
             <div class="portlet-title">
@@ -158,6 +128,7 @@ switch($type){
                         <tr>
                             <th class="all">Date</th>
                             <th class="min-phone-l">Numéro de devis</th>
+                            <th class="desktop">Client</th>
                             <th class="none">Montant total</th>
                             <th class="desktop">Détail</th>
                             <th class="desktop">Modifier</th>
@@ -186,6 +157,7 @@ switch($type){
                             <tr>
                                 <td><?php echo $date; ?></td>
                                 <td><?php echo $quotation->getQuotationNumber(); ?></td>
+                                <td><?php $customer = $customermanager->getById($quotation->getCustomerId()); echo $customer->getName(); ?></td>
                                 <td><?php echo number_format($montant, 0, ",", " "); ?> XPF</td>
                                 <td><a class="btn green-meadow"
                                        href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i
