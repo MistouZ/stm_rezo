@@ -63,7 +63,6 @@ $usermanager = $usermanager->getListByCompany($company->getIdcompany());
                                     <?php
                                         foreach ($usermanager as $user)
                                         {
-                                            print_r($user);
                                             if($user->getIsSeller() == 1)
                                             {
                                                 echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
