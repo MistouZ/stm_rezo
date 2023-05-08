@@ -51,7 +51,7 @@ class FoldersManager
         echo $folder->getDate();
         
         try{
-            $q = $this->_db->prepare('INSERT INTO folder (folderNumber, label, date, isActive,description,seller, companyId, customerId, contactId) VALUES (:folderNumber, :label, :date, :isActive, :description, :seller, :companyId,:customerId,:contactId)');
+            $q = $this->_db->prepare('INSERT INTO folder (folderNumber, label, date, isActive,description,seller, companyId) VALUES (:folderNumber, :label, :date, :isActive, :description, :seller, :companyId)');
             $q->bindValue(':folderNumber', $folderNumber, PDO::PARAM_STR);
             $q->bindValue(':label', $folder->getLabel(), PDO::PARAM_STR);
             $q->bindValue(':date', $folder->getDate(), PDO::PARAM_STR );
@@ -59,8 +59,7 @@ class FoldersManager
             $q->bindValue(':description', $folder->getDescription(), PDO::PARAM_STR);
             $q->bindValue(':seller', $folder->getSeller(), PDO::PARAM_STR);
             $q->bindValue(':companyId', $folder->getCompanyId(), PDO::PARAM_INT);
-            $q->bindValue(':customerId', $folder->getCustomerId(), PDO::PARAM_INT);
-            $q->bindValue(':contactId', $folder->getContactId(), PDO::PARAM_INT);
+
     
             $q->execute();
             
@@ -235,7 +234,7 @@ class FoldersManager
     public function update(Folder $folder)
     {
         try{
-            $q = $this->_db->prepare('UPDATE folder SET label = :label, date = :date, isActive = :isActive,description = :description,seller = :seller, companyId = :companyId, customerId = :customerId, contactId = :contactId WHERE idFolder= :idFolder');
+            $q = $this->_db->prepare('UPDATE folder SET label = :label, date = :date, isActive = :isActive,description = :description,seller = :seller, companyId = :companyId WHERE idFolder= :idFolder');
             $q->bindValue(':idFolder', $folder->getIdFolder(), PDO::PARAM_INT);
             $q->bindValue(':label', $folder->getLabel(), PDO::PARAM_STR);
             $q->bindValue(':date', $folder->getDate(), PDO::PARAM_STR);
@@ -243,8 +242,6 @@ class FoldersManager
             $q->bindValue(':description', $folder->getDescription(), PDO::PARAM_STR);
             $q->bindValue(':seller', $folder->getSeller(), PDO::PARAM_STR);
             $q->bindValue(':companyId', $folder->getCompanyId(), PDO::PARAM_INT);
-            $q->bindValue(':customerId', $folder->getCustomerId(), PDO::PARAM_INT);
-            $q->bindValue(':contactId', $folder->getContactId(), PDO::PARAM_INT);
     
             $q->execute();
             return "ok";
