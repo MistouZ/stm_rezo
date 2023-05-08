@@ -97,8 +97,8 @@ $taxmanager = new TaxManager($bdd);
                                                 <select class="bs-select form-control" id="folder" name="folder" data-live-search="true" data-size="8">
                                                     <option value="">Choisissez un dossier...</option>
                                                     <?php
-                                                        foreach ($foldermanager as $folder){
-                                                            $customer = $customermanager->getByID($folder->getCustomerId());
+                                                        /*foreach ($foldermanager as $folder){
+                                                            $customer = $customermanager->getByID($folder->getCustomerId());*/
                                                     ?>
                                                     <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
                                                     <?php
