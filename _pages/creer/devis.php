@@ -32,7 +32,7 @@ $foldermanager = $foldermanager->getListActive($idCompany);
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
-/*
+
 ?>
 <script>
     function changeSelect(selected){
