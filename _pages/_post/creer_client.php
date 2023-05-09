@@ -4,7 +4,7 @@ include("../../_cfg/cfg.php");
 
 if(isset($_POST['valider'])){
 
-  print_r($_POST);
+
 		$name=$_POST['name'];
 		$physical_address=$_POST['physical_address'];
     if($_POST["invoice_address"] == NULL)
@@ -34,6 +34,9 @@ if(isset($_POST['valider'])){
     $customer = new Customers($array);
     $customermanager = new CustomersManager($bdd);
     $test = $customermanager->add($customer, $_POST["case"], $_POST["account"],$_POST["subaccount"], $_POST["taxes"]);
+
+    echo $customer;
+    echo $test;
 
     if($supplier == 1)
     {
