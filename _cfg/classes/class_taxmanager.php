@@ -97,7 +97,6 @@ class TaxManager
         $taxName = (string) $taxName;
         $q = $this->_db->query('SELECT * FROM tax WHERE name ="'.$taxName.'"');
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
-    
         return new Tax($donnees);
     }
     /**
@@ -108,12 +107,8 @@ class TaxManager
     public function getByPercent($taxPercent)
     {
         try{
-            $req = 'SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"';
-            echo $req;
-            $q = $this->_db->query($req);
+            $q = $this->_db->query('SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
-            echo "donnees est fetch";
-
             return new Tax($donnees);
         }
 
