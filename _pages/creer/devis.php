@@ -389,7 +389,7 @@ $taxmanager = new TaxManager($bdd);
     </div>
 </div>
 <script>
-function changeSelect(selected){
+/*function changeSelect(selected){
       //on recupere le php
       var data = <?php echo json_encode($tableauClient); ?>;
       console.log("selected.value : "+selected.value+", data[selected.value] : "+data[selected.value]);
@@ -405,7 +405,7 @@ function changeSelect(selected){
         opt.innerHTML = data[selected.value][i]; 
         monSelectB.appendChild(opt);
       }
-    }
+    }*/
 
 
 $(document).ready(function() {
