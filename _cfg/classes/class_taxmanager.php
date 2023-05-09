@@ -110,7 +110,7 @@ class TaxManager
         try{
             $q = $this->_db->query('SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
-            if(is_null($donnees))
+            if(empty($donnees))
             {
                 echo "je suis vide";
             }
