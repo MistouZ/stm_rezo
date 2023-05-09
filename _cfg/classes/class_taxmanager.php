@@ -111,7 +111,7 @@ class TaxManager
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
             if($donnees)
             {
-                eturn new Tax($donnees);
+                return new Tax($donnees);
             }
             else
             {
