@@ -20,6 +20,7 @@ class TaxManager
      */
     public function __construct($_db)
     {
+        echo "hello je construis";
         $this->_db = $_db;
     }
 
