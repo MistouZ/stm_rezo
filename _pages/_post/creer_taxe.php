@@ -32,6 +32,7 @@ if(isset($_POST['valider'])){
 
     $tax = new Tax($array);    
     $taxmanager = new TaxManager($bdd);
+    echo "je suis passé ici";
     $existe = $taxmanager->getByPercent($percent);
 
     print_r($taxmanager);
