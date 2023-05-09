@@ -6,7 +6,7 @@
  * Time: 13:38
  */
 
-include("../../_cfg/cfg.php");
+ include("../../_cfg/cfg.php");
 
 
 if(isset($_POST['valider'])){
