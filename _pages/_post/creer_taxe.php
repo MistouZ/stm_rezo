@@ -31,7 +31,7 @@ if(isset($_POST['valider'])){
     );
 
     $tax = new Tax($array);
-    print_r($tax);
+    
     $taxmanager = new TaxManager($bdd);
     $existe = $taxmanager->getByPercent($percent);
 
@@ -39,6 +39,7 @@ if(isset($_POST['valider'])){
 
     if(is_null($existe))
     {
+        print_r($tax);
         $test = $taxmanager->add($tax);
         if(is_null($test)){
             header('Location: '.URLHOST.$_COOKIE['company']."/taxe/afficher/error");
