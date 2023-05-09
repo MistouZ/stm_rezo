@@ -33,5 +33,35 @@ $foldermanager = $foldermanager->getListActive($idCompany);
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
-echo "ok";
 ?>
+<script>
+    function changeSelect(selected){
+      //on recupere le php
+      var data = <?php echo json_encode($tableauClient); ?>;
+      console.log("selected.value : "+selected.value+", data[selected.value] : "+data[selected.value]);
+      var monSelectB = document.getElementById("contact-select");
+      //on efface tous les children options
+      while (monSelectB.firstChild) {
+        monSelectB.removeChild(monSelectB.firstChild);
+      }
+      //on rajoute les nouveaux children options
+      for(var i in data[selected.value]){
+        var opt = document.createElement("option");
+        opt.value = i;
+        opt.innerHTML = data[selected.value][i]; 
+        monSelectB.appendChild(opt);
+      }
+    }
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <?php if($retour == "error") { ?>
+            <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button> Une erreur est survenue, le devis n'a donc pas pu être créé !</div>
+        <?php } ?>
+        <div class="portlet box blue-chambray">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fas fa-file-medical"></i>Création d'un nouveau devis</div>
+            </div>
+            
