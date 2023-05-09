@@ -16,7 +16,7 @@
 
       public function __construct(array $data)
       {
-          echo $data;
+          print_r($data);
           echo "je suis là";
           $this->generate($data);
       }
