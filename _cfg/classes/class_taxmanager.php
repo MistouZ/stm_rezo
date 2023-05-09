@@ -96,8 +96,8 @@ class TaxManager
     {
         $taxName = (string) $taxName;
         $q = $this->_db->query('SELECT * FROM tax WHERE name ="'.$taxName.'"');
-        $donnees = $q->fetchAll(PDO::FETCH_ASSOC);
-        echo "donnees est fetch";
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+    
         return new Tax($donnees);
     }
     /**
@@ -112,8 +112,9 @@ class TaxManager
             echo $req;
             $q = $this->_db->query($req);
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
+            echo "donnees est fetch";
+
             return new Tax($donnees);
-            echo "j'existe";
         }
 
         catch(Exception $e){
