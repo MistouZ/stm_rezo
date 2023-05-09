@@ -97,6 +97,14 @@ class TaxManager
         $taxName = (string) $taxName;
         $q = $this->_db->query('SELECT * FROM tax WHERE name ="'.$taxName.'"');
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        if(empty($donnees))
+        {
+            echo "je suis vide";
+        }
+        else
+        {
+            echo "je ne suis pas vide";
+        }
 
         return new Tax($donnees);
     }
