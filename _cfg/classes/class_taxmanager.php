@@ -38,7 +38,7 @@ class TaxManager
      */
     public function add(Tax $tax)
     {
-        echo "je suis ici";
+
         try{
             $q = $this->_db->prepare('INSERT INTO tax (percent, name, value,isActive, isDefault) VALUES (:percent, :name, :value,:isActive, :isDefault)');
             $q->bindValue(':percent', $tax->getPercent(), PDO::PARAM_STR);
@@ -110,7 +110,6 @@ class TaxManager
         try{
             $q = $this->_db->query('SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
-            print_r($donnees);
             return new Tax($donnees);
         }
 
