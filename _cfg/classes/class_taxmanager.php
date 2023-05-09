@@ -110,6 +110,7 @@ class TaxManager
             $q = $this->_db->query('SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
             return new Tax($donnees);
+            echo "j'existe";
         }
 
         catch(Exception $e){
