@@ -64,4 +64,24 @@ $taxmanager = new TaxManager($bdd);
                 <div class="caption">
                     <i class="fas fa-file-medical"></i>Création d'un nouveau devis</div>
             </div>
-            
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="<?php echo URLHOST."_pages/_post/creer_devis.php"; ?>" method="post" id="devis" name="devis" class="form-horizontal">
+                    <div class="form-actions top">
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <button type="submit" class="btn green"><i class="fas fa-save"></i> Enregistrer</button>
+                                <button type="button" class="btn default"><i class="fas fa-ban"></i> Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="portlet box blue-soft">
+                                    <div class="portlet-title">
+                                        <div class="caption">
+                                            <i class="fas fa-folder"></i>
+                                            <span class="caption-subject bold uppercase"> Sélection du dossier </span>
+                                        </div>
+                                        
