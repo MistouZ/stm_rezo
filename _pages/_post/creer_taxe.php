@@ -37,7 +37,7 @@ if(isset($_POST['valider'])){
 
     if(empty($existe))
     {
-        echo "je suis là";
+        echo "je n'existe pas";
         $test = $taxmanager->add($tax);
         if(is_null($test)){
             header('Location: '.URLHOST.$_COOKIE['company']."/taxe/afficher/error");
@@ -46,7 +46,7 @@ if(isset($_POST['valider'])){
         }
     }
     else{
-        echo "je suis pas vide";
+        echo "j'existe";
         header('Location: '.URLHOST.$_COOKIE['company']."/taxe/afficher/existe");
     }
 
