@@ -34,6 +34,8 @@ if(isset($_POST['valider'])){
     $taxmanager = new TaxManager($bdd);
     $existe = $taxmanager->getByPercent($percent);
 
+    echo "on a récupéré le %";
+
     if(is_null($existe))
     {
         echo "je n'existe pas";
