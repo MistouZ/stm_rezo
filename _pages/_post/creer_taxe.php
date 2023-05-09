@@ -30,9 +30,9 @@ if(isset($_POST['valider'])){
         'isDefault' => $isdefault
     );
 
-    $tax = new Tax($array);
-    
+    $tax = new Tax($array);    
     $taxmanager = new TaxManager($bdd);
+    echo $percent;
     $existe = $taxmanager->getByPercent($percent);
 
     print_r($existe);
