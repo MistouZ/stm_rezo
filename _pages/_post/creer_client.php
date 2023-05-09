@@ -35,8 +35,8 @@ if(isset($_POST['valider'])){
     $customermanager = new CustomersManager($bdd);
     $test = $customermanager->add($customer, $_POST["case"], $_POST["account"],$_POST["subaccount"], $_POST["taxes"]);
 
-    echo $customer;
-    echo $test;
+    print_r($customer);
+    print_r($test);
 
     if($supplier == 1)
     {
