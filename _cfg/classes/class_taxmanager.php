@@ -108,6 +108,7 @@ class TaxManager
     public function getByPercent($taxPercent)
     {
         try{
+            echo "je suis passé ici";
             $q = $this->_db->query('SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
             return new Tax($donnees);
