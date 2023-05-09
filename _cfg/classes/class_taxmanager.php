@@ -120,7 +120,6 @@ class TaxManager
         }
 
         catch(Exception $e){
-            echo "je n'existe pas ";
             return null;
         }
 
