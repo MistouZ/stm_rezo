@@ -38,6 +38,7 @@ class TaxManager
      */
     public function add(Tax $tax)
     {
+        print_r($tax);
         try{
             $q = $this->_db->prepare('INSERT INTO tax (percent, name, value,isActive, isDefault) VALUES (:percent, :name, :value,:isActive, :isDefault)');
             $q->bindValue(':percent', $tax->getPercent(), PDO::PARAM_STR);
