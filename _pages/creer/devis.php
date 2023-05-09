@@ -29,8 +29,6 @@ $suppliermanager = new SuppliersManager($bdd);
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->getListActive($idCompany);
-print_r($foldermanager);
-
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
@@ -100,11 +98,10 @@ $taxmanager = new TaxManager($bdd);
                                                     <?php
                                                         foreach ($foldermanager as $folder){                                                            
                                                         ?>
-                                                        <option value="<?php //echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
+                                                        <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php //echo $folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
                                                     <?php
                                                     }
                                                     ?>
                                                 </select>
                                             </div>
-                                        
                                         
