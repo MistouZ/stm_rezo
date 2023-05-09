@@ -30,9 +30,9 @@ if(isset($_POST['valider'])){
         'isDefault' => $isdefault
     );
 
-    $tax = new Tax($array);    
+    $tax = new Tax($array);
+    echo $tax->getName();    
     $taxmanager = new TaxManager($bdd);
-    echo "avant le getpercent";
     $existe = $taxmanager->getByPercent($percent);
 
     echo "on a récupéré le %";
