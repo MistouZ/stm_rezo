@@ -46,6 +46,7 @@ if(isset($_POST['valider'])){
         }
     }
     else{
+        echo "je suis pas vide";
         header('Location: '.URLHOST.$_COOKIE['company']."/taxe/afficher/existe");
     }
 
