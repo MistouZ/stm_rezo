@@ -97,7 +97,7 @@ class TaxManager
         $taxName = (string) $taxName;
         $q = $this->_db->query('SELECT * FROM tax WHERE name ="'.$taxName.'"');
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
-        echo "$donne est fetch";
+        echo "donnees est fetch";
         return new Tax($donnees);
     }
     /**
