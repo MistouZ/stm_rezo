@@ -29,6 +29,7 @@ include 'classes/class_costmanager.php';
 include 'classes/class_shatteredquotation.php';
 include 'classes/class_shatteredquotationmanager.php';
 
+echo $URLHOST;
 
 global $bdd;
 $bdd = new DB();
