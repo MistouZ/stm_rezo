@@ -20,7 +20,6 @@ class TaxManager
      */
     public function __construct($_db)
     {
-        print_r($_db);
         $this->_db = $_db;
     }
 
@@ -108,6 +107,7 @@ class TaxManager
      */
     public function getByPercent($taxPercent)
     {
+        echo "je passe par là";
         try{
             $q = $this->_db->query('SELECT * FROM tax WHERE percent LIKE "'.$taxPercent.'"');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
