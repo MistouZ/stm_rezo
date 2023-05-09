@@ -98,7 +98,7 @@ $taxmanager = new TaxManager($bdd);
                                                     <?php
                                                         foreach ($foldermanager as $folder){                                                            
                                                         ?>
-                                                        <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo //$folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
+                                                        <option value="<?php echo //$folder->getIdFolder(); ?>">N° <?php echo //$folder->getFolderNumber()." ".$folder->getLabel().; ?></option>
                                                     <?php
                                                     }
                                                     ?>
