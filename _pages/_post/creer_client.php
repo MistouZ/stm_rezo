@@ -4,7 +4,7 @@ include("../../_cfg/cfg.php");
 
 if(isset($_POST['valider'])){
 
-  echo "je suis là";
+  print_r($_POST);
 		$name=$_POST['name'];
 		$physical_address=$_POST['physical_address'];
     if($_POST["invoice_address"] == NULL)
