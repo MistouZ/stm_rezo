@@ -6,7 +6,7 @@
  * Time: 13:38
  */
 
- include("../../_cfg/cfg.php");
+include("../../_cfg/cfg.php");
 
 
 if(isset($_POST['valider'])){
@@ -32,7 +32,6 @@ if(isset($_POST['valider'])){
 
     $tax = new Tax($array);    
     $taxmanager = new TaxManager($bdd);
-    echo $bdd;
     $existe = $taxmanager->getByPercent($percent);
 
     print_r($taxmanager);
