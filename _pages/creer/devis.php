@@ -404,12 +404,12 @@ $(document).ready(function() {
                         opt.innerHTML = "Sélectionnez ..."; 
                         monSelectB[k].appendChild(opt);
                         
-                      for(var i in response['taxes']){
+                      /*for(var i in response['taxes']){
                         opt = document.createElement("option");
                         opt.value = response.taxes[i].valeur;
                         opt.innerHTML = response.taxes[i].nom; 
                         monSelectB[k].appendChild(opt);
-                      }
+                      }*/
                   }
                   var monSelectC = document.getElementsByClassName("taxeOption");
                   //on efface tous les children options
@@ -424,12 +424,12 @@ $(document).ready(function() {
                         opt.innerHTML = "Sélectionnez ..."; 
                         monSelectC[k].appendChild(opt);
                         
-                      for(var i in response['taxes']){
+                      /*for(var i in response['taxes']){
                         opt = document.createElement("option");
                         opt.value = response.taxes[i].valeur;
                         opt.innerHTML = response.taxes[i].nom; 
                         monSelectC[k].appendChild(opt);
-                      }
+                      }*/
                   }
     	  },
           error: function (jqXHR, exception) {
@@ -476,11 +476,11 @@ $(document).ready(function() {
             required: true
         });
       });
-      $("#taxeDevis"+num).each(function(){
+      /*$("#taxeDevis"+num).each(function(){
         $(this).rules("add", {
             required: true
         });
-      });
+      });*/
       $("#prixDevis"+num).each(function(){
         $(this).rules("add", {
             required: true
@@ -510,11 +510,11 @@ $(document).ready(function() {
             required: true
         });
       });
-      $("#taxeOption"+num).each(function(){
+      /*$("#taxeOption"+num).each(function(){
         $(this).rules("add", {
             required: true
         });
-      });
+      });*/
       $("#prixOption"+num).each(function(){
         $(this).rules("add", {
             required: true
@@ -544,11 +544,11 @@ $(document).ready(function() {
             required: true
         });
       });
-      $("#taxeCout"+num).each(function(){
+      /*$("#taxeCout"+num).each(function(){
         $(this).rules("add", {
             required: true
         });
-      });
+      });*/
       $("#prixCout"+num).each(function(){
         $(this).rules("add", {
             required: true
