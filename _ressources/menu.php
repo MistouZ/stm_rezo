@@ -85,7 +85,7 @@
         </a>
         <ul class="sub-menu">
             <li class="nav-item  ">
-                <a href="<?php echo URLHOST.$_COOKIE['company'].'/devis/pre_creer'; ?>" class="nav-link ">
+                <a href="<?php echo URLHOST.$_COOKIE['company'].'/devis/creer'; ?>" class="nav-link ">
                     <span class="title"><i class="far fa-plus-square"></i> Créer</span>
                 </a>
             </li>
