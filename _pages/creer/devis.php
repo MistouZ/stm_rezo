@@ -79,7 +79,6 @@ $taxmanager = new TaxManager($bdd);
                                                     <option value="">Choisissez un dossier...</option>
                                                     <?php
                                                         foreach ($foldermanager as $folder){
-                                                            $customer = $customermanager->getByID($folder->getCustomerId());
                                                     ?>
                                                     <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel()." "; ?></option>
                                                     <?php
