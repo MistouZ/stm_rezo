@@ -163,6 +163,23 @@ foreach ($customermanager as $customer) {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                                <div class="portlet box purple-sharp" style="margin-bottom: 0px !important;">
+                                                    <div class="portlet-title">
+                                                        <div class="caption">
+                                                            <i class="fas fa-building"></i>
+                                                            <span class="caption-subject bold uppercase"> Informations de la société </span>
+                                                        </div>
+                                                        <div class="tools">
+                                                            <a href="" class="collapse" data-original-title="" title=""> </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="portlet-body" style="display: block;">
+                                                        <h5 style="font-weight: 800;">Société : <span id="spanCompany"></span></h5>
+                                                        <h5 style="font-weight: 800;">Comercial : <span id="spanSeller"></span></h5>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
