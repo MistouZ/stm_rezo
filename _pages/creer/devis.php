@@ -163,7 +163,11 @@ foreach ($customermanager as $customer) {
                                                 </div>
                                             </div>
                                         </div>
-                                  <div class="row" id="detaildevis" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="detaildevis" style="display: none;">
                             <div class="col-md-12">
                                 <div class="portlet box blue-dark">
                                     <div class="portlet-title">
