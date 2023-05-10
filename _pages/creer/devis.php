@@ -73,9 +73,6 @@ $taxmanager = new TaxManager($bdd);
                                     </div>
                                     <div class="portlet-body form" style="display: block;">
                                         <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
-                                            <label class="col-md-2 control-label">Dossier
-                                            <span class="required" aria-required="true"> * </span>
-                                            </label>
                                             <div class="portlet-body" style="display: block;">
                                                         <h5 style="font-weight: 800;">Numéro de dossier : <span id="idFolder"></span></h5>
                                                         <h5 style="font-weight: 800;">Libéllé du dossier : <span id="FolderLabel"></span></h5>
