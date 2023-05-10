@@ -29,10 +29,22 @@ $suppliermanager = new SuppliersManager($bdd);
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->getListActive($idCompany);
-$customers = $customermanager->getListByCompany($idCompany);
+$customermanager = $customermanager->getListByCompany($company->getIdcompany());
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
+
+foreach ($customermanager as $customer) {
+    $tempContact = array();
+    $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
+    if(!empty($tableauContacts)){
+        foreach($tableauContacts as $tableauContact){
+            $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
+        }
+        $tableauClient[$customer->getIdCustomer()] = $tempContact;
+    }
+}
+
 
 ?>
 <script>
@@ -130,7 +142,7 @@ $taxmanager = new TaxManager($bdd);
                                                                 <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
                                                                     <option value="">--Choississez le client--</option>
                                                                     <?php
-                                                                        foreach($customers as $customer)
+                                                                        foreach($customermanager as $customer)
                                                                         {
                                                                             echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
                                                                         }
