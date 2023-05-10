@@ -101,7 +101,19 @@ $taxmanager = new TaxManager($bdd);
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body" style="display: block;">
-                                                        <h5 style="font-weight: 800;">Client : <span id="spanCustomer"></span></h5>
+                                                        <label class="control-label col-md-3" for="customer-select">Client                                                           <span class="required"> * </span>
+                                                        </label>
+                                                        <div class="col-md-4">
+                                                            <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
+                                                                <option value="">--Choississez le client--</option>
+                                                                <?php
+                                                                    foreach($customermanager as $customer)
+                                                                    {
+                                                                        echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
+                                                                    }
+                                                                ?>
+                                                            </select>
+                                                        </div>
                                                         <h5 style="font-weight: 800;">Contact : <span id="spanContact"></span></h5>
                                                     </div>
                                                 </div>
