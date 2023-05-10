@@ -114,7 +114,7 @@ $taxmanager = new TaxManager($bdd);
                                                                 ?>
                                                             </select>
                                                         </div>
-                                                        <div class="form-group">
+                                                        <div class="portlet-body" style="display: block;">
                                                             <label class="control-label col-md-3" for="contact-select">Contact
                                                                 <span class="required"> * </span>
                                                             </label>
