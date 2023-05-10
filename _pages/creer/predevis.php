@@ -82,7 +82,7 @@ foreach ($customermanager as $customer) {
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form action="<?php echo URLHOST."_pages/_post/creer_prep_devis.php"; ?>" method="post" id="devis" name="devis" class="form-horizontal">
+                <form action="<?php echo URLHOST."_pages/creer/devis.php"; ?>" method="post" id="devis" name="devis" class="form-horizontal">
                     <div class="form-actions top">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
