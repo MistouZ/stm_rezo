@@ -101,20 +101,22 @@ $taxmanager = new TaxManager($bdd);
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body" style="display: block;">
-                                                        <label class="control-label col-md-3" for="customer-select">Client                                                           <span class="required"> * </span>
-                                                        </label>
-                                                        <div class="col-md-6">
-                                                            <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
-                                                                <option value="">--Choississez le client--</option>
-                                                                <?php
-                                                                    foreach($customermanager as $customer)
-                                                                    {
-                                                                        echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
-                                                                    }
-                                                                ?>
-                                                            </select>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3" for="customer-select">Client                                                           <span class="required"> * </span>
+                                                            </label>
+                                                            <div class="col-md-6">
+                                                                <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
+                                                                    <option value="">--Choississez le client--</option>
+                                                                    <?php
+                                                                        foreach($customermanager as $customer)
+                                                                        {
+                                                                            echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
+                                                                        }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                        <h5>
+                                                        <div class="form-group">
                                                             <label class="control-label col-md-3" for="contact-select">Contact
                                                                 <span class="required"> * </span>
                                                             </label>
@@ -123,7 +125,7 @@ $taxmanager = new TaxManager($bdd);
                                                                     <option value="">--Choississez le contact--</option>
                                                                 </select>
                                                             </div>
-                                                                </h5>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
