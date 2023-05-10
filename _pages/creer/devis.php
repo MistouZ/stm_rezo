@@ -13,9 +13,6 @@ if(isset($_GET['soussouscat'])){
     $retour = $_GET['soussouscat'];
 }
 
-echo $_GET['souscat'];
-echo $_GET['cat'];
-
 $company = new Company($array);
 $companymanager = new CompaniesManager($bdd);
 $folder = new Folder($array);
