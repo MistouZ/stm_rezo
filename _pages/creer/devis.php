@@ -162,7 +162,6 @@ foreach ($customermanager as $customer) {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <div class="col-md-6">
                                                 <div class="portlet box purple-sharp" style="margin-bottom: 0px !important;">
                                                     <div class="portlet-title">
