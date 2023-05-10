@@ -103,7 +103,7 @@ $taxmanager = new TaxManager($bdd);
                                                     <div class="portlet-body" style="display: block;">
                                                         <label class="control-label col-md-3" for="customer-select">Client                                                           <span class="required"> * </span>
                                                         </label>
-                                                        <div class="col-md-2">
+                                                        <div class="col-md-5">
                                                             <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
                                                                 <option value="">--Choississez le client--</option>
                                                                 <?php
