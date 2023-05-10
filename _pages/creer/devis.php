@@ -29,6 +29,7 @@ $suppliermanager = new SuppliersManager($bdd);
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->getListActive($idCompany);
+$customers = $companymanager->getListByCompany($idCompany);
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
