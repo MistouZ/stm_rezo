@@ -412,7 +412,7 @@ $taxmanager = new TaxManager($bdd);
     </div>
 </div>
 <script>
-
+/*
 
 
 $(document).ready(function() {
@@ -641,5 +641,5 @@ function supprLigneCout(selected){
         selectedDiv.find('div[id="divsupprCout'+selected+'"]').css('display','none' ).end();
         alert("Il n'est pas possible de supprimer la dernière ligne des coûts !");
     }
-}
+}*/
 </script>
