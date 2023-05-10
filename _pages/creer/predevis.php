@@ -45,6 +45,7 @@ foreach ($customermanager as $customer) {
     }
 }
 
+echo "j'ai chargé la page";
 
 ?>
 <script>
