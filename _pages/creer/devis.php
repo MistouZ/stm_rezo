@@ -114,8 +114,7 @@ $taxmanager = new TaxManager($bdd);
                                                                 ?>
                                                             </select>
                                                         </div>
-                                                        <br />
-                                                        <div class="form-group">
+                                                        <h5>
                                                             <label class="control-label col-md-3" for="contact-select">Contact
                                                                 <span class="required"> * </span>
                                                             </label>
@@ -124,7 +123,7 @@ $taxmanager = new TaxManager($bdd);
                                                                     <option value="">--Choississez le contact--</option>
                                                                 </select>
                                                             </div>
-                                                        </div>
+                                                                </h5>
                                                     </div>
                                                 </div>
                                             </div>
