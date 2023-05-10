@@ -12,8 +12,6 @@ echo "Résultats : ";
 $array = array();
 $folder = new Folder($array);
 $foldermanager = new FoldersManager($bdd);
-$descriptionmanager = new DescriptionManager($bdd);
-$costmanager = new CostManager($bdd);
 $folder = $foldermanager->get($_POST["folder"]);
 $folderId = $folder->getIdFolder();
 $companyId = $folder->getCompanyId();
