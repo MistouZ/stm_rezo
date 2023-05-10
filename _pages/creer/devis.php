@@ -100,11 +100,10 @@ $taxmanager = new TaxManager($bdd);
                                                             <a href="" class="collapse" data-original-title="" title=""> </a>
                                                         </div>
                                                     </div>
-                                                    
-                                                    <h5 style="font-weight: 800;">
+                                                    <div class="portlet-body" style="display: block;">
                                                         <label class="control-label col-md-3" for="customer-select">Client                                                           <span class="required"> * </span>
                                                         </label>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-2">
                                                             <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
                                                                 <option value="">--Choississez le client--</option>
                                                                 <?php
@@ -114,7 +113,7 @@ $taxmanager = new TaxManager($bdd);
                                                                     }
                                                                 ?>
                                                             </select>
-                                                                </h5>
+                                                        </div>
                                                         <h5 style="font-weight: 800;">Contact : <span id="spanContact"></span></h5>
                                                     </div>
                                                 </div>
