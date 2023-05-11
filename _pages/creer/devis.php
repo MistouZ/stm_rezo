@@ -35,8 +35,8 @@ print_r($_POST);
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->get($idFolder);
-$customermanager = $customermanager->getByID($idCustomer);
-$contactmanager = $contactmanager->getById($idContact);
+$customer = $customermanager->getByID($idCustomer);
+$$contact = $contactmanager->getById($idContact);
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
@@ -80,7 +80,7 @@ $taxmanager = new TaxManager($bdd);
                                     <div class="portlet-body form" style="display: block;">
                                         <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
                                             <div class="portlet-body" style="display: block;">
-                                                        <h5 style="font-weight: 800;">Numéro de dossier : <span id="idFolder"></span></h5>
+                                                        <h5 style="font-weight: 800;">Numéro de dossier : <span id="idFolder" value="<?php echo $idFolder; ?>"></span></h5>
                                                         <h5 style="font-weight: 800;">Libéllé du dossier : <span id="FolderLabel"></span></h5>
                                                     </div>
                                         </div>
@@ -114,8 +114,8 @@ $taxmanager = new TaxManager($bdd);
                                                         </div>
                                                     </div>
                                                     <div class="portlet-body" style="display: block;">
-                                                        <h5 style="font-weight: 800;">Client : <span id="spanCustomer"></span></h5>
-                                                        <h5 style="font-weight: 800;">Contact : <span id="spanContact"></span></h5>
+                                                        <h5 style="font-weight: 800;">Client : <span id="spanCustomer"><?php echo $customer->getName(); ?></span></h5>
+                                                        <h5 style="font-weight: 800;">Contact : <span id="spanContact"><?php echo $contact->getFirstname().' '.$contact->getName(); ?></span></h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,7 +179,7 @@ $taxmanager = new TaxManager($bdd);
                                                         <select id="taxeDevis1" class="taxe form-control" name="taxeDevis[1]">
                                                             <option value="">Sélectionnez ...</option>
                                                             <?php
-                                                            $taxmanager = $taxmanager->getListByCustomer($folder->getCustomerId());
+                                                            $taxmanager = $taxmanager->getListByCustomer($idCustomer);
                                                             foreach ($taxmanager as $tax){
                                                                ?>
                                                                 <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
@@ -252,12 +252,12 @@ $taxmanager = new TaxManager($bdd);
                                                         <select id="taxeOption1" class="taxe form-control" name="taxeOption[1]">
                                                             <option value="">Sélectionnez ...</option>
                                                             <?php
-                                                            /*$taxmanager = $taxmanager->getListByCustomer($folder->getCustomerId());
+                                                            $taxmanager = $taxmanager->getListByCustomer($idCustomer);
                                                             foreach ($taxmanager as $tax){
                                                                ?>
                                                                 <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                 <?php
-                                                            }*/
+                                                            }
                                                             ?>
                                                         </select>
                                                     </div>
@@ -364,9 +364,8 @@ $taxmanager = new TaxManager($bdd);
 </div>
 <script>
 $(document).ready(function() {
-    $("#folder").on("load",function(){
+    $("#idFolder").on("load",function(){
         var i = $(this).val();
-    	console.log("selected.value : "+i+", data[selected.value] : "+i);
         
     	$.ajax({
             url: "<?php echo URLHOST."_cfg/fonctions.php"; ?>",
@@ -380,8 +379,6 @@ $(document).ready(function() {
                  console.log(response);
                  $("#spanCompany").text(response.company);
                  $("#spanSeller").text(response.seller);
-                 $("#spanCustomer").text(response.customer);
-                 $("#spanContact").text(response.contact);
                  $("#libelle").attr("placeholder",response.label);
                  $("#detaildevis").css('display','');
                  $("#detaildevis").css('display','visible');
