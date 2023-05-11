@@ -125,7 +125,7 @@ $taxmanager = new TaxManager($bdd);
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="detaildevis" style="display: none;">
+                        <div class="row" id="detaildevis" style="display: visible;">
                             <div class="col-md-12">
                                 <div class="portlet box blue-dark">
                                     <div class="portlet-title">
@@ -214,7 +214,7 @@ $taxmanager = new TaxManager($bdd);
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="optdevis" style="display: none;">
+                        <div class="row" id="optdevis" style="display: visible;">
                             <div class="col-md-12">
                                 <div class="portlet box grey-cascade">
                                     <div class="portlet-title">
@@ -287,7 +287,7 @@ $taxmanager = new TaxManager($bdd);
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="coutdevis" style="display: none;">
+                        <div class="row" id="coutdevis" style="display: visible;">
                             <div class="col-md-12">
                                 <div class="portlet box red-flamingo" style="margin-bottom: 0px !important;">
                                     <div class="portlet-title">
@@ -589,6 +589,5 @@ function supprLigneCout(selected){
     }
 }
 
-windows.onload = getFolderInformation;
 
 </script>
