@@ -125,7 +125,7 @@ $taxmanager = new TaxManager($bdd);
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="detaildevis" style="display: visible;">
+                        <div class="row" id="detaildevis" style="display: none;">
                             <div class="col-md-12">
                                 <div class="portlet box blue-dark">
                                     <div class="portlet-title">
@@ -214,7 +214,7 @@ $taxmanager = new TaxManager($bdd);
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="optdevis" style="display: visible;">
+                        <div class="row" id="optdevis" style="display: none;">
                             <div class="col-md-12">
                                 <div class="portlet box grey-cascade">
                                     <div class="portlet-title">
@@ -287,7 +287,7 @@ $taxmanager = new TaxManager($bdd);
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="coutdevis" style="display: visible;">
+                        <div class="row" id="coutdevis" style="display: none;">
                             <div class="col-md-12">
                                 <div class="portlet box red-flamingo" style="margin-bottom: 0px !important;">
                                     <div class="portlet-title">
@@ -365,9 +365,9 @@ $taxmanager = new TaxManager($bdd);
 </div>
 <script>
 $(document).ready(function() {
-    function getFolderInformation(){
-        var i = $("#idFolder").val();
-        alert("je lance la fonction");
+    $("#folder").on("change",function(){
+        var i = $(this).val();
+        
     	$.ajax({
             url: "<?php echo URLHOST."_cfg/fonctions.php"; ?>",
     		type: "POST",
@@ -449,7 +449,7 @@ $(document).ready(function() {
             $('#spanCompany').html(msg);
         },
     	});
-    };
+    });
     
     $('#ajout').click(function(){
     
@@ -588,6 +588,4 @@ function supprLigneCout(selected){
         alert("Il n'est pas possible de supprimer la dernière ligne des coûts !");
     }
 }
-
-
 </script>
