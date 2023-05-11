@@ -31,13 +31,13 @@ $idCustomer = $_POST["customer-select"];
 $idContact = $_POST["contact-select"];
 
 print_r($_POST);
-
+/*
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->get($idFolder);
 $customer = $customermanager->getByID($idCustomer);
 $$contact = $contactmanager->getById($idContact);
-/*
+
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
