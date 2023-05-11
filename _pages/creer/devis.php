@@ -26,11 +26,17 @@ $contactmanager = new ContactManager($bdd);
 $supplier = new Suppliers($array);
 $suppliermanager = new SuppliersManager($bdd);
 
+$idFolder = $_POST["folder"];
+$idCustomer = $_POST["customer-select"];
+$idContact = $_POST["contact-select"];
+
 print_r($_POST);
 
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
-$foldermanager = $foldermanager->getListActive($idCompany);
+$foldermanager = $foldermanager->get($idFolder);
+$customermanager = $customermanager->getByID($idCustomer);
+$contactmanager = $contactmanager->getById($idContact);
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
@@ -358,7 +364,7 @@ $taxmanager = new TaxManager($bdd);
 </div>
 <script>
 $(document).ready(function() {
-    $("#folder").on("change",function(){
+    $("#folder").on("load",function(){
         var i = $(this).val();
     	console.log("selected.value : "+i+", data[selected.value] : "+i);
         
