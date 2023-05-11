@@ -365,7 +365,7 @@ $taxmanager = new TaxManager($bdd);
 </div>
 <script>
 $(document).ready(function() {
-    function(){
+    function getFolderInformation(){
         var i = $("#idFolder").val();
         alert("je lance la fonction");
     	$.ajax({
@@ -588,4 +588,7 @@ function supprLigneCout(selected){
         alert("Il n'est pas possible de supprimer la dernière ligne des coûts !");
     }
 }
+
+windows.onload = getFolderInformation;
+
 </script>
