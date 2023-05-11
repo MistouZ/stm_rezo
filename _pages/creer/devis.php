@@ -364,11 +364,9 @@ $taxmanager = new TaxManager($bdd);
     </div>
 </div>
 <script>
-
-$(document).load(function() {
-    //$("#idFolder").on("load",function(){
+$(document).ready(function() {
+    $("#idFolder").on("load",function(){
         var i = $("#idFolder").val();
-        alert("done");
         
     	$.ajax({
             url: "<?php echo URLHOST."_cfg/fonctions.php"; ?>",
@@ -451,7 +449,7 @@ $(document).load(function() {
             $('#spanCompany').html(msg);
         },
     	});
-    );
+    });
     
     $('#ajout').click(function(){
     
