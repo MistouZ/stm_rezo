@@ -364,7 +364,7 @@ $taxmanager = new TaxManager($bdd);
     </div>
 </div>
 <script>
-$(window).on('load', function() {
+$(document).on('load', function() {
     alert('All assets are loaded');
 })
     /*$(document).on("load",function(){
