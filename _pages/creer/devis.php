@@ -37,7 +37,7 @@ $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->get($idFolder);
 $customer = $customermanager->getByID($idCustomer);
 $$contact = $contactmanager->getById($idContact);
-
+/*
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
