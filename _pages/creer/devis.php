@@ -364,12 +364,9 @@ $taxmanager = new TaxManager($bdd);
     </div>
 </div>
 <script>
-$(document).on('load', function() {
-    alert('All assets are loaded');
-})
-    /*$(document).on("load",function(){
-       
-        var i = $("#idFolder").val();
+$(document).ready(function() {
+    $("#idFolder").on("change",function(){
+        var i = $(this).val();
         
     	$.ajax({
             url: "<?php echo URLHOST."_cfg/fonctions.php"; ?>",
