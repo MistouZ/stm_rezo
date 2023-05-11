@@ -366,7 +366,7 @@ $taxmanager = new TaxManager($bdd);
 <script>
 $(document).onload(function() {
     alert('foo');
-    $(document).on("load",function(){
+    /*$(document).on("load",function(){
        
         var i = $("#idFolder").val();
         
