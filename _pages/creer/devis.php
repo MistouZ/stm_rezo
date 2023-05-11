@@ -364,7 +364,7 @@ $taxmanager = new TaxManager($bdd);
     </div>
 </div>
 <script>
-$(document).ready(function() {
+$(document).onload(function() {
     alert('foo');
 });
     /*$(document).on("load",function(){
