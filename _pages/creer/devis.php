@@ -71,7 +71,7 @@ $taxmanager = new TaxManager($bdd);
                                     <div class="portlet-title">
                                         <div class="caption">
                                             <i class="fas fa-folder"></i>
-                                            <span class="caption-subject bold uppercase"> Sélection du dossier </span>
+                                            <span class="caption-subject bold uppercase"> Information du dossier </span>
                                         </div>
                                         <div class="tools">
                                             <a href="" class="collapse" data-original-title="" title=""> </a>
