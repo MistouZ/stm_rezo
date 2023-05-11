@@ -82,6 +82,7 @@ $taxmanager = new TaxManager($bdd);
                                         <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
                                             <div class="portlet-body" style="display: block;">
                                                         <h5 style="font-weight: 800;">Numéro de dossier : <span id="idFolder" value="<?php echo $idFolder; ?>"></span></h5>
+                                                        <input type="hidden" name="idFolder" value="<?php echo echo $idFolder;?>" />
                                                         <h5 style="font-weight: 800;">Libéllé du dossier : <span id="FolderLabel"></span></h5>
                                                     </div>
                                         </div>
@@ -117,6 +118,8 @@ $taxmanager = new TaxManager($bdd);
                                                     <div class="portlet-body" style="display: block;">
                                                         <h5 style="font-weight: 800;">Client : <span id="spanCustomer"><?php echo $customer->getName(); ?></span></h5>
                                                         <h5 style="font-weight: 800;">Contact : <span id="spanContact"><?php echo $contact->getFirstname().' '.$contact->getName(); ?></span></h5>
+                                                        <input type="hidden" name="idcustomer" value="<?php echo $customer->getIdCustomer();?>" />
+                                                        <input type="hidden" name="idcontact" value="<?php echo $contact->getIdContact();?>" />
                                                     </div>
                                                 </div>
                                             </div>
