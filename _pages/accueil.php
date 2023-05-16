@@ -12,6 +12,8 @@
 <?php 
 $str = "I Tech";
 
+echo "connexion github ok";
+
 //echo "test : ".$str." => ".strtolower(preg_replace('/[^a-zA-Z0-9-_\.]/','', $str));
 ?>
 </html>
