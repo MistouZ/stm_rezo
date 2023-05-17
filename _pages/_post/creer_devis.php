@@ -15,7 +15,7 @@ $foldermanager = new FoldersManager($bdd);
 $folder = $foldermanager->get($_POST["idFolder"]);
 $folderId = $folder->getIdFolder();
 $companyId = $folder->getCompanyId();
-$customerId = $_POST["idcustomer"]);
+$customerId = $_POST["idcustomer"];
 $contactId = $_POST["idcontact"];
 
 if(empty($_POST["label"]))
