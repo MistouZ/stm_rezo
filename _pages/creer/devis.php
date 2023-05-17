@@ -41,6 +41,7 @@ $contact = $contactmanager->getById($idContact);
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
+$taxmanagerOpt = new TaxManager($bdd);
 
 ?>
 <div class="row">
@@ -256,8 +257,8 @@ $taxmanager = new TaxManager($bdd);
                                                         <select id="taxeOption1" class="taxe form-control" name="taxeOption[1]">
                                                             <option value="">Sélectionnez ...</option>
                                                             <?php
-                                                            $taxmanager = $taxmanager->getListByCustomer($idCustomer);
-                                                            foreach ($taxmanager as $tax){
+                                                            $taxmanagerOpt = $taxmanagerOpt->getListByCustomer($idCustomer);
+                                                            foreach ($taxmanagerOpt as $tax){
                                                                ?>
                                                                 <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                 <?php
