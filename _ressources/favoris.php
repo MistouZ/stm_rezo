@@ -52,7 +52,7 @@ $quotations = $quotationmanager->getListQuotationByFilteredFolders($foldermanage
                 + </div>
             <div class="desc"> Nouveau devis </div>
         </div>
-        <a class="more" href="<?php echo URLHOST.$_COOKIE['company'];?>/devis/creer"> Créer un devis
+        <a class="more" href="<?php echo URLHOST.$_COOKIE['company'];?>/predevis/creer"> Créer un devis
             <i class="m-icon-swapright m-icon-white"></i>
         </a>
     </div>
