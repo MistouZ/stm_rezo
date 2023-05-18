@@ -47,14 +47,14 @@ foreach ($customermanager as $customer) {
     }
 
     //On récupère la liste des contacts en fonction du client
-    $tempTaxes = array();
+    /*$tempTaxes = array();
     $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
     if(!empty($tableauTaxes)){
         foreach($tableauTaxes as $tableauTaxe){
             $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
         }
         $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
-    }
+    }*/
 }
 
 ?>
