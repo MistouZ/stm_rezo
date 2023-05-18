@@ -62,7 +62,7 @@ foreach ($customermanager as $customer) {
             //echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
             $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
             //echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
-            $tableauTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
+            $tableauTaxes[$customer->getIdCustomer()] = $tempTaxes;
             //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
         }
         //echo " Je sors du IF <br/>";
