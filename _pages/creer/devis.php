@@ -210,7 +210,7 @@ foreach ($customermanager as $customer) {
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
-                                                            <label class="control-label">Remise (%)</label>
+                                                            <label class="control-label">Rem. (%)</label>
                                                             <input type="digits" id="remiseDevis" name="remiseDevis[1]" class="form-control" placeholder="xx">
                                                         </div>
                                                     </div>
@@ -285,7 +285,7 @@ foreach ($customermanager as $customer) {
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
-                                                            <label class="control-label">Remise (%)</label>
+                                                            <label class="control-label">Rem. (%)</label>
                                                             <input type="digits" id="remiseOption" name="remiseOption[1]" class="form-control" placeholder="xx">
                                                         </div>
                                                     </div>
@@ -465,7 +465,26 @@ $(document).ready(function() {
                 monSelectC[k].appendChild(opt);
                 }
             }
-          }
+          },
+          error: function (jqXHR, exception) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            $('#spanCompany').html(msg);
+           },
         });
     });
 
