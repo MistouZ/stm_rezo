@@ -297,7 +297,7 @@ foreach ($customermanager as $customer) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="optdevis" style="display: none;">
+                            <div class="row" id="optdevis">
                                 <div class="col-md-12">
                                     <div class="portlet box grey-cascade">
                                         <div class="portlet-title">
@@ -372,7 +372,7 @@ foreach ($customermanager as $customer) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="coutdevis" style="display: none;">
+                            <div class="row" id="coutdevis">
                                 <div class="col-md-12">
                                     <div class="portlet box red-flamingo" style="margin-bottom: 0px !important;">
                                         <div class="portlet-title">
