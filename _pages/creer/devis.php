@@ -450,8 +450,8 @@ foreach ($customermanager as $customer) {
     </div>
 </div>
 <script>
-/*$(document).ready(function() {
-    $("#folder").on("change",function(){
+$(document).ready(function() {
+    /*$("#folder").on("change",function(){
         var i = $(this).val();
     	console.log("selected.value : "+i+", data[selected.value] : "+i);
         
