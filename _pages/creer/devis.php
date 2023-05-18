@@ -105,8 +105,8 @@ foreach ($customermanager as $customer) {
             
             for(var i in data2[selected.value]){
             opt = document.createElement("option");
-            opt.value = data2[i].valeur;
-            opt.innerHTML = data2[i].nom; 
+            opt.value = i;
+            opt.innerHTML = data2[selected.value][i]; 
             monSelectB[k].appendChild(opt);
             }
         }
@@ -125,7 +125,7 @@ foreach ($customermanager as $customer) {
             monSelectB[i].appendChild(opt);
         }
         */
-       
+
         var monSelectC = document.getElementsByClassName("taxeOption");
         //on efface tous les children options
        while (monSelectC.firstChild) {
