@@ -47,8 +47,11 @@ foreach ($customermanager as $customer) {
             echo " test 1-3 : ".$tableauContact->getFirstname()."<br/>";
             $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
         }
+        echo " test 1-4 : sortie foreach 1<br/>";
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
+        echo " test 1-5 : sortie foreach 2<br/>";
     }
+    echo " test 1-6 : sortie IF <br/>";
     
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
