@@ -420,7 +420,7 @@ $(document).ready(function() {
     		type: "POST",
             dataType: "json",
             contentType: 'application/x-www-form-urlencoded',
-    		data: {functionCalled:'getContactFormFolder',idFolder:i },
+    		data: {functionCalled:'getTaxesFormCustomer',idFolder:i },
     	    cache: false,
     		success: function(response)
     	  {
