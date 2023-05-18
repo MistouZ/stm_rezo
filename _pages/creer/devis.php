@@ -47,11 +47,12 @@ foreach ($customermanager as $customer) {
     }
     echo " test 1 : ".$customer->getIdCustomer();
     echo " test 2 : ".$taxmanager->getList();
+    
+    $tempTaxes = array();
+    $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
     foreach ($taxmanager as $tax) {
         //On récupère la liste des contacts en fonction du client
-        echo " test 2 : ".$tax->getIdTax();
-        $tempTaxes = array();
-        $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
+        echo " test 3 : ".$tax->getIdTax();
         if(!empty($tableauTaxes)){
             foreach($tableauTaxes as $tableauTaxe){
                 $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
