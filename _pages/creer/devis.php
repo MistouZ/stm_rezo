@@ -60,7 +60,7 @@ foreach ($customermanager as $customer) {
         //echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
         if(!empty($tableauTaxe)){
             //echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
-            $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
+            $tempTaxes[$tableauTaxe->getName()]=$tableauTaxe->getValue();
             //echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
             $tableauTaxes[$customer->getIdCustomer()] = $tempTaxes;
             //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
@@ -105,7 +105,7 @@ foreach ($customermanager as $customer) {
             
             for(var i in data2[selected.value]){
             opt = document.createElement("option");
-            opt.value = i;
+            opt.value = data2[selected.value][i];
             opt.innerHTML = data2[selected.value][i]; 
             monSelectB[k].appendChild(opt);
             }
