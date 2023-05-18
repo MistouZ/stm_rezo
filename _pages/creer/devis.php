@@ -33,7 +33,6 @@ $customermanager = $customermanager->getListByCompany($company->getIdcompany());
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
-echo "Taxmanager : ".$taxmanager;
 
 foreach ($customermanager as $customer) {
 
