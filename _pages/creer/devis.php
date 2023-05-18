@@ -58,7 +58,7 @@ foreach ($customermanager as $customer) {
             echo " test 3 : ".$tableauTaxe->getIdTax();
             $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
             echo " test 4 : ".$tableauTaxe->getValue();
-            $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
+            $tableauTaxe[$tableauTaxe->getIdTax()] = $tempTaxes;
             echo " test 5 : ".$tableauTaxe->getIdTax();
         }
     }
