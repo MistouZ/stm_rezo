@@ -45,16 +45,17 @@ foreach ($customermanager as $customer) {
         }
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
     }
-
-    //On récupère la liste des contacts en fonction du client
-    /*$tempTaxes = array();
-    $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
-    if(!empty($tableauTaxes)){
-        foreach($tableauTaxes as $tableauTaxe){
-            $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
+    foreach ($taxmanager as $tax) {
+        //On récupère la liste des contacts en fonction du client
+        $tempTaxes = array();
+        $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
+        if(!empty($tableauTaxes)){
+            foreach($tableauTaxes as $tableauTaxe){
+                $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
+            }
+            $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
         }
-        $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
-    }*/
+    }
 }
 
 ?>
