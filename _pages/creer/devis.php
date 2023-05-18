@@ -35,6 +35,8 @@ $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
 foreach ($customermanager as $customer) {
+
+    //On récupère la liste des contacts en fonction du client
     $tempContact = array();
     $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
     if(!empty($tableauContacts)){
@@ -42,6 +44,16 @@ foreach ($customermanager as $customer) {
             $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
         }
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
+    }
+
+    //On récupère la liste des contacts en fonction du client
+    $tempTaxes = array();
+    $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
+    if(!empty($tableauTaxes)){
+        foreach($tableauTaxes as $tableauTaxe){
+            $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
+        }
+        $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
     }
 }
 
@@ -140,7 +152,7 @@ foreach ($customermanager as $customer) {
                                                 <span class="required" aria-required="true"> * </span>
                                                 </label>
                                                 <div class="col-md-10">
-                                                    <select id="customer-select" name="customer-select" class="form-control" > <!-- onchange="changeSelect(this);" -->
+                                                    <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
                                                         <option value="">--Choississez le client--</option>
                                                         <?php
                                                             foreach($customermanager as $customer)
