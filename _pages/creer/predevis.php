@@ -66,7 +66,7 @@ foreach ($customermanager as $customer) {
         monSelectB.appendChild(opt);
       }
     }
-    </script>
+</script>
 
 
 <div class="row">

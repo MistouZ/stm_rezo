@@ -26,12 +26,12 @@ $contactmanager = new ContactManager($bdd);
 $supplier = new Suppliers($array);
 $suppliermanager = new SuppliersManager($bdd);
 
-print_r($_POST);
+/*print_r($_POST);
 $idFolder = $_POST["folder"];
 $idCustomer = $_POST["customer-select"];
 $idContact = $_POST["contact-select"];
 
-print_r($_POST);
+print_r($_POST);*/
 
 $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
