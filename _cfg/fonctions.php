@@ -46,12 +46,60 @@ function getContactFormFolder($idFolder){
     echo $reponse;
 }
 
+function getTaxesFormCustomer($idFolder){
+
+    $bdd = new DB();
+    $bdd->connexion();
+    
+    $array = array();
+    $company = new Company($array);
+    $companymanager = new CompaniesManager($bdd);
+
+    $user = new Users($array);
+    $usermanager = new UsersManager($bdd);
+    
+    $customer = new Customers($array);
+    $customermanager = new CustomersManager($bdd);   
+    $folder = new Folder($array);
+    $foldermanager = new FoldersManager($bdd);
+    $idFolder = json_decode($_POST['idFolder']);
+    $funct = $_POST['functionCalled'];
+
+    $folder = $foldermanager->get($idFolder);
+    
+    $arrayContact = array();
+    $contacts = new Contact($arrayContact);
+    $contactmanager = new ContactManager($bdd);
+    
+    $taxes = new Tax($array);
+    $taxesmanager = new TaxManager($bdd);
+    
+    $customer = $customermanager->getByID($folder->getCustomerId());
+    $contact = $contactmanager->getById($folder->getContactId());
+    $company = $companymanager->getById($folder->getCompanyId());
+    $user = $usermanager->get($folder->getSeller());
+    $taxes = $taxesmanager->getListByCustomer($folder->getCustomerId());
+    
+    $tabTaxe = array();
+    foreach($taxes as $taxe){
+        array_push($tabTaxe,array('nom'=>$taxe->getName(),'valeur'=>$taxe->getValue()));
+    }
+    
+    $tabReponse = array('contact'=>$contact->getFirstname().' '.$contact->getName(),'customer'=>$customer->getName(),'company'=>$company->getName(),'seller'=>$user->getName()." ".$user->getFirstName(),'taxes'=>$tabTaxe,'label'=>$folder->getLabel());
+    
+    $reponse = json_encode($tabReponse);
+    echo $reponse;
+}
+
 if(isset($_POST['functionCalled']) && !empty($_POST['functionCalled'])) {
     $action = $_POST['functionCalled'];
     $idFolder = json_decode($_POST['idFolder']);
     switch($action){
         case 'getContactFormFolder' : 
             getContactFormFolder($idFolder);
+            break;
+        case 'getTaxesFormCustomer' : 
+            getTaxesFormCustomer($idFolder);
             break;
     }
 
