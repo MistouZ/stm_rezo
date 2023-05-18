@@ -89,7 +89,7 @@ foreach ($customermanager as $customer) {
             monSelectA.appendChild(opt);
         }
         
-        var data2 = <?php //echo json_encode($tableauTaxes); ?>;
+        var data2 = <?php echo json_encode($tableauTaxes); ?>;
         var monSelectB = document.getElementsByClassName("taxe");
         //on efface tous les children options
         while (monSelectB.firstChild) {
