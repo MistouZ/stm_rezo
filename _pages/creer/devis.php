@@ -53,14 +53,12 @@ foreach ($customermanager as $customer) {
     $tempTaxes = array();
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     echo " test 2-1 : ".$customer->getIdCustomer();
-    foreach ($taxmanager as $tax) {
-        echo " test 2-2 : ".$tax->getValue();
-        if(!empty($tax)){
-            echo " test 3 : ".$tax->getIdTax();
-            foreach($tax as $tableauTaxe){
-                echo " test 4 : ".$tableauTaxe->getIdTax();
-                $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
-            }
+    foreach ($taxmanager as $tableauTaxe) {
+        echo " test 2-2 : ".$tableauTaxe->getValue();
+        if(!empty($tableauTaxe)){
+            echo " test 3 : ".$tableauTaxe->getIdTax();
+            echo " test 4 : ".$tableauTaxe->getIdTax();
+            $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
             $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
         }
     }
