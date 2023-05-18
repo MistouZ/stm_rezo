@@ -74,7 +74,34 @@ foreach ($customermanager as $customer) {
             opt.value = i;
             opt.innerHTML = data[selected.value][i]; 
             monSelectA.appendChild(opt);
-        }  
+        }
+        
+        var data2 = <?php echo json_encode($tableauTaxe); ?>;
+        var monSelectB = document.getElementsByClassName("taxe");
+        //on efface tous les children options
+        while (monSelectB.firstChild) {
+            monSelectB.removeChild(monSelectB.firstChild);
+        }
+        //on rajoute les nouveaux children options
+        for(var i in data2[selected.value]){
+            var opt = document.createElement("option");
+            opt.value = i;
+            opt.innerHTML = data2[selected.value][i]; 
+            monSelectB.appendChild(opt);
+        }
+
+        var monSelectC = document.getElementsByClassName("taxeOption");
+        //on efface tous les children options
+       while (monSelectC.firstChild) {
+            monSelectC.removeChild(monSelectC.firstChild);
+        }
+        //on rajoute les nouveaux children options
+        for(var i in data2[selected.value]){
+            var opt = document.createElement("option");
+            opt.value = i;
+            opt.innerHTML = data2[selected.value][i]; 
+            monSelectC.appendChild(opt);
+        }
     }
 </script>
 <div class="row">
