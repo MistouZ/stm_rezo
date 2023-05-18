@@ -33,6 +33,7 @@ $customermanager = $customermanager->getListByCompany($company->getIdcompany());
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
+$tempTaxes = array();
 
 foreach ($customermanager as $customer) {
 
@@ -49,8 +50,6 @@ foreach ($customermanager as $customer) {
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
     }
     
-
-    $tempTaxes = array();
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     echo " test 2-1 : ".$customer->getIdCustomer();
     foreach ($taxmanager as $tableauTaxe) {
