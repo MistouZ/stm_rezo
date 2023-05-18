@@ -53,7 +53,7 @@ foreach ($customermanager as $customer) {
         echo " test 2 : ".$tax->getValue();
         if(!empty($tax)){
             foreach($tax as $tableauTaxe){
-                $tax[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
+                $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
             }
             $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
         }
