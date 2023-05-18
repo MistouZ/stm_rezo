@@ -39,8 +39,8 @@ foreach ($customermanager as $customer) {
     //On récupère la liste des contacts en fonction du client
     $tempContact = array();
     $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
+    echo " test 1 : ".$customer->getFirstname();
     if(!empty($tableauContacts)){
-        echo " test 1 : ".$customer->getFirstname();
         foreach($tableauContacts as $tableauContact){
             $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
         }
