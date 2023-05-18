@@ -61,9 +61,11 @@ foreach ($customermanager as $customer) {
             $tableauTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
             echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
         }
+        echo " Je sors du IF <br/>";
     }
+    echo " Je sors du foreach tax <br/>";
 }
-
+echo " Je sors du foreach global <br/>";
 ?>
 <script>
     function changeSelect(selected){
