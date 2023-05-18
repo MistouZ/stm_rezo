@@ -46,9 +46,13 @@ foreach ($customermanager as $customer) {
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
     }
     echo " test 1 : ".$customer->getIdCustomer();
-    echo " test 2 : ".$taxmanager->getList();
+    
+    foreach ($taxmanager as $tax) {
+        echo " test 2 : ".$tax->getValue();
+    }
     
     $tempTaxes = array();
+    $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
     foreach ($taxmanager as $tax) {
         //On récupère la liste des contacts en fonction du client
