@@ -41,35 +41,35 @@ foreach ($customermanager as $customer) {
     //On récupère la liste des contacts en fonction du client
     $tempContact = array();
     $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
-    echo " test 1 : ".$customer->getName()."<br/>";
+    //echo " test 1 : ".$customer->getName()."<br/>";
     if(!empty($tableauContacts)){
-       echo " test 1-2 : ".$customer->getName()."<br/>";
+       //echo " test 1-2 : ".$customer->getName()."<br/>";
         foreach($tableauContacts as $tableauContact){
-            echo " test 1-3 : ".$tableauContact->getFirstname()."<br/>";
+            //echo " test 1-3 : ".$tableauContact->getFirstname()."<br/>";
             $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
         }
-        echo " test 1-4 : sortie foreach 1<br/>";
+        //echo " test 1-4 : sortie foreach 1<br/>";
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
-        echo " test 1-5 : sortie foreach 2<br/>";
+        //echo " test 1-5 : sortie foreach 2<br/>";
     }
-    echo " test 1-6 : sortie IF ID Customer : ".$customer->getIdCustomer()."<br/>";
+    //echo " test 1-6 : sortie IF ID Customer : ".$customer->getIdCustomer()."<br/>";
     
     $taxmanagerTemp = $taxmanager->getListByCustomer($customer->getIdCustomer());
-    echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
+    //echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
     foreach ($taxmanagerTemp as $tableauTaxe) {
-        echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
+        //echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
         if(!empty($tableauTaxe)){
-            echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
+            //echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
             $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
-            echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
+            //echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
             $tableauTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
-            echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
+            //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
         }
-        echo " Je sors du IF <br/>";
+        //echo " Je sors du IF <br/>";
     }
-    echo " Je sors du foreach tax <br/>";
+    //echo " Je sors du foreach tax <br/>";
 }
-echo " Je sors du foreach global <br/>";
+//echo " Je sors du foreach global <br/>";
 ?>
 <script>
     function changeSelect(selected){
@@ -88,7 +88,7 @@ echo " Je sors du foreach global <br/>";
             opt.innerHTML = data[selected.value][i]; 
             monSelectA.appendChild(opt);
         }
-        /*
+        
         var data2 = <?php //echo json_encode($tableauTaxes); ?>;
         var monSelectB = document.getElementsByClassName("taxe");
         //on efface tous les children options
@@ -114,7 +114,7 @@ echo " Je sors du foreach global <br/>";
             opt.value = i;
             opt.innerHTML = data2[selected.value][i]; 
             monSelectC.appendChild(opt);
-        }*/
+        }
     }
 </script>
 <div class="row">
