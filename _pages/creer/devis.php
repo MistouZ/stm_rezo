@@ -40,12 +40,13 @@ foreach ($customermanager as $customer) {
     $tempContact = array();
     $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
     if(!empty($tableauContacts)){
+        echo " test 1 : ".$customer->getFirstname();
         foreach($tableauContacts as $tableauContact){
             $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
         }
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
     }
-    echo " test 1 : ".$customer->getIdCustomer();
+    
 
     $tempTaxes = array();
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
