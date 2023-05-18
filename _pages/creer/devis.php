@@ -166,7 +166,7 @@ foreach ($customermanager as $customer) {
                                 </div>
                             </div>
                         </div>
-                        <div class="row" id="detaildevis" style="display: none;">
+                        <div class="row" id="detaildevis">
                             <div class="col-md-12">
                                 <div class="portlet box blue-dark">
                                     <div class="portlet-title">
@@ -296,12 +296,14 @@ foreach ($customermanager as $customer) {
                                                         <select id="taxeOption1" class="taxe form-control" name="taxeOption[1]">
                                                             <option value="">Sélectionnez ...</option>
                                                             <?php
-                                                            /*$taxmanager = $taxmanager->getListByCustomer($folder->getCustomerId());
-                                                            foreach ($taxmanager as $tax){
+                                                            if( !empty($folder->getCustomerId())){
+                                                                $taxmanager = $taxmanager->getListByCustomer($folder->getCustomerId());
+                                                                foreach ($taxmanager as $tax){
                                                                ?>
                                                                 <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                 <?php
-                                                            }*/
+                                                                }
+                                                            }
                                                             ?>
                                                         </select>
                                                     </div>
