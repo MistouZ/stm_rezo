@@ -104,35 +104,33 @@ $taxmanager = new TaxManager($bdd);
                                             </div>
                                         </div>
                                         <div class="portlet-body form" style="display: block;">
-                                        <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
-                                            <label class="col-md-2 control-label">Client
-                                            <span class="required" aria-required="true"> * </span>
-                                            </label>
-                                            <div class="col-md-10">
-                                                <select class="bs-select form-control" id="folder" name="folder" data-live-search="true" data-size="8">
-                                                    <option value="">Choisissez un client...</option>
-                                                    <?php
-                                                        foreach($customermanager as $customer)
-                                                        {
-                                                            echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
+                                                <label class="col-md-2 control-label">Client
+                                                <span class="required" aria-required="true"> * </span>
+                                                </label>
+                                                <div class="col-md-10">
+                                                    <select id="customer-select" name="customer-select" class="form-control" onchange="changeSelect(this);">
+                                                        <option value="">--Choississez le client--</option>
+                                                        <?php
+                                                            foreach($customermanager as $customer)
+                                                            {
+                                                                echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
+                                                <label class="col-md-2 control-label">Contact
+                                                <span class="required" aria-required="true"> * </span>
+                                                </label>
+                                                <div class="col-md-10">
+                                                    <select id="contact-select" name="contact-select" class="form-control">
+                                                        <option value="">--Choississez le contact--</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="portlet-body form" style="display: block;">
-                                        <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
-                                            <label class="col-md-2 control-label">Contact
-                                            <span class="required" aria-required="true"> * </span>
-                                            </label>
-                                            <div class="col-md-10">
-                                                <select id="contact-select" name="contact-select" class="form-control">
-                                                    <option value="">--Choississez le contact--</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
