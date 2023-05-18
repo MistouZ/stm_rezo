@@ -34,6 +34,17 @@ $customermanager = $customermanager->getListByCompany($company->getIdcompany());
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 
+foreach ($customermanager as $customer) {
+    $tempContact = array();
+    $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
+    if(!empty($tableauContacts)){
+        foreach($tableauContacts as $tableauContact){
+            $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
+        }
+        $tableauClient[$customer->getIdCustomer()] = $tempContact;
+    }
+}
+
 ?>
 <div class="row">
     <div class="col-md-12">
