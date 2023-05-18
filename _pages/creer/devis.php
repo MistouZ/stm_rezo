@@ -34,6 +34,7 @@ $customermanager = $customermanager->getListByCompany($company->getIdcompany());
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 $tempTaxes = array();
+$taxmanagerTemp = array();
 
 foreach ($customermanager as $customer) {
 
@@ -53,9 +54,9 @@ foreach ($customermanager as $customer) {
     }
     echo " test 1-6 : sortie IF ID Customer : ".$customer->getIdCustomer()."<br/>";
     
-    $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
+    $taxmanagerTemp = $taxmanager->getListByCustomer($customer->getIdCustomer());
     echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
-    foreach ($taxmanager as $tableauTaxe) {
+    foreach ($taxmanagerTemp as $tableauTaxe) {
         echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
         if(!empty($tableauTaxe)){
             echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
