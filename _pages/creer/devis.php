@@ -216,7 +216,7 @@ foreach ($customermanager as $customer) {
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
-                                                            <label class="control-label">Taxes</label>
+                                                            <label class="control-label">Taxes - id custo : <?php echo $customer->getCustomerId(); ?></label>
                                                             <select id="taxeDevis1" class="taxe form-control" name="taxeDevis[1]">
                                                                 <option value="">Sélectionnez ...</option>
                                                                 <?php
