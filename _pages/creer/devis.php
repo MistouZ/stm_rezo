@@ -62,63 +62,7 @@ foreach ($customermanager as $customer) {
             opt.value = i;
             opt.innerHTML = data[selected.value][i]; 
             monSelectA.appendChild(opt);
-        }
-
-        $("#customer-select").on("change",function(){
-        var i = $(this).val();
-    	console.log("selected.value : "+i+", data[selected.value] : "+i);
-        
-    	$.ajax({
-            url: "<?php echo URLHOST."_cfg/fonctions.php"; ?>",
-    		type: "POST",
-            dataType: "json",
-            contentType: 'application/x-www-form-urlencoded',
-    		data: {functionCalled:'getContactFormFolder',idFolder:i },
-    	    cache: false,
-    		success: function(response)
-    	  {
-
-            var monSelectB = document.getElementsByClassName("taxe");
-            //on efface tous les children options
-            for(var k=0; k<monSelectB.length; k++){
-                while (monSelectB[k].firstChild) {
-                console.log("option : "+monSelectB[k]);
-                monSelectB[k].removeChild(monSelectB[k].firstChild);
-                }
-                //on rajoute les nouveaux children options
-                var opt = document.createElement("option");
-                opt.value = "";
-                opt.innerHTML = "Sélectionnez ..."; 
-                monSelectB[k].appendChild(opt);
-                
-                for(var i in response['taxes']){
-                opt = document.createElement("option");
-                opt.value = response.taxes[i].valeur;
-                opt.innerHTML = response.taxes[i].nom; 
-                monSelectB[k].appendChild(opt);
-                }
-            }
-            var monSelectC = document.getElementsByClassName("taxeOption");
-            //on efface tous les children options
-            for(var k=0; k<monSelectC.length; k++){
-                while (monSelectC[k].firstChild) {
-                console.log("option : "+monSelectC[k]);
-                monSelectC[k].removeChild(monSelectC[k].firstChild);
-                }
-                //on rajoute les nouveaux children options
-                var opt = document.createElement("option");
-                opt.value = "";
-                opt.innerHTML = "Sélectionnez ..."; 
-                monSelectC[k].appendChild(opt);
-                
-                for(var i in response['taxes']){
-                opt = document.createElement("option");
-                opt.value = response.taxes[i].valeur;
-                opt.innerHTML = response.taxes[i].nom; 
-                monSelectC[k].appendChild(opt);
-                }
-            }
-        }
+        }  
     }
 </script>
 <div class="row">
@@ -466,6 +410,65 @@ foreach ($customermanager as $customer) {
 </div>
 <script>
 $(document).ready(function() {
+
+    $("#customer-select").on("change",function(){
+        var i = $(this).val();
+    	console.log("selected.value : "+i+", data[selected.value] : "+i);
+        
+    	$.ajax({
+            url: "<?php echo URLHOST."_cfg/fonctions.php"; ?>",
+    		type: "POST",
+            dataType: "json",
+            contentType: 'application/x-www-form-urlencoded',
+    		data: {functionCalled:'getContactFormFolder',idFolder:i },
+    	    cache: false,
+    		success: function(response)
+    	  {
+
+            var monSelectB = document.getElementsByClassName("taxe");
+            //on efface tous les children options
+            for(var k=0; k<monSelectB.length; k++){
+                while (monSelectB[k].firstChild) {
+                console.log("option : "+monSelectB[k]);
+                monSelectB[k].removeChild(monSelectB[k].firstChild);
+                }
+                //on rajoute les nouveaux children options
+                var opt = document.createElement("option");
+                opt.value = "";
+                opt.innerHTML = "Sélectionnez ..."; 
+                monSelectB[k].appendChild(opt);
+                
+                for(var i in response['taxes']){
+                opt = document.createElement("option");
+                opt.value = response.taxes[i].valeur;
+                opt.innerHTML = response.taxes[i].nom; 
+                monSelectB[k].appendChild(opt);
+                }
+            }
+            var monSelectC = document.getElementsByClassName("taxeOption");
+            //on efface tous les children options
+            for(var k=0; k<monSelectC.length; k++){
+                while (monSelectC[k].firstChild) {
+                console.log("option : "+monSelectC[k]);
+                monSelectC[k].removeChild(monSelectC[k].firstChild);
+                }
+                //on rajoute les nouveaux children options
+                var opt = document.createElement("option");
+                opt.value = "";
+                opt.innerHTML = "Sélectionnez ..."; 
+                monSelectC[k].appendChild(opt);
+                
+                for(var i in response['taxes']){
+                opt = document.createElement("option");
+                opt.value = response.taxes[i].valeur;
+                opt.innerHTML = response.taxes[i].nom; 
+                monSelectC[k].appendChild(opt);
+                }
+            }
+          }
+        });
+    });
+
     /*$("#folder").on("change",function(){
         var i = $(this).val();
     	console.log("selected.value : "+i+", data[selected.value] : "+i);
