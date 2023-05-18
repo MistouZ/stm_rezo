@@ -47,16 +47,23 @@ foreach ($customermanager as $customer) {
     }
     echo " test 1 : ".$customer->getIdCustomer();
 
+    $tempTaxes = array();
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     foreach ($taxmanager as $tax) {
         echo " test 2 : ".$tax->getValue();
+        if(!empty($tax)){
+            foreach($tax as $tableauTaxe){
+                $tax[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
+            }
+            $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
+        }
     }
     
-    $tempTaxes = array();
-    $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
-    $tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
+    //$tempTaxes = array();
+    //$taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
+    //$tableauTaxes = $taxmanager->getListByCustomer($customer->getIdCustomer());
 
-    foreach ($taxmanager as $tax) {
+    /*foreach ($taxmanager as $tax) {
         //On récupère la liste des contacts en fonction du client
         echo " test 3 : ".$tax->getIdTax();
         if(!empty($tableauTaxes)){
@@ -65,7 +72,7 @@ foreach ($customermanager as $customer) {
             }
             $tableauTaxe[$tax->getIdTax()] = $tempTaxes;
         }
-    }
+    }*/
 }
 
 ?>
