@@ -50,8 +50,9 @@ foreach ($customermanager as $customer) {
     $tempTaxes = array();
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     foreach ($taxmanager as $tax) {
-        echo " test 2 : ".$tax->getValue();
+        echo " test 2 - ".$tax->getValue();
         if(!empty($tax)){
+            echo " test 3 : ".$tax->getIdTax();
             foreach($tax as $tableauTaxe){
                 $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
             }
