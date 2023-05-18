@@ -57,9 +57,9 @@ foreach ($customermanager as $customer) {
         if(!empty($tableauTaxe)){
             //echo " test 3 : ".$tableauTaxe->getIdTax();
             $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
-            echo " test 4 : ".$tableauTaxe->getValue();
+            //echo " test 4 : ".$tableauTaxe->getValue();
             $tableauTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
-            echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()];
+            //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()];
         }
     }
     
@@ -97,7 +97,7 @@ foreach ($customermanager as $customer) {
             opt.innerHTML = data[selected.value][i]; 
             monSelectA.appendChild(opt);
         }
-        
+        /*
         var data2 = <?php echo json_encode($tableauTaxes); ?>;
         var monSelectB = document.getElementsByClassName("taxe");
         //on efface tous les children options
@@ -123,7 +123,7 @@ foreach ($customermanager as $customer) {
             opt.value = i;
             opt.innerHTML = data2[selected.value][i]; 
             monSelectC.appendChild(opt);
-        }
+        }*/
     }
 </script>
 <div class="row">
