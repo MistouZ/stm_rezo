@@ -40,26 +40,26 @@ foreach ($customermanager as $customer) {
     //On récupère la liste des contacts en fonction du client
     $tempContact = array();
     $tableauContacts = $contactmanager->getList($customer->getIdCustomer());
-    echo " test 1 : ".$customer->getName();
+    //echo " test 1 : ".$customer->getName();
     if(!empty($tableauContacts)){
-        echo " test 1-2 : ".$customer->getName();
+       // echo " test 1-2 : ".$customer->getName();
         foreach($tableauContacts as $tableauContact){
-            echo " test 1-3 : ".$tableauContact->getFirstname();
+            //echo " test 1-3 : ".$tableauContact->getFirstname();
             $tempContact[$tableauContact->getIdContact()]=$tableauContact->getFirstname().' '.$tableauContact->getName();
         }
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
     }
     
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
-    echo " test 2-1 : ".$customer->getIdCustomer();
+    //echo " test 2-1 : ".$customer->getIdCustomer();
     foreach ($taxmanager as $tableauTaxe) {
-        echo " test 2-2 : ".$tableauTaxe->getValue();
+        //echo " test 2-2 : ".$tableauTaxe->getValue();
         if(!empty($tableauTaxe)){
-            echo " test 3 : ".$tableauTaxe->getIdTax();
+            //echo " test 3 : ".$tableauTaxe->getIdTax();
             $tempTaxes[$tableauTaxe->getIdTax()]=$tableauTaxe->getValue();
-            echo " test 4 : ".$tableauTaxe->getValue();
-            $tempTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
-            echo " test 5 : ".$tableauTaxe->getIdTax();
+            //echo " test 4 : ".$tableauTaxe->getValue();
+            $tableauTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
+            //echo " test 5 : ".$tableauTaxe->getIdTax();
         }
     }
     
@@ -98,7 +98,7 @@ foreach ($customermanager as $customer) {
             monSelectA.appendChild(opt);
         }
         
-        var data2 = <?php echo json_encode($tableauTaxe); ?>;
+        var data2 = <?php echo json_encode($tableauTaxes); ?>;
         var monSelectB = document.getElementsByClassName("taxe");
         //on efface tous les children options
         while (monSelectB.firstChild) {
