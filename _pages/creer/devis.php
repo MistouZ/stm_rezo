@@ -49,7 +49,7 @@ foreach ($customermanager as $customer) {
         }
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
     }
-    
+    /*
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     //echo " test 2-1 : ".$customer->getIdCustomer();
     foreach ($taxmanager as $tableauTaxe) {
@@ -61,7 +61,7 @@ foreach ($customermanager as $customer) {
             $tableauTaxes[$tableauTaxe->getIdTax()] = $tempTaxes;
             //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()];
         }
-    }
+    }*/
     
     //$tempTaxes = array();
     //$taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
