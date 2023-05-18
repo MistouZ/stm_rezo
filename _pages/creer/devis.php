@@ -424,7 +424,7 @@ $(document).ready(function() {
     	    cache: false,
     		success: function(response)
     	  {
-
+            alert("Début");
             var monSelectB = document.getElementsByClassName("taxe");
             //on efface tous les children options
             for(var k=0; k<monSelectB.length; k++){

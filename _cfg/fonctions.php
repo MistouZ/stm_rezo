@@ -48,7 +48,7 @@ function getContactFormFolder($idFolder){
 
 function getTaxesFormCustomer($idFolder){
 
-    echo "Get Taxe !";
+    echo ('script type="text/javascript">windows.alert("Début getTaxes");</script>');
     $bdd = new DB();
     $bdd->connexion();
     
@@ -101,7 +101,7 @@ if(isset($_POST['functionCalled']) && !empty($_POST['functionCalled'])) {
             break;
         case 'getTaxesFormCustomer' : 
             getTaxesFormCustomer($idFolder);
-            echo"case 2";
+            echo ('script type="text/javascript">windows.alert("case 2");</script>');
             break;
     }
 
