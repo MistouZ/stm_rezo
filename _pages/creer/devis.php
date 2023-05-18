@@ -88,42 +88,51 @@ $taxmanager = new TaxManager($bdd);
                                                 </select>
                                             </div>
                                         </div>
-                                        <div id="infos" class="row form-section" style="margin: 10px 0px 0px 0px !important;">
-                                            <div class="col-md-6">
-                                                <div class="portlet box purple-sharp" style="margin-bottom: 0px !important;">
-                                                    <div class="portlet-title">
-                                                        <div class="caption">
-                                                            <i class="fas fa-building"></i>
-                                                            <span class="caption-subject bold uppercase"> Informations de la société </span>
-                                                        </div>
-                                                        <div class="tools">
-                                                            <a href="" class="collapse" data-original-title="" title=""> </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="portlet-body" style="display: block;">
-                                                        <h5 style="font-weight: 800;">Société : <span id="spanCompany"></span></h5>
-                                                        <h5 style="font-weight: 800;">Comercial : <span id="spanSeller"></span></h5>
-                                                    </div>
-                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div id="infos" class="row form-section" style="margin: 10px 0px 0px 0px !important;">-->
+                                <div class="col-md-12">
+                                    <div class="portlet box purple-sharp" style="margin-bottom: 0px !important;">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="fas fa-user-tie"></i>
+                                                <span class="caption-subject bold uppercase"> Sélection du client </span>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="portlet box purple-sharp" style="margin-bottom: 0px !important;">
-                                                    <div class="portlet-title">
-                                                        <div class="caption">
-                                                            <i class="fas fa-user-tie"></i>
-                                                            <span class="caption-subject bold uppercase"> Informations client </span>
-                                                        </div>
-                                                        <div class="tools">
-                                                            <a href="" class="collapse" data-original-title="" title=""> </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="portlet-body" style="display: block;">
-                                                        <h5 style="font-weight: 800;">Client : <span id="spanCustomer"></span></h5>
-                                                        <h5 style="font-weight: 800;">Contact : <span id="spanContact"></span></h5>
-                                                    </div>
-                                                </div>
+                                            <div class="tools">
+                                                <a href="" class="collapse" data-original-title="" title=""> </a>
                                             </div>
                                         </div>
+                                        <div class="portlet-body form" style="display: block;">
+                                        <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
+                                            <label class="col-md-2 control-label">Client
+                                            <span class="required" aria-required="true"> * </span>
+                                            </label>
+                                            <div class="col-md-10">
+                                                <select class="bs-select form-control" id="folder" name="folder" data-live-search="true" data-size="8">
+                                                    <option value="">Choisissez un client...</option>
+                                                    <?php
+                                                        foreach($customermanager as $customer)
+                                                        {
+                                                            echo "<option value=" . $customer->getIdCustomer() . ">".$customer->getName()."</option>";
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body form" style="display: block;">
+                                        <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
+                                            <label class="col-md-2 control-label">Contact
+                                            <span class="required" aria-required="true"> * </span>
+                                            </label>
+                                            <div class="col-md-10">
+                                                <select id="contact-select" name="contact-select" class="form-control">
+                                                    <option value="">--Choississez le contact--</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
