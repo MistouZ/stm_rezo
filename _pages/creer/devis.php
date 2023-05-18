@@ -51,7 +51,7 @@ foreach ($customermanager as $customer) {
         $tableauClient[$customer->getIdCustomer()] = $tempContact;
         echo " test 1-5 : sortie foreach 2<br/>";
     }
-    echo " test 1-6 : sortie IF <br/>";
+    echo " test 1-6 : sortie IF ID Customer : ".$customer->getIdCustomer()."<br/>";
     
     $taxmanager = $taxmanager->getListByCustomer($customer->getIdCustomer());
     echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
