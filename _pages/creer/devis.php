@@ -54,6 +54,7 @@ foreach ($customermanager as $customer) {
     }
     //echo " test 1-6 : sortie IF ID Customer : ".$customer->getIdCustomer()."<br/>";
     
+    $taxmanagerTemp = array();
     $taxmanagerTemp = $taxmanager->getListByCustomer($customer->getIdCustomer());
     //echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
     foreach ($taxmanagerTemp as $tableauTaxe) {
@@ -106,7 +107,7 @@ foreach ($customermanager as $customer) {
             for(var i in data2[selected.value]){
             opt = document.createElement("option");
             opt.value = data2[selected.value][i];
-            opt.innerHTML = data2[selected.name][i]; 
+            opt.innerHTML = data2[selected.value][i]; 
             monSelectB[k].appendChild(opt);
             }
         }
