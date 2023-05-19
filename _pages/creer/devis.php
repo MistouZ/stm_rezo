@@ -34,7 +34,7 @@ $customermanager = $customermanager->getListByCompany($company->getIdcompany());
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 $tempTaxes = array();
-$taxmanagerTemp = array();
+//$taxmanagerTemp = array();
 
 foreach ($customermanager as $customer) {
 
