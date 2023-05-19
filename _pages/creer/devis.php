@@ -54,6 +54,7 @@ foreach ($customermanager as $customer) {
     }
     //echo " test 1-6 : sortie IF ID Customer : ".$customer->getIdCustomer()."<br/>";
     
+    unset($tempTaxes);
     unset($taxmanagerTemp);
     $taxmanagerTemp = $taxmanager->getListByCustomer($customer->getIdCustomer());
     //echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
