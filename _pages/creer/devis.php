@@ -271,13 +271,13 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Quantité</label>
-                                                            <input type="digits" id="quantiteDevis" name="quantiteDevis[1]" class="form-control" placeholder="Qt.">
+                                                            <input type="number" id="quantiteDevis" name="quantiteDevis[1]" class="form-control" placeholder="Qt.">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Rem. (%)</label>
-                                                            <input type="digits" id="remiseDevis" name="remiseDevis[1]" class="form-control" placeholder="xx">
+                                                            <input type="number" id="remiseDevis" name="remiseDevis[1]" class="form-control" placeholder="xx">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -301,7 +301,7 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-2">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Prix HT</label>
-                                                            <input type="digits" id="prixDevis1" name="prixDevis[1]" class="form-control" placeholder="HT">
+                                                            <input type="number" id="prixDevis1" name="prixDevis[1]" class="form-control" placeholder="HT">
                                                         </div>
                                                     </div>
                                                     <div id="divsupprDevis1" style="text-align: right;" class="col-md-1">
@@ -346,13 +346,13 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Quantité</label>
-                                                            <input type="digits" id="quantiteOption" name="quantiteOption[1]" class="form-control" placeholder="Qt.">
+                                                            <input type="number" id="quantiteOption" name="quantiteOption[1]" class="form-control" placeholder="Qt.">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Rem. (%)</label>
-                                                            <input type="digits" id="remiseOption" name="remiseOption[1]" class="form-control" placeholder="xx">
+                                                            <input type="number" id="remiseOption" name="remiseOption[1]" class="form-control" placeholder="xx">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -376,7 +376,7 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-2">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Prix HT</label>
-                                                            <input type="digits" id="prixOption1" name="prixOption[1]" class="form-control" placeholder="HT">
+                                                            <input type="number" id="prixOption1" name="prixOption[1]" class="form-control" placeholder="HT">
                                                         </div>
                                                     </div>
                                                     <div id="divsupprOption1" style="text-align: right;" class="col-md-1">
@@ -437,7 +437,7 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-2">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Prix HT</label>
-                                                            <input type="digits" id="prixCout1" name="prixCout[1]" class="form-control" placeholder="HT">
+                                                            <input type="number" id="prixCout1" name="prixCout[1]" class="form-control" placeholder="HT">
                                                         </div>
                                                     </div>
                                                     <div id="divsupprCout1" style="text-align: right;" class="col-md-1">
