@@ -277,7 +277,7 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Rem. (%)</label>
-                                                            <input type="number" id="remiseDevis" name="remiseDevis[1]" class="form-control" placeholder="xx">
+                                                            <input type="number" id="remiseDevis" name="remiseDevis[1]" class="form-control" placeholder="xx" max="100">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
@@ -352,7 +352,7 @@ foreach ($customermanager as $customer) {
                                                     <div class="col-md-1">
                                                         <div class="form-group" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                             <label class="control-label">Rem. (%)</label>
-                                                            <input type="number" id="remiseOption" name="remiseOption[1]" class="form-control" placeholder="xx">
+                                                            <input type="number" id="remiseOption" name="remiseOption[1]" class="form-control" placeholder="xx" max="100">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
