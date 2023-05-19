@@ -77,7 +77,6 @@ foreach ($customermanager as $customer) {
     function changeSelect(selected){
         //on recupere le php
         var data = <?php echo json_encode($tableauClient); ?>;
-        console.log("selected.value : "+selected.value+", data[selected.value] : "+data[selected.value]);
         var monSelectA = document.getElementById("contact-select");
         //on efface tous les children options
         while (monSelectA.firstChild) {
@@ -93,10 +92,10 @@ foreach ($customermanager as $customer) {
         
         var data2 = <?php echo json_encode($tableauTaxes); ?>;
         var monSelectB = document.getElementsByClassName("taxe");
+        var monSelectC = document.getElementsByClassName("taxeOption");
 
         for(var k=0; k<monSelectB.length; k++){
             while (monSelectB[k].firstChild) {
-            console.log("option : "+monSelectB[k]);
             monSelectB[k].removeChild(monSelectB[k].firstChild);
             }
             //on rajoute les nouveaux children options
@@ -113,32 +112,22 @@ foreach ($customermanager as $customer) {
             }
         }
 
-        /*
-        //on efface tous les children options
-        while (monSelectB.firstChild) {
-            monSelectB.removeChild(monSelectB.firstChild);
-        }
-        
-        //on rajoute les nouveaux children options
-        for(var i in data2[selected.value]){
+        for(var k=0; k<monSelectC.length; k++){
+            while (monSelectC[k].firstChild) {
+            monSelectC[k].removeChild(monSelectC[k].firstChild);
+            }
+            //on rajoute les nouveaux children options
             var opt = document.createElement("option");
-            opt.value = i;
+            opt.value = "";
+            opt.innerHTML = "Sélectionnez ..."; 
+            monSelectC[k].appendChild(opt);
+            
+            for(var i in data2[selected.value]){
+            opt = document.createElement("option");
+            opt.value = data2[selected.value][i];
             opt.innerHTML = data2[selected.value][i]; 
-            monSelectB[i].appendChild(opt);
-        }
-        */
-
-        var monSelectC = document.getElementsByClassName("taxeOption");
-        //on efface tous les children options
-       while (monSelectC.firstChild) {
-            monSelectC.removeChild(monSelectC.firstChild);
-        }
-        //on rajoute les nouveaux children options
-        for(var i in data2[selected.value]){
-            var opt = document.createElement("option");
-            opt.value = i;
-            opt.innerHTML = data2[selected.value][i]; 
-            monSelectC[i].appendChild(opt);
+            monSelectC[k].appendChild(opt);
+            }
         }
     }
 </script>
