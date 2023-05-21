@@ -133,8 +133,8 @@ else {
         next($_POST["descriptionOption"]);
     }
 
-    $quotationNumberOption = $quotationNumber . '_option';
-    $test2 = $descriptionmanager->add($descriptionsOption, $quotationNumberOption);
+    //$quotationNumberOption = $quotationNumber . '_option';
+    //$test2 = $descriptionmanager->add($descriptionsOption, $quotationNumberOption);
 }
 
 if(empty(current($_POST["descriptionCout"]))){
@@ -164,7 +164,7 @@ else{
     }
 
 
-    $test3 = $costmanager->add($descriptionsCout,$quotationNumber);
+    //$test3 = $costmanager->add($descriptionsCout,$quotationNumber);
     echo "j'ai réussi 3";
 }
 
