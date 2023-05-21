@@ -167,12 +167,12 @@ else{
     echo "j'ai réussi 3";
 }
 
-
+*/
 if(is_null($test) || is_null($test2) || is_null($test3))
 {
     header('Location: '.$_SERVER['HTTP_REFERER']."/error");
 }
 else{
     header('Location: '.URLHOST.$_COOKIE['company']."/devis/afficher/cours/".$quotationNumber);
-}*/
+}
 ?>
