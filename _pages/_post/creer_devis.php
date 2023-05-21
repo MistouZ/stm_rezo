@@ -94,6 +94,7 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
     next($_POST["descriptionDevis"]);
 }
 
+print_r($descriptions);
 
 $test = $descriptionmanager->add($descriptions,$quotationNumber);
 /*
