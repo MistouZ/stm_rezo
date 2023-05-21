@@ -9,7 +9,7 @@ include("../../_cfg/cfg.php");
 
 echo "Résultats : ";
 
-/*
+
 $array = array();
 $folder = new Folder($array);
 $foldermanager = new FoldersManager($bdd);
@@ -55,12 +55,12 @@ $quotationmanager = new QuotationManager($bdd);
 
 //$quotationNumber = $quotationmanager->add($quotation);
 //echo "j'ai créé le devis : ".$quotationNumber;
-*/
-//print_r($_POST);
+
+print_r($_POST);
 
 //Ajout des lignes du devis
-//$descriptions= array();
-/*
+$descriptions= array();
+
 $i=1;
 while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
 
