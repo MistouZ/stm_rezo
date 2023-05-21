@@ -59,7 +59,7 @@ $quotationmanager = new QuotationManager($bdd);
 print_r($_POST);
 
 //Ajout des lignes du devis
-$descriptions= array();
+//$descriptions= array();
 /*
 $i=1;
 while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
