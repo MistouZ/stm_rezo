@@ -132,8 +132,9 @@ else {
         next($_POST["descriptionOption"]);
     }
 
+    $descriptionmanager2 = new DescriptionManager($bdd);
     $quotationNumberOption = $quotationNumber . '_option';
-    $test2 = $descriptionmanager->add($descriptionsOption, $quotationNumberOption);
+    $test2 = $descriptionmanager2->add($descriptionsOption, $quotationNumberOption);
 }
 
 if(empty(current($_POST["descriptionCout"]))){
