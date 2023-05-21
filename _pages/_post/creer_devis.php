@@ -83,8 +83,7 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
             'price' => $price,
             'tax' => $tax
         );
-        print_r($dataDescription);
-
+       
         $description = new Description($dataDescription);
         $descriptions[$i] = $description;
     }
@@ -92,7 +91,7 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
     next($_POST["descriptionDevis"]);
 }
 
-//print_r($descriptions);
+print_r($descriptions);
 
 $test = $descriptionmanager->add($descriptions,$quotationNumber);
 /*
