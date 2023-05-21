@@ -12,11 +12,13 @@ echo "Résultats : ";
 $array = array();
 $folder = new Folder($array);
 $foldermanager = new FoldersManager($bdd);
-$folder = $foldermanager->get($_POST["idFolder"]);
+$folder = $foldermanager->get($_POST["folder"]);
 $folderId = $folder->getIdFolder();
 $companyId = $folder->getCompanyId();
-$customerId = $_POST["idcustomer"];
-$contactId = $_POST["idcontact"];
+$customerId = $_POST["customer-select"];
+$contactId = $_POST["contact-select"];
+
+Print_r($_POST);
 
 if(empty($_POST["label"]))
 {
