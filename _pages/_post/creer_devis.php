@@ -57,7 +57,6 @@ $quotationmanager = new QuotationManager($bdd);
 $quotationNumber = $quotationmanager->add($quotation);
 echo "j'ai créé le devis : ".$quotationNumber;
 
-/*
 
 //Ajout des lignes du devis
 $descriptions= array();
