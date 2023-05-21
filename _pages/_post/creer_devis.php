@@ -167,9 +167,9 @@ else{
     $test3 = $costmanager->add($descriptionsCout,$quotationNumber);
     echo "j'ai réussi 3";
 }
-
+|| is_null($test2) || is_null($test3)
 */
-if(is_null($test) || is_null($test2) || is_null($test3))
+if(is_null($test) )
 {
     header('Location: '.$_SERVER['HTTP_REFERER']."/error");
 }
