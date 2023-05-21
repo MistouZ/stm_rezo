@@ -39,6 +39,7 @@ class DescriptionManager
     public function add(array $descriptions, $quotationNumber)
     {
         try{
+            echo $quotationNumber;
             $array = array();
             $description = new Description($array);
            foreach ($descriptions as $description)
