@@ -50,8 +50,8 @@ $data = array(
     'contactId' => $contactId
 );
 
-$quotation = new Quotation($data);
-$quotationmanager = new QuotationManager($bdd);
+//$quotation = new Quotation($data);
+/$quotationmanager = new QuotationManager($bdd);
 
 //$quotationNumber = $quotationmanager->add($quotation);
 //echo "j'ai créé le devis : ".$quotationNumber;
