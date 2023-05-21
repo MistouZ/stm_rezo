@@ -136,11 +136,12 @@ else {
     $quotationNumberOption = $quotationNumber . '_option';
     $test2 = $descriptionmanager2->add($descriptionsOption, $quotationNumberOption);
 }
-/*
+
 if(empty(current($_POST["descriptionCout"]))){
     $test3 = 1;
 }
 else{
+    echo "je passe ici".$test3;
     $i=1;
     while(($postDescriptionCout = current($_POST["descriptionCout"])) !== FALSE ){
 
@@ -168,7 +169,7 @@ else{
     echo "j'ai réussi 3";
 }
 
-*/
+
 if(is_null($test) || is_null($test2) || is_null($test3) )
 {
     header('Location: '.$_SERVER['HTTP_REFERER']."/error");
