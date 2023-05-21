@@ -53,8 +53,8 @@ $data = array(
 $quotation = new Quotation($data);
 $quotationmanager = new QuotationManager($bdd);
 
-$quotationNumber = $quotationmanager->add($quotation);
-echo "j'ai créé le devis : ".$quotationNumber;
+//$quotationNumber = $quotationmanager->add($quotation);
+//echo "j'ai créé le devis : ".$quotationNumber;
 
 
 //Ajout des lignes du devis
@@ -84,6 +84,7 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
             'price' => $price,
             'tax' => $tax
         );
+        print_r($dataDescription);
 
         $description = new Description($dataDescription);
         $descriptions[$i] = $description;
@@ -94,7 +95,7 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
 
 print_r($_)
 
-$test = $descriptionmanager->add($descriptions,$quotationNumber);
+//$test = $descriptionmanager->add($descriptions,$quotationNumber);
 
 if(empty(current($_POST["descriptionOption"]))){
     $test2 = 1;
