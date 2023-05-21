@@ -56,10 +56,11 @@ $quotationmanager = new QuotationManager($bdd);
 //$quotationNumber = $quotationmanager->add($quotation);
 //echo "j'ai créé le devis : ".$quotationNumber;
 
+print_r($_POST);
 
 //Ajout des lignes du devis
 $descriptions= array();
-
+/*
 $i=1;
 while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
 
