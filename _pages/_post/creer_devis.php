@@ -20,7 +20,7 @@ $companyId = $folder->getCompanyId();
 $customerId = $_POST["customer-select"];
 $contactId = $_POST["contact-select"];
 
-
+Print_r($_POST);
 
 if(empty($_POST["label"]))
 {
