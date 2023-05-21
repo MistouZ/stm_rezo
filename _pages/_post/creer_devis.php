@@ -9,7 +9,6 @@ include("../../_cfg/cfg.php");
 
 echo "Résultats : ";
 
-Print_r($_POST);
 
 $array = array();
 $folder = new Folder($array);
@@ -19,8 +18,6 @@ $folderId = $folder->getIdFolder();
 $companyId = $folder->getCompanyId();
 $customerId = $_POST["customer-select"];
 $contactId = $_POST["contact-select"];
-
-Print_r($_POST);
 
 if(empty($_POST["label"]))
 {
@@ -94,6 +91,8 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
     $i++;
     next($_POST["descriptionDevis"]);
 }
+
+print_r($_)
 
 $test = $descriptionmanager->add($descriptions,$quotationNumber);
 
