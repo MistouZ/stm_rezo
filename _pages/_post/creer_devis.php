@@ -95,7 +95,7 @@ print_r($descriptions);
 
 $descriptionmanager = new DescriptionManager($bdd);
 $test = $descriptionmanager->add($descriptions,$quotationNumber);
-/*
+
 if(empty(current($_POST["descriptionOption"]))){
     $test2 = 1;
 }
@@ -132,10 +132,10 @@ else {
         next($_POST["descriptionOption"]);
     }
 
-    //$quotationNumberOption = $quotationNumber . '_option';
-    //$test2 = $descriptionmanager->add($descriptionsOption, $quotationNumberOption);
+    $quotationNumberOption = $quotationNumber . '_option';
+    $test2 = $descriptionmanager->add($descriptionsOption, $quotationNumberOption);
 }
-/*
+
 if(empty(current($_POST["descriptionCout"]))){
     $test3 = 1;
 }
@@ -162,8 +162,8 @@ else{
         next($_POST["descriptionCout"]);
     }
 
-
-    //$test3 = $costmanager->add($descriptionsCout,$quotationNumber);
+    $costmanager = new $costmanager($bdd);
+    $test3 = $costmanager->add($descriptionsCout,$quotationNumber);
     echo "j'ai réussi 3";
 }
 
