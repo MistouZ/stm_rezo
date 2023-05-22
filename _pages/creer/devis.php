@@ -63,8 +63,8 @@ foreach ($customermanager as $customer) {
         if(!empty($tableauTaxe)){
             //echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
             //$tempTaxes[$tableauTaxe->getName()]=$tableauTaxe->getValue();
-            $tempTaxes[$tableauTaxe->getIdTax()]["valeurTaxe"]=$tableauTaxe->getValue();
-            $tempTaxes[$tableauTaxe->getIdTax()]["nomTaxe"]=$tableauTaxe->getName();
+            $tempTaxes[$customer->getIdCustomer()]["valeurTaxe"]=$tableauTaxe->getValue();
+            $tempTaxes[$customer->getIdCustomer()]["nomTaxe"]=$tableauTaxe->getName();
             //echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
             $tableauTaxes[$customer->getIdCustomer()] = $tempTaxes;
             //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
