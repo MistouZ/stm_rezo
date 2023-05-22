@@ -99,7 +99,7 @@ $contact = $contactmanager->getById($folder->getContactId());
 $user = $usermanager->get($folder->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 
-print_r($folder);
+//print_r($folder);
 echo "<br />";
 echo $company;
 echo "<br />";
