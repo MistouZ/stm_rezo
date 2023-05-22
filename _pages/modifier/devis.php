@@ -204,7 +204,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                         </div>
                                         <?php
                                         $i = 1;
-                                        $taxmanager = $taxmanager->getListByCustomer($folderRecup->getCustomerId());
+                                        $taxmanager = $taxmanager->getListByCustomer($quotation->getCustomerId());
                                         foreach($descriptions as $description){ ?>
                                             <div id="ligneDevis<?php echo $i; ?>" class="ligneDevis" style="margin-left: 0px !important; margin-right: 0px !important;">
                                                 <div class="col-md-12" style="display: flex; align-items: center;">
