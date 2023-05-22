@@ -95,16 +95,16 @@ $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotati
 $contact = $contactmanager->getById($folder->getContactId());
 $user = $usermanager->get($folder->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
-if($quotation->getType() == "S")
+/*if($quotation->getType() == "S")
 {
     $shatteredQuotation = $shatteredManager->getByQuotationNumberChild($quotation->getQuotationNumber());
 }
-
+*/
 $date = date('d/m/Y',strtotime($quotation->getDate()));
 
-if(isset($_GET['cat5'])){
+/*if(isset($_GET['cat5'])){
     $retour = $_GET['cat5'];
-}
+}*/
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -148,7 +148,7 @@ if(isset($_GET['cat5'])){
                     </div>
                     <div class="portlet-body">
                         <div class="row static-info">
-                            <div class="col-md-5 name"> <?php echo ucwords($type); ?>: </div>
+                            <div class="col-md-5 name"> <?php //echo ucwords($type); ?>: </div>
                             <div class="col-md-7 value"> <?php echo $quotation->getQuotationNumber(); ?></div>
                         </div>
                         <div class="row static-info">
