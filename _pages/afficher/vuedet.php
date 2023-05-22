@@ -91,12 +91,11 @@ switch($type){
 print_r($quotation);
 
 $folder = $foldermanager->get($quotation->getFolderId());
-print_r($folder);
 $company = $companymanager->getByNameData($companyNameData);
-print_r($company);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+print_r($descriptions);
 $contact = $contactmanager->getById($folder->getContactId());
 $user = $usermanager->get($folder->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
