@@ -30,7 +30,7 @@ $shatteredQuotation = new ShatteredQuotation($array);
 $shatteredManager = new ShatteredQuotationManager($bdd);
 
 $dateToProforma = date('d/m/Y');
-
+/*
 switch($type){
     case "devis":
         $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
@@ -86,7 +86,7 @@ switch($type){
                             <i class="fas fa-print"></i> Imprimer </a>
                     </div>';
         break;
-}
+}*/
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
