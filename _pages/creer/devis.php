@@ -57,18 +57,20 @@ foreach ($customermanager as $customer) {
     unset($tempTaxes);
     unset($taxmanagerTemp);
     $taxmanagerTemp = $taxmanager->getListByCustomer($customer->getIdCustomer());
+    $tt1 = 1
     //echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
     foreach ($taxmanagerTemp as $tableauTaxe) {
         //echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
         if(!empty($tableauTaxe)){
             //echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
             //$tempTaxes[$tableauTaxe->getName()]=$tableauTaxe->getValue();
-            $tempTaxes[$customer->getIdCustomer()]["valeurTaxe"]=$tableauTaxe->getValue();
-            $tempTaxes[$customer->getIdCustomer()]["nomTaxe"]=$tableauTaxe->getName();
+            $tempTaxes[$tt1]["valeurTaxe"]=$tableauTaxe->getValue();
+            $tempTaxes[$tt1]["nomTaxe"]=$tableauTaxe->getName();
             //echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
             $tableauTaxes[$customer->getIdCustomer()] = $tempTaxes;
             //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
         }
+        $tt1 = $tt1++;
         //echo " Je sors du IF <br/>";
     }
     //echo " Je sors du foreach tax <br/>";
