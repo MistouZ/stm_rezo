@@ -88,8 +88,7 @@ switch($type){
         break;
 }
 
-echo $type;
-
+echo $quotation->getFolderId();
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
