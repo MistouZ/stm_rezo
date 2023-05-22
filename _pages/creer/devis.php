@@ -365,7 +365,7 @@ foreach ($customermanager as $customer) {
                                                                     $taxmanager = $taxmanager->getListByCustomer($customer->getCustomerId());
                                                                     foreach ($taxmanager as $tax){
                                                                 ?>
-                                                                    <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
+                                                                    <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getName()." %"; ?></option>
                                                                     <?php
                                                                     }
                                                                 }
