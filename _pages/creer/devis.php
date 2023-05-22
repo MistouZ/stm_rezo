@@ -62,8 +62,7 @@ foreach ($customermanager as $customer) {
         //echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
         if(!empty($tableauTaxe)){
             //echo " test 3 : ".$tableauTaxe->getIdTax()."<br/>";
-            $tempTaxes["valeur"]=$tableauTaxe->getValue();
-            $tempTaxes["nomTaxe"]=$tableauTaxe->getName();
+            $tempTaxes[$tableauTaxe->getName()]=$tableauTaxe->getValue();
             //echo " test 4 : ".$tableauTaxe->getValue()."<br/>";
             $tableauTaxes[$customer->getIdCustomer()] = $tempTaxes;
             //echo " test 5 : ".$tableauTaxes[$tableauTaxe->getIdTax()]."<br/>";
@@ -107,8 +106,8 @@ foreach ($customermanager as $customer) {
             
             for(var i in data2[selected.value]){
             opt = document.createElement("option");
-            opt.value = data2[selected.value]["valeur"][i];
-            opt.innerHTML = data2[selected.value]["nomTaxe"][i]; 
+            opt.value = data2[selected.value][i];
+            opt.innerHTML = data2[selected.value][i]; 
             monSelectB[k].appendChild(opt);
             }
         }
@@ -125,8 +124,8 @@ foreach ($customermanager as $customer) {
             
             for(var i in data2[selected.value]){
             opt = document.createElement("option");
-            opt.value = data2[selected.value]["valeur"][i];
-            opt.innerHTML = data2[selected.value]["nomTaxe"][i]; 
+            opt.value = data2[selected.value][i];
+            opt.innerHTML = data2[selected.value][i]; 
             monSelectC[k].appendChild(opt);
             }
         }
