@@ -91,6 +91,7 @@ switch($type){
 print_r($quotation);
 
 $folder = $foldermanager->get($quotation->getFolderId());
+print_r($folder);
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
