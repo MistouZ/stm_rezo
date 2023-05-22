@@ -101,7 +101,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                                     <option value="">Choisissez un dossier...</option>
                                                     <?php
                                                     foreach ($foldermanager as $folder){
-                                                        $customer = $customermanager->getByID($folder->getCustomerId());
+                                                        $customer = $customermanager->getByID($quotation->getCustomerId());
                                                         if($quotation->getFolderId() == $folder->getIdFolder()){
                                                             ?>
                                                             <option value="<?php echo $folder->getIdFolder(); ?>"selected="selected">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel()." (".strtoupper($customer->getName()).")"; ?></option>
