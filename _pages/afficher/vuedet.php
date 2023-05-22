@@ -88,26 +88,22 @@ switch($type){
         break;
 }
 
-print_r($quotation);
 
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
-print_r($descriptions);
 $contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($folder->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 
-echo "<br />";
-print_r($descriptions);
 
-/*if($quotation->getType() == "S")
+if($quotation->getType() == "S")
 {
     $shatteredQuotation = $shatteredManager->getByQuotationNumberChild($quotation->getQuotationNumber());
 }
-*/
+
 $date = date('d/m/Y',strtotime($quotation->getDate()));
 
 if(isset($_GET['cat5'])){
