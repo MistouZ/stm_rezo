@@ -57,7 +57,7 @@ foreach ($customermanager as $customer) {
     unset($tempTaxes);
     unset($taxmanagerTemp);
     $taxmanagerTemp = $taxmanager->getListByCustomer($customer->getIdCustomer());
-    $tt1 = 1
+    $tt1 = 1;
     //echo " test 2-1 : ".$customer->getIdCustomer()."<br/>";
     foreach ($taxmanagerTemp as $tableauTaxe) {
         //echo " test 2-2 : ".$tableauTaxe->getValue()."<br/>";
