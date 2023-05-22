@@ -89,7 +89,7 @@ switch($type){
 }
 
 
-$folder = $foldermanager->get($$quotation->getFolderId());
+$folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
