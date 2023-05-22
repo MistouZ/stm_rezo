@@ -101,7 +101,7 @@ $customer = $customermanager->getById($quotation->getCustomerId());
 
 print_r($folder);
 echo "<br />";
-print_r($company);
+echo $company;
 echo "<br />";
 print_r($descriptions);
 
