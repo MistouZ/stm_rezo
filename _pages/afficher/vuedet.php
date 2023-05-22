@@ -31,9 +31,6 @@ $shatteredManager = new ShatteredQuotationManager($bdd);
 
 $dateToProforma = date('d/m/Y');
 
-echo $idQuotation;
-
-/*
 switch($type){
     case "devis":
         $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
@@ -89,7 +86,9 @@ switch($type){
                             <i class="fas fa-print"></i> Imprimer </a>
                     </div>';
         break;
-}*/
+}
+
+print_r($quotation);
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
@@ -105,9 +104,9 @@ $customer = $customermanager->getById($quotation->getCustomerId());
 */
 $date = date('d/m/Y',strtotime($quotation->getDate()));
 
-/*if(isset($_GET['cat5'])){
+if(isset($_GET['cat5'])){
     $retour = $_GET['cat5'];
-}*/
+}
 ?>
 <div class="row">
     <div class="col-md-12">
