@@ -88,7 +88,8 @@ switch($type){
         break;
 }
 
-print_r($quotation);
+echo $type;
+
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
@@ -97,6 +98,13 @@ $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotati
 $contact = $contactmanager->getById($folder->getContactId());
 $user = $usermanager->get($folder->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
+
+print_r($folder);
+echo "<br />";
+print_r($company);
+echo "<br />";
+print_r($descriptions);
+
 /*if($quotation->getType() == "S")
 {
     $shatteredQuotation = $shatteredManager->getByQuotationNumberChild($quotation->getQuotationNumber());
