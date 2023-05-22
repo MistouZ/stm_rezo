@@ -88,6 +88,7 @@ switch($type){
         break;
 }
 
+print_r($quotation);
 
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
