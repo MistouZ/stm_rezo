@@ -93,7 +93,7 @@ print_r($quotation);
 $folder = $foldermanager->get($quotation->getFolderId());
 print_r($folder);
 $company = $companymanager->getByNameData($companyNameData);
-echo $company;
+print_r($company);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
@@ -101,8 +101,6 @@ $contact = $contactmanager->getById($folder->getContactId());
 $user = $usermanager->get($folder->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 
-
-echo $company;
 echo "<br />";
 print_r($descriptions);
 
