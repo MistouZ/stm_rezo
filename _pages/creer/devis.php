@@ -286,14 +286,14 @@ foreach ($customermanager as $customer) {
                                                             <select id="taxeDevis1" class="taxe form-control" name="taxeDevis[1]">
                                                                 <option value="">Sélectionnez ...</option>
                                                                 <?php
-                                                                if( !empty($customer->getCustomerId())){
+                                                                /*if( !empty($customer->getCustomerId())){
                                                                     $taxmanager = $taxmanager->getListByCustomer($customer->getCustomerId());
                                                                     foreach ($taxmanager as $tax){
                                                                 ?>
                                                                     <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                     <?php
                                                                     }
-                                                                }
+                                                                }*/
                                                                 ?>
                                                             </select>
                                                         </div>
@@ -361,14 +361,14 @@ foreach ($customermanager as $customer) {
                                                             <select id="taxeOption1" class="taxe form-control" name="taxeOption[1]">
                                                                 <option value="">Sélectionnez ...</option>
                                                                 <?php
-                                                                /*if( !empty($customer->getCustomerId())){
+                                                                if( !empty($customer->getCustomerId())){
                                                                     $taxmanager = $taxmanager->getListByCustomer($customer->getCustomerId());
                                                                     foreach ($taxmanager as $tax){
                                                                 ?>
                                                                     <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                     <?php
                                                                     }
-                                                                }*/
+                                                                }
                                                                 ?>
                                                             </select>
                                                         </div>
