@@ -108,7 +108,7 @@ foreach ($customermanager as $customer) {
             for(var i in data2[selected.value]){
             opt = document.createElement("option");
             opt.value = data2[selected.value][i]["valeur"];
-            opt.innerHTML = data2[selected.value]["nom"][i]; 
+            opt.innerHTML = data2[selected.value][i]["nom"]; 
             monSelectB[k].appendChild(opt);
             }
         }
