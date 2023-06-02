@@ -293,8 +293,8 @@ foreach ($customermanager as $customer) {
                                                                 ?>
                                                                     <option value="<?php echo $tax->getValue(); ?>"><?php echo $tax->getPercent()." %"; ?></option>
                                                                     <?php
-                                                                    }
-                                                                }*/
+                                                                    }*/
+                                                                }
                                                                 ?>
                                                             </select>
                                                         </div>
