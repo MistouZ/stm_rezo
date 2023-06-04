@@ -115,7 +115,7 @@ foreach ($customermanager as $customer) {
             opt = document.createElement("option");
             opt.value = data2[i].valeur.name;
             opt.innerHTML = data2[i].nom.name; 
-            monSelectB[k].appendChild(opt);*/
+            monSelectB[k].appendChild(opt);
             }
         }
 
