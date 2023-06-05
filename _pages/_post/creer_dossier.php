@@ -44,7 +44,7 @@ if(is_null($test)){
         $user = $_COOKIE["username"],
         $type = "dossier",
         $action = "création",
-        $id = $test->getIdFolder(),
+        //$id = $test->getIdFolder(),
         $date = $date('d-m-Y H:i:s');
     );
 
