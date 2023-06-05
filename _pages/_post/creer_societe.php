@@ -32,6 +32,8 @@ if(isset($_POST['valider'])) {
             $companiesmanager = new CompaniesManager($bdd);
             $test = $companiesmanager->add($company);
 
+            echo $test;
+
             $arraycounter = array();
             $counter = new Counter($arraycounter);
             $countermanager = new CounterManager($bdd);
