@@ -45,7 +45,8 @@ class FoldersManager
      */
     public function add(Folder $folder)
     {
-        $folderNumber = $this->count($folder->getCompanyId());
+        //$folderNumber = $this->count($folder->getCompanyId());
+        $folderNumber = $folder->getFolderNumber();
         $folderNumber = $folderNumber + 1;
         
         try{

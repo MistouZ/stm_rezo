@@ -9,7 +9,14 @@
 include("../../_cfg/cfg.php");
 
 if(isset($_POST['valider'])){
+    $arraycounter = new array();
+    $counter = new Counter($arraycounter);
+    $countermanager = new $CounterManager($bdd);
+    $counter = $countermanager->getCount($companyId);
+
+
     $label = $_POST["label"];
+    $folderNumber = $counter->getFolder();
     $description = $_POST["description"];
     $seller = $_POST["seller-select"];
     $date = date("Y-m-d");
@@ -19,6 +26,7 @@ if(isset($_POST['valider'])){
 
     $array = array(
         'label' => $label,
+        'folderNumber' => $folderNumber,
         'date' => $date,
         'isActive' => $isActive,
         'description' => $description,
@@ -34,7 +42,7 @@ if(isset($_POST['valider'])){
 if(is_null($test)){
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
 }else{
-
+    //création des logs de création de dossier.
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
         'username' => $_COOKIE["username"],
@@ -50,6 +58,12 @@ if(is_null($test)){
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
+
+    //incrémentation du nombre de dossier créer pour la sociét
+    $counterFolder = $folderNumber+1
+    $counter->setFolder($counterFolder);
+    $countermanager->updateCounter($counter);
+
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
 }
     
