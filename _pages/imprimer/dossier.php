@@ -18,10 +18,7 @@ if(isset($_POST['imprimer'])) {
     $foldermanager = new FoldersManager($bdd);
     $user = new Users($array);
     $usermanager = new UsersManager($bdd);
-    $customer = new Customers($array);
-    $customermanager = new CustomersManager($bdd);
-    $contact = new Contact($array);
-    $contactmanager = new ContactManager($bdd);
+
 
 
     $folder = $foldermanager->get($folderId);
@@ -29,8 +26,6 @@ if(isset($_POST['imprimer'])) {
 
     $company = $companymanager->getByNameData($companyNameData);
     $user = $usermanager->get($folder->getSeller());
-    $customer = $customermanager->getById($folder->getCustomerId());
-    $contact = $contactmanager->getById($folder->getContactId());
 
     $date = date('d/m/Y', strtotime(str_replace('/', '-', "" . $folder->getDate() . "")));
     $company = $companymanager->getByNameData($companyNameData);
@@ -67,36 +62,6 @@ if(isset($_POST['imprimer'])) {
                                 <div class="row static-info">
                                     <div class="col-md-5 name">&nbsp;</div>
                                     <div class="col-md-7 value">&nbsp;</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="portlet blue-hoki box">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fas fa-user-tie"></i>Informations client </div>
-                            </div>
-                            <div class="portlet-body">
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Client: </div>
-                                    <div class="col-md-7 value"> <?php echo $customer->getName(); ?> </div>
-                                </div>
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Adresse: </div>
-                                    <div class="col-md-7 value"> <?php echo $customer->getInvoiceAddress(); ?> </div>
-                                </div>
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Contact: </div>
-                                    <div class="col-md-7 value"> <?php echo $contact->getFirstname()." ".$contact->getName(); ?> </div>
-                                </div>
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Téléphone: </div>
-                                    <div class="col-md-7 value"> <?php echo $contact->getPhoneNumber(); ?> </div>
-                                </div>
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Mail: </div>
-                                    <div class="col-md-7 value"> <?php echo $contact->getEmailAddress(); ?> </div>
                                 </div>
                             </div>
                         </div>
