@@ -135,22 +135,4 @@ function getPercentOfNumber($number, $percent){
     return ($percent / 100) * $number;
 }
 
- /**
- * @param username $username
- * @param type $type
- * @param action $action
- * @param id $id
- * @param date $date
- * @return string|null
- */
-
-function addLogs($username, $type, $action, $id, $date)
-{
-    $db = new DB();
-    $query = 'INSERT INTO logs (users_username, type, action, id, date) VALUES ($username, $type, $action, $id, $date)';$
-    echo $query;
-    //$this->_db->query = ();
-}
-
-
 ?>
