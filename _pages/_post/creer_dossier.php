@@ -11,7 +11,6 @@ include("../../_cfg/cfg.php");
 if(isset($_POST['valider'])){
 
     $label = $_POST["label"];
-    $folderNumber = $counter->getFolder();
     $description = $_POST["description"];
     $seller = $_POST["seller-select"];
     $date = date("Y-m-d");
@@ -23,6 +22,8 @@ if(isset($_POST['valider'])){
     $counter = new Counter($arraycounter);
     $countermanager = new $CounterManager($bdd);
     $counter = $countermanager->getCount($companyId);
+
+    $folderNumber = $counter->getFolder();
 
     $isActive = 1;
 
