@@ -44,7 +44,7 @@ class LogsManager
     {
         print_r($logs);
         try{
-            $q = $this->_db->prepare('INSERT INTO logs (users_username, company, type, action, id, date) VALUES (:username, :company, :type,:action, :id, :date)');
+            $q = $this->_db->prepare('INSERT INTO logs (users_username, company_idcompany, type, action, id, date) VALUES (:username, :company, :type,:action, :id, :date)');
             $q->bindValue(':username', $logs->getUsername(), PDO::PARAM_STR);
             $q->bindValue(':company', $logs->getCompany(), PDO::PARAM_INT);
             $q->bindValue(':type', $logs->getType(), PDO::PARAM_STR);
