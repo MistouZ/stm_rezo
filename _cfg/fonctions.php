@@ -147,7 +147,9 @@ function getPercentOfNumber($number, $percent){
 function addLogs($username, $type, $action, $id, $date)
 {
     $db = new DB();
-    $this->_db->query = ('INSERT INTO logs (users_username, type, action, id, date) VALUES ($username, $type, $action, $id, $date)');
+    $query = 'INSERT INTO logs (users_username, type, action, id, date) VALUES ($username, $type, $action, $id, $date)';$
+    echo $query;
+    //$this->_db->query = ();
 }
 
 
