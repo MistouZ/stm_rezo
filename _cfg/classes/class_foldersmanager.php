@@ -61,7 +61,7 @@ class FoldersManager
     
             $q->execute();
 
-            return $this->_db->query("SELECT * FROM folder ORDER BY id DESC LIMIT 1 ")->fetchColumn();
+            return $this->_db->query("SELECT * FROM folder ORDER BY idFolder  DESC LIMIT 1 ")->fetchColumn();
         }
         catch(Exception $e){
             return null;
