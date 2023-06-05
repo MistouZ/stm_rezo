@@ -5,8 +5,10 @@
     private $type;
     private $action;
     private $id;
-
+    private $date;
     
+
+
       /**
        * Users constructor.
        * Including array from users
@@ -92,5 +94,25 @@
 
           return $this;
       }
+
+    /**
+     * Get the value of date
+     */ 
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set the value of date
+     *
+     * @return  self
+     */ 
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
   }
 ?>

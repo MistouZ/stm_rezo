@@ -36,16 +36,18 @@ class LogsManager
      * @param type $type
      * @param action $action
      * @param id $id
+     * @param date $date
      * @return string|null
      */
     public function add(Logs $logs)
     {
         try{
-            $q = $this->_db->prepare('INSERT INTO logs (users_username , type, action, id) VALUES (:username, :type,:action, :id)');
+            $q = $this->_db->prepare('INSERT INTO logs (users_username , type, action, id, date) VALUES (:username, :type,:action, :id, :date)');
             $q->bindValue(':username', $logs->getUsername(), PDO::PARAM_STR);
             $q->bindValue(':type', $logs->getType(), PDO::PARAM_STR);
             $q->bindValue(':action', $logs->getAction(), PDO::PARAM_STR);
             $q->bindValue(':id', $logs->getId(), PDO::PARAM_INT);
+
 
     
             $q->execute();
