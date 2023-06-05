@@ -41,7 +41,7 @@ class LogsManager
     public function add(Logs $logs)
     {
         try{
-            $q = $this->_db->prepare('INSERT INTO logs (username, type, action, id) VALUES (:username, :type,:action, :id)');
+            $q = $this->_db->prepare('INSERT INTO logs (users_username , type, action, id) VALUES (:username, :type,:action, :id)');
             $q->bindValue(':username', $logs->getUsername(), PDO::PARAM_STR);
             $q->bindValue(':type', $logs->getType(), PDO::PARAM_STR);
             $q->bindValue(':action', $logs->getAction(), PDO::PARAM_STR);
