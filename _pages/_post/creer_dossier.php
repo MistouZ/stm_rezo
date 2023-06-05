@@ -16,8 +16,7 @@ if(isset($_POST['valider'])){
     $date = date("Y-m-d");
     $companyId = $_POST["idcompany"];
 
-    echo "je suis là";
-
+   
     $arraycounter = array();
     $counter = new Counter($arraycounter);
     echo "je suis ici ";
