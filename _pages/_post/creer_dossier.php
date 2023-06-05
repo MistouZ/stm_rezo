@@ -17,7 +17,7 @@ if(isset($_POST['valider'])){
     $companyId = $_POST["idcompany"];
 
 
-/*
+
     $arraycounter = array();
     $counter = new Counter($arraycounter);
     $countermanager = new $CounterManager($bdd);
@@ -29,7 +29,7 @@ if(isset($_POST['valider'])){
 
     $array = array(
         'label' => $label,
-        //'folderNumber' => $folderNumber,
+        'folderNumber' => $folderNumber,
         'date' => $date,
         'isActive' => $isActive,
         'description' => $description,
@@ -42,32 +42,33 @@ if(isset($_POST['valider'])){
     $foldermanager = new FoldersManager($bdd);
     $test = $foldermanager->add($folder);
 
-if(is_null($test)){
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
-}else{
-    //création des logs de création de dossier.
-    $date = date('Y-m-d H:i:s');
-    $arraylogs = array(
-        'username' => $_COOKIE["username"],
-        'company' => $companyId,
-        'type' => "folder",
-        'action' => "creation",
-        'id' => $test,
-        'date' => $date
-    );
+    if(is_null($test)){
+        header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
+    }
+    else{
+        //création des logs de création de dossier.
+        $date = date('Y-m-d H:i:s');
+        $arraylogs = array(
+            'username' => $_COOKIE["username"],
+            'company' => $companyId,
+            'type' => "folder",
+            'action' => "creation",
+            'id' => $test,
+            'date' => $date
+        );
 
-    print_r($arraylogs);
+        print_r($arraylogs);
 
-    $log = new Logs($arraylogs);
-    $logsmgmt = new LogsManager($bdd);
-    $logsmgmt = $logsmgmt->add($log);
+        $log = new Logs($arraylogs);
+        $logsmgmt = new LogsManager($bdd);
+        $logsmgmt = $logsmgmt->add($log);
 
-    //incrémentation du nombre de dossier créer pour la société
-    $counterFolder = $folderNumber+1;
-   // $counter->setFolder($counterFolder);
-   // $countermanager->updateCounter($counter);
+        //incrémentation du nombre de dossier créer pour la société
+        $counterFolder = $folderNumber+1;
+        $counter->setFolder($counterFolder);
+        $countermanager->updateCounter($counter);
 
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
-}*/
+        header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
+    }
     
 }
