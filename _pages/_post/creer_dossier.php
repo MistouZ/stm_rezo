@@ -33,7 +33,14 @@ if(isset($_POST['valider'])){
     $foldermanager = new FoldersManager($bdd);
     $test = $foldermanager->add($folder);
 
-    $arrylogs = array(
+    
+    
+
+if(is_null($test)){
+    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
+}else{
+
+    $arraylogs = array(
         $user = $_COOKIE["username"],
         $type = "dossier",
         $action = "création",
@@ -41,15 +48,12 @@ if(isset($_POST['valider'])){
         $date = $date('d-m-Y H:i:s');
     );
 
+    print_r($arraylogs);
+
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
-    
-
-if(is_null($test)){
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
-}else{
-    $logsmgmt = $logsmgmt->add($log);
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
+    //$logsmgmt = $logsmgmt->add($log);
+    //header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
 }
     
 }
