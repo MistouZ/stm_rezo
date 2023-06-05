@@ -6,7 +6,7 @@
  */
 
 echo "je suis là";
-
+/*
 $array = array();
 $company = new Company($array);
 $companies = new CompaniesManager($bdd);
