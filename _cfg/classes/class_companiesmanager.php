@@ -55,11 +55,9 @@ class CompaniesManager extends Features
     
             $q->execute();
 
-            return ok;
-
-            //$idcompany = $q->lastInsertId();
+            $idcompany = $q->lastInsertId();
             
-            //return $idcompany;
+            return $idcompany;
         }
         catch(Exception $e){
             return null;
