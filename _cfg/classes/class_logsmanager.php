@@ -47,9 +47,8 @@ class LogsManager
             $q->bindValue(':type', $logs->getType(), PDO::PARAM_STR);
             $q->bindValue(':action', $logs->getAction(), PDO::PARAM_STR);
             $q->bindValue(':id', $logs->getId(), PDO::PARAM_INT);
-
-
-    
+            $q->bindValue(':date', $logs->getDate(), PDO::PARAM_STR);
+   
             $q->execute();
             
             return "Ok";
