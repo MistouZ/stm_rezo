@@ -67,7 +67,7 @@ if(is_null($test)){
    // $counter->setFolder($counterFolder);
    // $countermanager->updateCounter($counter);
 
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");*/
-}
+    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
+}*/
     
 }
