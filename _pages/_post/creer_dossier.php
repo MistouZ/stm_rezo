@@ -59,8 +59,8 @@ if(is_null($test)){
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
 
-    //incrémentation du nombre de dossier créer pour la sociét
-    $counterFolder = $folderNumber+1
+    //incrémentation du nombre de dossier créer pour la société
+    $counterFolder = $folderNumber+1;
     $counter->setFolder($counterFolder);
     $countermanager->updateCounter($counter);
 
