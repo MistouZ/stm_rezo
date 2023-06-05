@@ -23,10 +23,12 @@ if(isset($_POST['valider'])){
     $countermanager = new $CounterManager($bdd);
     $counter = $countermanager->getCount($companyId);
 
+    print_r($counter);
+
     $folderNumber = $counter->getFolder();
 
     $isActive = 1;
-
+    /*
     $array = array(
         'label' => $label,
         'folderNumber' => $folderNumber,
@@ -69,6 +71,6 @@ if(isset($_POST['valider'])){
         $countermanager->updateCounter($counter);
 
         header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
-    }
+    }*/
     
 }
