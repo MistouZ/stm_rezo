@@ -19,6 +19,19 @@ $test = $foldermanager->delete($folder->getIdFolder());
 if(is_null($test)){
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/errorsuppr");
 }else{
+    //Ajout d'un objet logs pour tracer l'action sur le dossier
+    $date = date('Y-m-d H:i:s');
+    $arraylogs = array(
+        'username' => $_COOKIE["username"],
+        'company' => $companyId,
+        'type' => "folder",
+        'action' => "deleted",
+        'id' => $folderNumber,
+        'date' => $date
+    );
+    $log = new Logs($arraylogs);
+    $logsmgmt = new LogsManager($bdd);
+    $logsmgmt = $logsmgmt->add($log);
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/successsuppr");
 }
 
