@@ -45,16 +45,16 @@ if(is_null($test)){
         'username' => $_COOKIE["username"],
         'type' => "folder",
         'action' => "creation",
-        'id' => "",
+        'id' => test->getIdFolder,
         'date' => $date
     );
 
     print_r($arraylogs);
 
-    /*$log = new Logs($arraylogs);
+    $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
-    $logsmgmt = $logsmgmt->add($log);*/
-    //header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
+    $logsmgmt = $logsmgmt->add($log);
+    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
 }
     
 }
