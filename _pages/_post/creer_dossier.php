@@ -45,7 +45,7 @@ if(is_null($test)){
         'username' => $_COOKIE["username"],
         'type' => "folder",
         'action' => "creation",
-        'id' => test->getIdFolder,
+        'id' => $test->getIdFolder(),
         'date' => $date
     );
 
