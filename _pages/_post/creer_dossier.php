@@ -19,16 +19,16 @@ if(isset($_POST['valider'])){
 
 
 
-    $arraycounter = new array();
+    /*$arraycounter = new array();
     $counter = new Counter($arraycounter);
     $countermanager = new $CounterManager($bdd);
-    $counter = $countermanager->getCount($companyId);
+    $counter = $countermanager->getCount($companyId);*/
 
     $isActive = 1;
 
     $array = array(
         'label' => $label,
-        'folderNumber' => $folderNumber,
+        //'folderNumber' => $folderNumber,
         'date' => $date,
         'isActive' => $isActive,
         'description' => $description,
@@ -64,7 +64,7 @@ if(is_null($test)){
     //incrémentation du nombre de dossier créer pour la société
     $counterFolder = $folderNumber+1;
    // $counter->setFolder($counterFolder);
-    $countermanager->updateCounter($counter);
+   // $countermanager->updateCounter($counter);
 
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");*/
 }
