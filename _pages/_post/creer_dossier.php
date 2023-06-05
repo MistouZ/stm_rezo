@@ -19,11 +19,11 @@ if(isset($_POST['valider'])){
     echo "je suis là";
 
     //$arraycounter = array();
-    $counter = new Counter();
+    //$counter = new Counter();
     echo "je suis ici ";
     $countermanager = new $CounterManager($bdd);
     echo "et là";
-    $counter = $countermanager->getCount($companyId);
+    $counter = new Counter($countermanager->getCount($companyId));
 
 
     print_r($counter);
