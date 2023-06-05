@@ -41,11 +41,11 @@ if(is_null($test)){
 }else{
 
     $arraylogs = array(
-        $user => $_COOKIE["username"],
-        $type => "dossier",
-        $action => "création",
-        //$id => $test->getIdFolder(),
-        $date> = $date('d-m-Y H:i:s');
+        'user' => $_COOKIE["username"],
+        'type' => "dossier",
+        'action' => "création",
+        'id' => $test->getIdFolder(),
+        'date'> = $date('d-m-Y H:i:s');
     );
 
     print_r($arraylogs);
