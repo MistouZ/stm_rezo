@@ -179,7 +179,8 @@ else{
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
         'username' => $_COOKIE["username"],
-        'type' => "folder",
+        'company' => $companyId,
+        'type' => "quotation",
         'action' => "creation",
         'id' => $quotationNumber,
         'date' => $date
