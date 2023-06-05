@@ -19,10 +19,10 @@ if(isset($_POST['valider'])){
 
 
 
-    /*$arraycounter = new array();
+    $arraycounter = array();
     $counter = new Counter($arraycounter);
     $countermanager = new $CounterManager($bdd);
-    $counter = $countermanager->getCount($companyId);*/
+    $counter = $countermanager->getCount($companyId);
 
     $isActive = 1;
 
