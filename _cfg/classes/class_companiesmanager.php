@@ -54,7 +54,7 @@ class CompaniesManager extends Features
             $q->bindValue(':isActive', $company->getIsActive(), PDO::PARAM_INT);
     
             $q->execute();
-            $idcompany = $q->lastInsertId();
+            $idcompany = $this->_db->lastInsertId();
             
             return $idcompany;
         }
