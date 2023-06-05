@@ -32,27 +32,36 @@ class LogsManager
     }
 
     /**
-     * @param username $username
-     * @param type $type
-     * @param action $action
-     * @param id $id
-     * @param date $date
+     * get all counter value
+     * @return Counter
+     */
+
+    public function getCount($companyId)
+    {
+        $companyId = (integer) $companyId;
+        $q = $this->_db->query('SELECT * FROM company_counting WHERE company_idcompany ='.$companyId);
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        return new Counter($donnees);
+    }
+
+    /**
+     * Update counter
+     * @param Counter $counter
      * @return string|null
      */
     
-    public function add(Logs $logs)
+    public function updateCounter(Counter $counter)
     {
-        print_r($logs);
         try{
-            $q = $this->_db->prepare('INSERT INTO logs (users_username, company_idcompany, type, action, id, date) VALUES (:username, :company, :type,:action, :id, :date)');
-            $q->bindValue(':username', $logs->getUsername(), PDO::PARAM_STR);
-            $q->bindValue(':company', $logs->getCompany(), PDO::PARAM_INT);
-            $q->bindValue(':type', $logs->getType(), PDO::PARAM_STR);
-            $q->bindValue(':action', $logs->getAction(), PDO::PARAM_STR);
-            $q->bindValue(':id', $logs->getId(), PDO::PARAM_INT);
-            $q->bindValue(':date', $logs->getDate(), PDO::PARAM_STR);
+            $q = $this->_db->prepare('UPDATE company_counting SET folder = :folder, quotation = :quotation, invoice = :invoice, assets = :assets WHERE company_idcompany  = :idcompany');
+            $q->bindValue(':folder', $counter->getFolder(), PDO::PARAM_INT);
+            $q->bindValue(':quotation', $counter->getQuotation(), PDO::PARAM_INT);
+            $q->bindValue(':invoice', $counter->getInvoice(), PDO::PARAM_INT);
+            $q->bindValue(':assets', $counter->getAssets(), PDO::PARAM_INT);
+            $q->bindValue(':idcompany', $counter->getCompany(), PDO::PARAM_INT);
    
             $q->execute();
+
             
             return "Ok";
         }
@@ -60,6 +69,6 @@ class LogsManager
             return null;
         }
 
-    }    
-
+    }
+    
 }
