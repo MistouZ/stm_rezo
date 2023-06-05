@@ -17,7 +17,7 @@ if(isset($_POST['valider'])){
     $companyId = $_POST["idcompany"];
 
 
-
+/*
     $arraycounter = array();
     $counter = new Counter($arraycounter);
     $countermanager = new $CounterManager($bdd);
