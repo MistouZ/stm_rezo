@@ -175,6 +175,7 @@ if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4))
 }
 else{
 
+    //Ajout d'un objet logs pour tracer l'action sur le devis
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
         'username' => $_COOKIE["username"],
