@@ -36,7 +36,7 @@ if(isset($_POST['imprimer'])) {
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-10 col-sm-12">
                         <div class="portlet yellow-crusta box">
                             <div class="portlet-title">
                                 <div class="caption">
