@@ -73,6 +73,6 @@ if(isset($_POST['valider'])){
         $countermanager->updateCounter($counter);
 
         header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
-    }*/
+    }
     
 }
