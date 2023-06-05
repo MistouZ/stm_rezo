@@ -21,7 +21,7 @@ if(isset($_POST['valider'])){
     //$arraycounter = array();
     //$counter = new Counter();
     echo "je suis ici ";
-    $countermanager = new $CounterManager($bdd);
+    $countermanager = new CounterManager($bdd);
     echo "et là";
     $counter = new Counter($countermanager->getCount($companyId));
 
