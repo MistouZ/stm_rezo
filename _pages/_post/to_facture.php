@@ -38,6 +38,7 @@ $test = $quotationmanager->changeType($quotation);
 if(is_null($test)){
     header('Location: '.$_SERVER['HTTP_REFERER'].'/errorFacture');
 }else{
+    
     //Ajout d'un objet logs pour tracer l'action de passage en facture de la proforma
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
