@@ -56,8 +56,8 @@ class CounterManager
     public function getCount(Integer $companyId)
     {
         try{
-            $companyId = (integer) $companyId;
-            $req = "SELECT * FROM company_counting WHERE company =".$companyId;
+            //$companyId = (integer) $companyId;
+            $req = '"SELECT * FROM company_counting WHERE company =".$companyId';
             echo $req;
             //$q = $this->_db->query($req);
             //$donnees = $q->fetch(PDO::FETCH_ASSOC);
