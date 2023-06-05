@@ -13,6 +13,9 @@ $type2 = $_POST['type'];
 $array = array();
 $quotationNumber = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
+
+
+
 $quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation);
 
 $date = $_POST['date'];
@@ -35,6 +38,7 @@ $test = $quotationmanager->changeType($quotation);
 if(is_null($test)){
     header('Location: '.$_SERVER['HTTP_REFERER'].'/errorFacture');
 }else{
+
     header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$idQuotation.'/successFacture');
 }
 
