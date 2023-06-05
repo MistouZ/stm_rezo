@@ -8,8 +8,6 @@
 
 include("../../_cfg/cfg.php");
 
-print_r($_POST);
-
 if(isset($_POST['valider'])){
     $label = $_POST["label"];
     $description = $_POST["description"];
@@ -32,9 +30,6 @@ if(isset($_POST['valider'])){
     $folder = new Folder($array);
     $foldermanager = new FoldersManager($bdd);
     $test = $foldermanager->add($folder);
-
-    
-    
 
 if(is_null($test)){
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
