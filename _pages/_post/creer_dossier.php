@@ -14,7 +14,7 @@ if(isset($_POST['valider'])){
     $countermanager = new $CounterManager($bdd);
     $counter = $countermanager->getCount($companyId);
 
-
+/*
     $label = $_POST["label"];
     $folderNumber = $counter->getFolder();
     $description = $_POST["description"];
