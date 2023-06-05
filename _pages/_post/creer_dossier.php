@@ -45,12 +45,12 @@ if(is_null($test)){
     );
 
     print_r($arraylogs);
-    
+
     $log = new Logs($arraylogs);
-    print_r($log);
+    /*print_r($log);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);*/
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
+    //header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
 }
     
 }
