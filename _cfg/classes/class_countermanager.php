@@ -39,7 +39,7 @@ class CounterManager
      {
         try{
             $companyId = (integer) $companyId;
-            $q = $this->_db->query('INSERT INTO `company_counting` (`company`, `folder`, `quotation`, `invoice`) VALUES ('.$companyId.', '0', '0', '0'');
+            $q = $this->_db->query('INSERT INTO `company_counting` (`company`, `folder`, `quotation`, `invoice`) VALUES ('.$companyId.', 0, 0, 0)');
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
             return "ok";
         }
