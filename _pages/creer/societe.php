@@ -10,8 +10,6 @@ $company = new Company($array);
 $companies = new CompaniesManager($bdd);
 $companies = $companies->getList();
 
-echo "j'ai chargé";
-
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -62,12 +60,12 @@ echo "j'ai chargé";
                                         <span class="btn red btn-outline btn-file">
                                             <span class="fileinput-new"> Choisir ... </span>
                                             <span class="fileinput-exists"> Changer </span>
-                                            <input type="file" accept="image/jpeg" id="nameData" name="nameData"/> </span>
+                                            <input type="file" accept="image/png, image/jpeg" id="nameData" name="nameData"/> </span>
                                         <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Annuler </a>
                                     </div>
                                 </div>
                                 <div class="clearfix margin-top-10">
-                                    <span class="label label-danger">Attention</span> Le logo doit être un fichier image au format .JPEG.</div>
+                                    <span class="label label-danger">Attention</span> Le logo doit être un fichier image au format .PNG ou .JPEG.</div>
                                 <div class="clearfix margin-top-10">
                                     <span class="label label-success">NOTE</span> Pour un meilleur rendu, supprimez les bords blancs autour du logo.</div> 
                             </div>
