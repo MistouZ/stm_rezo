@@ -50,8 +50,8 @@ if(is_null($test)){
 
     print_r($arraylogs);
 
-    $log = new Logs($arraylogs);
-    $logsmgmt = new LogsManager($bdd);
+    //$log = new Logs($arraylogs);
+    //$logsmgmt = new LogsManager($bdd);
     //$logsmgmt = $logsmgmt->add($log);
     //header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
 }
