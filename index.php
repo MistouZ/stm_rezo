@@ -1,7 +1,6 @@
 <?php 
 //session_start();
 
-echo "ok";
 /*
 include '_cfg/cfg.php';
 include '_cfg/fonctions.php';
