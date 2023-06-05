@@ -32,7 +32,7 @@ class CounterManager
     }
 
     /**
-     * get all counter value
+     * get all counter value for @param $companyId
      * @return Counter
      */
 
