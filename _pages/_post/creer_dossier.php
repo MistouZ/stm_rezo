@@ -16,12 +16,15 @@ if(isset($_POST['valider'])){
     $date = date("Y-m-d");
     $companyId = $_POST["idcompany"];
 
-
+    echo "je suis là";
 
     //$arraycounter = array();
     $counter = new Counter();
+    echo "je suis ici ";
     $countermanager = new $CounterManager($bdd);
+    echo "et là";
     $counter = $countermanager->getCount($companyId);
+
 
     print_r($counter);
 
