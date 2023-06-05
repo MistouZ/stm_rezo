@@ -18,8 +18,8 @@ if(isset($_POST['valider'])){
 
 
 
-    $arraycounter = array();
-    $counter = new Counter($arraycounter);
+    //$arraycounter = array();
+    $counter = new Counter();
     $countermanager = new $CounterManager($bdd);
     $counter = $countermanager->getCount($companyId);
 
