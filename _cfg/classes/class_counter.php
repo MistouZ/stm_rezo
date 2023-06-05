@@ -1,11 +1,11 @@
 <?php
 
   class Counter extends Features{
-    private $company;
+    private $company_idcompany;
     private $folder;
     private $quotation;
     private $invoice;
-    private $assets;
+    private $asset;
     
 
 
@@ -106,7 +106,7 @@
     /**
      * Get the value of assets
      */ 
-    public function getAssets()
+    public function getAsset()
     {
         return $this->assets;
     }
@@ -116,7 +116,7 @@
      *
      * @return  self
      */ 
-    public function setAssets($assets)
+    public function setAsset($assets)
     {
         $this->assets = $assets;
 
