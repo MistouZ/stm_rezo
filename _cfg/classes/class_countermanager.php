@@ -6,7 +6,7 @@
  * Time: 10:42
  */
 
-class LogsManager
+class CounterManager
 {
     /**
      * PDO Database instance PDO
