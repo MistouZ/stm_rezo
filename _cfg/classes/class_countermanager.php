@@ -53,7 +53,7 @@ class CounterManager
      * @return Counter
      */
 
-    public function getCount($companyId)
+    public function getCount(Integer $companyId)
     {
         try{
             $companyId = (integer) $companyId;
