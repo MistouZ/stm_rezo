@@ -30,7 +30,7 @@ if(isset($_POST['valider'])){
     $folderNumber = $counter->getFolder();
 
     $isActive = 1;
-    /*
+    
     $array = array(
         'label' => $label,
         'folderNumber' => $folderNumber,

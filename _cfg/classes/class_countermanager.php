@@ -32,16 +32,38 @@ class CounterManager
     }
 
     /**
+     * Create counter for @param $companyId
+     */
+
+     public function initiation($companyId)
+     {
+        try{
+            $companyId = (integer) $companyId;
+            $q = $this->_db->query('INSERT INTO `company_counting` (`company`, `folder`, `quotation`, `invoice`) VALUES ('.$companyId.', '0', '0', '0'');
+            $donnees = $q->fetch(PDO::FETCH_ASSOC);
+            return "ok";
+        }
+        catch(Exception $e){
+            return null;
+        }
+     }
+
+    /**
      * get all counter value for @param $companyId
      * @return Counter
      */
 
     public function getCount($companyId)
     {
-        $companyId = (integer) $companyId;
-        $q = $this->_db->query('SELECT * FROM company_counting WHERE company_idcompany ='.$companyId);
-        $donnees = $q->fetch(PDO::FETCH_ASSOC);
-        return new Counter($donnees);
+        try{
+            $companyId = (integer) $companyId;
+            $q = $this->_db->query('SELECT * FROM company_counting WHERE company_idcompany ='.$companyId);
+            $donnees = $q->fetch(PDO::FETCH_ASSOC);
+            return new Counter($donnees);
+        }  
+        catch(Exception $e){
+            return null;
+        }
     }
 
     /**
