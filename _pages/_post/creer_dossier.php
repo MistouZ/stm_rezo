@@ -25,7 +25,7 @@ if(isset($_POST['valider'])){
 
     print_r($counter);
 
-    $folderNumber = $counter->getFolder();
+    $folderNumber = $counter->getFolder() + 1;
 
     $isActive = 1;
     
@@ -66,7 +66,7 @@ if(isset($_POST['valider'])){
         $logsmgmt = $logsmgmt->add($log);
 
         //incrémentation du nombre de dossier créer pour la société
-        $counterFolder = $folderNumber+1;
+        $counterFolder = $folderNumber;
         $counter->setFolder($counterFolder);
         $countermanager->updateCounter($counter);
 
