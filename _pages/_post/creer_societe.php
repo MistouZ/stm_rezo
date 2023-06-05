@@ -36,7 +36,7 @@ if(isset($_POST['valider'])) {
             $counter = new Counter($arraycounter);
             $countermanager = new CounterManager($bdd);
 
-            $countermanager->initiation($test);
+            //$countermanager->initiation($test);
 
             
             if(is_null($test)){
