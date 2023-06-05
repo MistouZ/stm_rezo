@@ -17,6 +17,8 @@
       public function __construct(array $data)
       {
           $this->generate($data);
+          print_r($this);
+          echo "creation logs ok";
       }
 
       /**

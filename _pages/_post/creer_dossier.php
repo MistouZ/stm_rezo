@@ -36,8 +36,7 @@ if(is_null($test)){
 }else{
 
     $date = date('d-m-Y H:i:s');
-    addLogs($_COOKIE["username"], "folder","creation",$test,$date);
-    /*$arraylogs = array(
+    $arraylogs = array(
         'username' => $_COOKIE["username"],
         'type' => "folder",
         'action' => "creation",
@@ -45,8 +44,8 @@ if(is_null($test)){
         'date' => $date
     );
 
-    /*print_r($arraylogs);
-
+    print_r($arraylogs);
+    
     $log = new Logs($arraylogs);
     print_r($log);
     $logsmgmt = new LogsManager($bdd);
