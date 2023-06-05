@@ -40,12 +40,13 @@ if(is_null($test)){
     header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/error");
 }else{
 
+    $date = date('d-m-Y H:i:s');
     $arraylogs = array(
-        'user' => $_COOKIE["username"],
-        'type' => "dossier",
-        'action' => "création",
-        //'id' => $test->getIdFolder(),
-        'date'> = $date('d-m-Y H:i:s');
+        'username' => $_COOKIE["username"],
+        'type' => "folder",
+        'action' => "creation",
+        'id' => "",
+        'date' => $date
     );
 
     print_r($arraylogs);
