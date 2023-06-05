@@ -61,10 +61,10 @@ if(is_null($test)){
 
     //incrémentation du nombre de dossier créer pour la société
     $counterFolder = $folderNumber+1;
-    $counter->setFolder($counterFolder);
+   // $counter->setFolder($counterFolder);
     $countermanager->updateCounter($counter);
 
-    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");
+    header('Location: '.URLHOST.$_COOKIE['company']."/dossier/afficher/success");*/
 }
     
 }
