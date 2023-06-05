@@ -5,10 +5,14 @@
  * @copyright 2019
  */
 
+echo "je suis là";
+
 $array = array();
 $company = new Company($array);
 $companies = new CompaniesManager($bdd);
 $companies = $companies->getList();
+
+echo "j'ai chargé";
 
 ?>
 <div class="row">
