@@ -31,6 +31,13 @@ if(isset($_POST['valider'])) {
             $company = new Company($array);
             $companiesmanager = new CompaniesManager($bdd);
             $test = $companiesmanager->add($company);
+
+            $arraycounter = array();
+            $counter = new Counter($arraycounter);
+            $countermanager = new CounterManager($bdd);
+            $counter = $countermanager->initiation($test);
+
+
             
             if(is_null($test)){
                 header('Location: '.URLHOST.$_COOKIE['company']."/societe/afficher/error");
