@@ -59,6 +59,7 @@ class CounterManager
             $companyId = (integer) $companyId;
             $q = $this->_db->query('SELECT * FROM company_counting WHERE company_idcompany ='.$companyId);
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
+            print_r($donnees);
             return new Counter($donnees);
         }  
         catch(Exception $e){
