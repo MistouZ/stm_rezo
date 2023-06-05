@@ -4,8 +4,9 @@
     private $username;
     private $type;
     private $action;
-
     private $id;
+
+    
       /**
        * Users constructor.
        * Including array from users
