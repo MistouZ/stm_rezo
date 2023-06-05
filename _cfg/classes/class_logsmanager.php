@@ -39,6 +39,7 @@ class LogsManager
      * @param date $date
      * @return string|null
      */
+    
     public function add(Logs $logs)
     {
         print_r($logs);
