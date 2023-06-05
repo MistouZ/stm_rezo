@@ -2,6 +2,7 @@
 
   class Logs extends Features{
     private $username;
+    private $company;
     private $type;
     private $action;
     private $id;
@@ -26,6 +27,26 @@
       {
           return $this->username;
       }
+
+      /**
+     * Get the value of company
+     */ 
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set the value of company
+     *
+     * @return  self
+     */ 
+    public function setCompany($company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
 
       /**
        * Set the value of username
@@ -114,5 +135,7 @@
 
         return $this;
     }
+
+    
   }
 ?>

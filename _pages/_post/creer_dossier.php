@@ -38,6 +38,7 @@ if(is_null($test)){
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
         'username' => $_COOKIE["username"],
+        'company' => $companyId,
         'type' => "folder",
         'action' => "creation",
         'id' => $test,
