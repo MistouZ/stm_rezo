@@ -254,14 +254,16 @@ if(isset($_GET['cat5'])){
                                                 $tax = $taxmanager->getByPercent($description->getTax()*100);
 
                                                 //Calcul du détail des taxes pour l'affichage par tranche détaillée
+                                                print_r($arrayTaxesKey[$description->getTax()]);
                                                 if(isset($arrayTaxesKey[$description->getTax()])){
                                                     echo "je passe ici";
-                                                    echo $arrayTaxesKey[$description->getTax()];
+                                                    print_r($arrayTaxesKey[$description->getTax()]);
                                                     $arrayTaxesKey[$description->getTax()]["Montant"] = $arrayTaxesKey[$description->getTax()]["Montant"]+$taxe;
                                                 }else{
                                                     echo "je passe là";
                                                     $arrayTaxesKey[$description->getTax()]['Taxe']=$tax->getName();
                                                     $arrayTaxesKey[$description->getTax()]['Montant']=$taxe;
+                                                    print_r($arrayTaxesKey[$description->getTax()]);
                                                 }
 
                                                 $totalTaxe = $totalTaxe+$taxe;
