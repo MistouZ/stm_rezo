@@ -365,8 +365,8 @@ if(isset($_GET['cat5'])){
                                         <?php if($quotation->getType() == "S")
                                             {
                                             ?>
-                                                <label class="radio-inline"><input name="shattered" id="shattered1" type="radio" value="full" class="form-control" /><?php echo $shatteredQuotation->getPercent(); ?>
-                                                    ?></label>
+                                                <label class="radio-inline"><input name="shattered" id="shattered1" type="radio" value="full" class="form-control" /><?php echo $shatteredQuotation->getPercent(); ?> %
+                                                </label>
                                             <?php
                                             }
                                             else{
