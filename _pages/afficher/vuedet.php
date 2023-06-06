@@ -366,7 +366,7 @@ if(isset($_GET['cat5'])){
                                             {
                                             ?>
                                                 <label class="radio-inline"><input name="shattered" id="shattered1" type="radio" value="full" class="form-control" /><?php echo $shatteredQuotation->getPercent(); ?> % *
-                                                </label>
+                                                </label>*restant de la facture initiale
                                             <?php
                                             }
                                             else{
@@ -390,7 +390,6 @@ if(isset($_GET['cat5'])){
                             </div>
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
-                            <div>*restant de la facture initiale</div>
                             <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
