@@ -142,7 +142,13 @@ if(isset($_GET['cat5'])){
         <?php }elseif($retour == "successDevis"){ ?>
             <div class="alert alert-success">
                 <button class="close" data-close="alert"></button> Passage en devis effectué avec succès !</div>
-        <?php } ?>
+        <?php }elseif($retour == "errorAvoir") { ?>
+            <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button> Erreur lors du passage en avoir !</div>
+        <?php }elseif($retour == "successAvoir"){ ?>
+            <div class="alert alert-success">
+                <button class="close" data-close="alert"></button> Passage en avoir effectué avec succès !</div>
+        <?php } ?> ?>
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="portlet yellow-crusta box">
