@@ -56,8 +56,6 @@ if(isset($_POST['valider'])){
             'date' => $date
         );
 
-        print_r($arraylogs);
-
         $log = new Logs($arraylogs);
         $logsmgmt = new LogsManager($bdd);
         $logsmgmt = $logsmgmt->add($log);
