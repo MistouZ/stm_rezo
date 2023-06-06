@@ -254,7 +254,6 @@ if(isset($_GET['cat5'])){
                                                 $tax = $taxmanager->getByPercent($description->getTax()*100);
 
                                                 //Calcul du détail des taxes pour l'affichage par tranche détaillée
-                                                print_r($arrayTaxesKey[$description->getTax()]);
                                                 if(isset($arrayTaxesKey[$description->getTax()])){
                                                     echo "je passe ici";
                                                     print_r($arrayTaxesKey[$description->getTax()]);
