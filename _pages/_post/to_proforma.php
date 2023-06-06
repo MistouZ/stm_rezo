@@ -101,9 +101,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $newquotationNumber = $quotationmanager->add($duplicate);
     //ici j'ai créé mon nouveau devis dans la table pour quotation.
     $counterQuotation = $counterQuotation + 1;
-    echo $counterQuotation;
     $counter->setQuotation($counterQuotation);
-    print_r($counter);
     $countermanager->updateCounter($counter);
     
     
@@ -112,7 +110,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         //si le devis est déjà partiel, je récupère les données initiales
         $shatteredQuotationInit = new ShatteredQuotation($array);
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
-        $quotationNumber = $shatteredQuotationInit->getQuotationNumberInit();
+        $quotationNumberInit = $shatteredQuotationInit->getQuotationNumberInit();
         $quotationNumberChild = $shatteredQuotationInit->getQuotationNumberChild();
         $quotationInit = $quotationNumber."_init";
         $getDescription = $descriptionmanager->getByQuotationNumber($quotationInit);
@@ -143,7 +141,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
 
     echo $newquotationNumber;
     $dataShattered = array(
-        'quotationNumberInit' => $quotationNumber,
+        'quotationNumberInit' => $quotationNumberInit,
         'quotationNumberChild' => $newquotationNumber,
         'percent' => $rest
     );
@@ -151,6 +149,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
    
     $test2 = $shatteredQuotationManager->add($shatteredQuotation);
 
+    echo $test2;
     //Copie effectuée sur la description, on a créé l'object devis partiel et on a stocké le pourcentage restant à facturer
     
     $j = 0;
@@ -170,6 +169,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     else{
         $test3 = $descriptionmanager->update($descriptionsReduced,$quotationNumber);
     }
+    echo $test3;
 
     if($rest != 0)
     {   //il reste à facturer alors je stocke les données restantes
@@ -194,6 +194,8 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $test4a = $descriptionmanager->delete($quotationInit);
         $test4b = $shatteredQuotationManager->delete($quotationInit);
     }
+
+    echo $test4a." ".$test4b;
 
 
     $data = array(
