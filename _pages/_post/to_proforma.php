@@ -106,7 +106,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $shatteredQuotationInit = new ShatteredQuotation($array);
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
         echo "je suis ici";
-        print_r($sshatteredQuotationInit);
+        print_r($shatteredQuotationInit);
         /*$quotationNumber = $shatteredQuotationInit->getQuotationNumberInit();
         $quotationNumberChild = $shatteredQuotationInit->getQuotationNumberChild();
         $quotationInit = $quotationNumber."_init";
