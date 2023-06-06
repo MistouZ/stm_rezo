@@ -99,9 +99,10 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $newquotationNumber = $quotationmanager->add($duplicate);
     //ici j'ai créé mon nouveau devis dans la table pour quotation.
 
-    //si le devis est déjà partiel, je récupère les données initiales
+    
     if($type3 == "S")
     {
+        //si le devis est déjà partiel, je récupère les données initiales
         $shatteredQuotationInit = new ShatteredQuotation($array);
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
         $quotationNumber = $shatteredQuotationInit->getQuotationNumberInit();
@@ -196,7 +197,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
 }
 
 if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || is_null($test4b) || is_null($test5)){
-  header('Location: '.$_SERVER['HTTP_REFERER'].'/errorProforma');
+  //header('Location: '.$_SERVER['HTTP_REFERER'].'/errorProforma');
 }else{
 
     //Ajout d'un objet logs pour tracer l'action de passage du devis en proforma
