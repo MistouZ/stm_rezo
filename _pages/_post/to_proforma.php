@@ -113,7 +113,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $quotationNumberInit = $shatteredQuotationInit->getQuotationNumberInit();
         $quotationNumberChild = $shatteredQuotationInit->getQuotationNumberChild();
         $quotationInit = $quotationNumberInit."_init";
-        $getDescription = $descriptionmanager->getByQuotationNumber($quotationNumberInit);
+        $getDescription = $descriptionmanager->getByQuotationNumber($quotationInit);
         $rest = $shatteredQuotationInit->getPercent();
         $rest = $rest - $percent;
         $idShatteredQuotation = $shatteredQuotationInit->getIdShatteredQuotation();
