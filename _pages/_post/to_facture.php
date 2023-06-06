@@ -22,7 +22,7 @@ $descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber);
 $arraycounter = array();
 $counter = new Counter($arraycounter);
 $countermanager = new CounterManager($bdd);
-$counter = $countermanager->getCount($quotationNumber->getCompanyId());
+$counter = $countermanager->getCount($quotation->getCompanyId());
 
 $counterInvoice = $counter->getInvoice();
 
