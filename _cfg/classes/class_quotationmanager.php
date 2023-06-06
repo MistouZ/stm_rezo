@@ -45,8 +45,8 @@ class QuotationManager
      */
     public function add(Quotation $quotation)
     {
-        $lastId = $this->count();
-        $quotationNumber = date("Ym",strtotime($quotation->getDate())).($lastId + 1);
+        $quotationCounter = $quotation->getQuotationNumber();
+        $quotationNumber = date("Ym",strtotime($quotation->getDate())).($quotationCounter + 1);
         $quotation->setQuotationNumber($quotationNumber);
 
         $quotation->setDate(date('Y-m-d',strtotime(str_replace('/','-',$quotation->getDate()))));

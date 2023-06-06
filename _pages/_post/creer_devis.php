@@ -18,6 +18,15 @@ $companyId = $folder->getCompanyId();
 $customerId = $_POST["customer-select"];
 $contactId = $_POST["contact-select"];
 
+$arraycounter = array();
+$counter = new Counter($arraycounter);
+$countermanager = new CounterManager($bdd);
+$counter = $countermanager->getCount($companyId);
+
+$counterQuotation = $counter->getQuotation();
+
+
+
 if(empty($_POST["label"]))
 {
     $label = $folder->getLabel();
@@ -38,6 +47,7 @@ $status = "En cours";
 $type = "D";
 
 $data = array(
+    'quotationNumber' => $counterQuotation,
     'status' => $status,
     'label' => $label,
     'date' => $date,
@@ -192,6 +202,16 @@ else{
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
+
+    //incrémentation du nombre de devis créer pour la société
+    $counterQuotation = $counterQuotation + 1;
+    echo $counterQuotation;
+    $counter->setQuotation($counterQuotation);
+    print_r($counter);
+    $countermanager->updateCounter($counter);
+
+
+
     header('Location: '.URLHOST.$_COOKIE['company']."/devis/afficher/cours/".$quotationNumber);
 }
 ?>
