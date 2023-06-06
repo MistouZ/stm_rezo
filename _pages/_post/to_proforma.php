@@ -69,7 +69,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $label = $quotationGet->getLabel();
     $type3 = $quotationGet->getType();
 
-    echo "$type3 : ".$type3;
+    echo "type3 : ".$type3;
 
     //Récupération du nombre de devis pour créer le nouveau QuotationNumber
     $arraycounter = array();
