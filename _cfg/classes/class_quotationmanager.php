@@ -470,10 +470,9 @@ class QuotationManager
             //on change le quotation number si facture ou avoir
             if ($quotation->getType() == "A" || $quotation->getType() == "F")
             {
-                echo "je passe ici";
-                /*$quotationCounter = $quotation->getQuotationNumber();
+                $quotationCounter = $quotation->getQuotationNumber();
                 $quotationNumber = date("Ym",strtotime($quotation->getDate())).($quotationCounter + 1);
-                $quotation->setQuotationNumber($quotationNumber);*/
+                $quotation->setQuotationNumber($quotationNumber);
             }
             
             $q = $this->_db->prepare('UPDATE quotation SET quotationNumber = :quotationNumber, type = :type, status = :status, date = :date, validatedDate =:validatedDate WHERE idQuotation= :idQuotation');
