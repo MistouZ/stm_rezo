@@ -470,6 +470,7 @@ class QuotationManager
             //on change le quotation number si facture ou avoir
             if ($quotation->getType() == "A" || $quotation->getType() == "F")
             {
+                echo "je passe ici";
                 /*$quotationCounter = $quotation->getQuotationNumber();
                 $quotationNumber = date("Ym",strtotime($quotation->getDate())).($quotationCounter + 1);
                 $quotation->setQuotationNumber($quotationNumber);*/
