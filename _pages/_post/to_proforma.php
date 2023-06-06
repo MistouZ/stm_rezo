@@ -100,7 +100,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $duplicate = new Quotation($data);
     $newquotationNumber = $quotationmanager->add($duplicate);
     //ici j'ai créé mon nouveau devis dans la table pour quotation.
-    echo $newquotationNumber;
+    
     
     
     if($type3 == "S")
@@ -116,7 +116,6 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $rest = $rest - $percent;
         $idShatteredQuotation = $shatteredQuotationInit->getIdShatteredQuotation();
 
-        echo $rest."le reste";
     }
     else
     {
@@ -134,7 +133,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         }
         // Duplication des descriptions pour garder l'original
         $test = $descriptionmanager->add($descriptions,$quotationInit);
-        echo "je suis là";
+
     }
 
     echo $newquotationNumber;
@@ -144,11 +143,11 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         'percent' => $rest
     );
     $shatteredQuotation = new ShatteredQuotation($dataShattered);
-    print_r($shatteredQuotation);
-    //$test2 = $shatteredQuotationManager->add($shatteredQuotation);
+   
+    $test2 = $shatteredQuotationManager->add($shatteredQuotation);
 
     //Copie effectuée sur la description, on a créé l'object devis partiel et on a stocké le pourcentage restant à facturer
-    /*
+    
     $j = 0;
     $descriptionsReduced= array();
     $descriptionReduced = new Description($array);
