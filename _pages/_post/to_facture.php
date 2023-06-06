@@ -18,7 +18,7 @@ $quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation);
 $arraycounter = array();
 $counter = new Counter($arraycounter);
 $countermanager = new CounterManager($bdd);
-$counter = $countermanager->getCount($companyId);
+$counter = $countermanager->getCount($quotationNumber->getCompanyId());
 
 $counterInvoice = $counter->getInvoice();
 
