@@ -255,14 +255,11 @@ if(isset($_GET['cat5'])){
 
                                                 //Calcul du détail des taxes pour l'affichage par tranche détaillée
                                                 if(($arrayTaxesKey[$description->getTax()]['Taxe'] == $tax->getName())){
-                                                    echo "je passe ici";
-                                                    print_r($arrayTaxesKey[$description->getTax()]);
-                                                    $arrayTaxesKey[$description->getTax()]["Montant"] = $arrayTaxesKey[$description->getTax()]["Montant"]+$taxe;
-                                                }else{
-                                                    echo "je passe là";
-                                                    $arrayTaxesKey[$description->getTax()]['Taxe']=$tax->getName();
-                                                    $arrayTaxesKey[$description->getTax()]['Montant']=$taxe;
-                                                    print_r($arrayTaxesKey[$description->getTax()]);
+                                                    $arrayTaxesKey[$tax->getName()]["Montant"] = $arrayTaxesKey[$description->getTax()]["Montant"]+$taxe;
+                                                }
+                                                else{                                                   
+                                                    $arrayTaxesKey[$tax->getName()]['Taxe']=$tax->getName();
+                                                    $arrayTaxesKey[$tax->getName()]['Montant']=$taxe;                                                    
                                                 }
 
                                                 $totalTaxe = $totalTaxe+$taxe;
