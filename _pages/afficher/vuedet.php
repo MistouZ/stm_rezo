@@ -283,7 +283,6 @@ if(isset($_GET['cat5'])){
                                             </tr>
                                             <?php
                                             }
-                                            print_r($arrayTaxesKey);
                                         ?>
                                     </tbody>
                                 </table>

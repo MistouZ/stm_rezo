@@ -169,11 +169,12 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                             $tax = $taxmanager->getByPercent($description->getTax()*100);
 
                                             //Calcul du détail des taxes pour l'affichage par tranche détaillée
-                                            if(isset($arrayTaxesKey[$description->getTax()])){
-                                                $arrayTaxesKey[$description->getTax()]["Montant"] = $arrayTaxesKey[$description->getTax()]["Montant"]+$taxe;
-                                            }else{
-                                                $arrayTaxesKey[$description->getTax()]['Taxe']=$tax->getName();
-                                                $arrayTaxesKey[$description->getTax()]['Montant']=$taxe;
+                                            if(isset($arrayTaxesKey[$tax->getName()]['Taxe'])){
+                                                $arrayTaxesKey[$tax->getName()]["Montant"] = $arrayTaxesKey[$tax->getName()]["Montant"]+$taxe;
+                                            }
+                                            else{                                                   
+                                                $arrayTaxesKey[$tax->getName()]['Taxe']=$tax->getName();
+                                                $arrayTaxesKey[$tax->getName()]['Montant']=$taxe;                                                    
                                             }
 
                                             $totalTaxe = $totalTaxe+$taxe;
