@@ -108,7 +108,7 @@
      */ 
     public function getAsset()
     {
-        return $this->assets;
+        return $this->asset;
     }
 
     /**

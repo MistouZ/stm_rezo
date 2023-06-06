@@ -119,6 +119,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $rest = $shatteredQuotationInit->getPercent();
         $rest = $rest - $percent;
         $idShatteredQuotation = $shatteredQuotationInit->getIdShatteredQuotation();
+        $test = "ok";
 
     }
     else
