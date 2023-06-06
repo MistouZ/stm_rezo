@@ -255,6 +255,7 @@ if(isset($_GET['cat5'])){
 
                                                 //Calcul du détail des taxes pour l'affichage par tranche détaillée
                                                 if(isset($arrayTaxesKey[$description->getTax()])){
+                                                    echo $arrayTaxesKey[$description->getTax()];
                                                     $arrayTaxesKey[$description->getTax()]["Montant"] = $arrayTaxesKey[$description->getTax()]["Montant"]+$taxe;
                                                 }else{
                                                     $arrayTaxesKey[$description->getTax()]['Taxe']=$tax->getName();
