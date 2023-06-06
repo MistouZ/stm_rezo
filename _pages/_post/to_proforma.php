@@ -140,10 +140,10 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         'percent' => $rest
     );
     $shatteredQuotation = new ShatteredQuotation($dataShattered);
-    $test2 = $shatteredQuotationManager->add($shatteredQuotation);
+    //$test2 = $shatteredQuotationManager->add($shatteredQuotation);
 
     //Copie effectuée sur la description, on a créé l'object devis partiel et on a stocké le pourcentage restant à facturer
-
+    /*
     $j = 0;
     $descriptionsReduced= array();
     $descriptionReduced = new Description($array);
@@ -197,6 +197,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     );
     $quotation = new Quotation($data);
     $test5 = $quotationmanager->changeType($quotation);
+    */
 }
 
 if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || is_null($test4b) || is_null($test5)){
@@ -219,7 +220,7 @@ if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || i
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
-   header('Location: '.URLHOST.$_COOKIE['company'].'/proforma/afficher/'.$type2.'/'.$quotationNumber.'/successProforma');
+   //header('Location: '.URLHOST.$_COOKIE['company'].'/proforma/afficher/'.$type2.'/'.$quotationNumber.'/successProforma');
 }
 
 ?>
