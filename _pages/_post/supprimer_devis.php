@@ -9,6 +9,7 @@
 include("../../_cfg/cfg.php");
 $idQuotation = $_GET["idQuotation"];
 $quotationNumber = $_GET['quotationNumber'];
+$type = $_GET["type"];
 
 $array = array();
 $descriptions = new Description($array);
