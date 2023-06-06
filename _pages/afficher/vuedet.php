@@ -382,7 +382,7 @@ if(isset($_GET['cat5'])){
                                         <?php if($quotation->getType() == "S")
                                                 {
                                                     ?>
-                                                    <span class="help-block">*restant de la facture initiale</span>
+                                                    <span class="help-block">restant de la facture initiale</span>
                                               <?php
                                                 }
                                         ?> 
