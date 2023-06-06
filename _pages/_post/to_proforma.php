@@ -77,8 +77,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     
 
     $counterQuotation = $counter->getQuotation();
-    echo "counter quotation : ".$counterQuotation."<br/>";
-
+    
     $date = date("Y-m-d");
     $status = "En cours";
     $type = "S"; // shattered quotation
