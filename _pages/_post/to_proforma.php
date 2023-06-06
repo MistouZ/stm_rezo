@@ -100,7 +100,11 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $duplicate = new Quotation($data);
     $newquotationNumber = $quotationmanager->add($duplicate);
     //ici j'ai créé mon nouveau devis dans la table pour quotation.
-    
+    $counterQuotation = $counterQuotation + 1;
+    echo $counterQuotation;
+    $counter->setQuotation($counterQuotation);
+    print_r($counter);
+    $countermanager->updateCounter($counter);
     
     
     if($type3 == "S")
