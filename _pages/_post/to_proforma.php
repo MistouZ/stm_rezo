@@ -8,8 +8,6 @@ ini_set('display_errors',1); error_reporting(E_ALL | E_STRICT);
 include("../../_cfg/cfg.php");
 include "../../_cfg/fonctions.php";
 
-echo $_POST["quotationNumber"];
-
 $quotationNumber = $_POST['quotationNumber'];
 $type2 = $_POST['type'];
 $percent = $_POST["shattered_percent"];
