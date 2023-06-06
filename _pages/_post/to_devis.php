@@ -19,6 +19,7 @@ $date = $_POST['date'];
 
 $data = array(
     'idQuotation' => $quotationNumber->getIdQuotation(),
+    'quotationNumber' => $quotationGet->getQuotationNumber(),
     'status' => 'En cours',
     'label' => $label,
     'date' => $date,
