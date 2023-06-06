@@ -139,8 +139,8 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         'quotationNumberChild' => $newquotationNumber,
         'percent' => $rest
     );
-    //$shatteredQuotation = new ShatteredQuotation($dataShattered);
-    //$test2 = $shatteredQuotationManager->add($shatteredQuotation);
+    $shatteredQuotation = new ShatteredQuotation($dataShattered);
+    $test2 = $shatteredQuotationManager->add($shatteredQuotation);
 
     //Copie effectuée sur la description, on a créé l'object devis partiel et on a stocké le pourcentage restant à facturer
 
