@@ -131,7 +131,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         }
         // Duplication des descriptions pour garder l'original
         $test = $descriptionmanager->add($descriptions,$quotationInit);
-        echo "je suis ici";
+        echo "je suis là";
     }
 
     $dataShattered = array(
