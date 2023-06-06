@@ -306,7 +306,7 @@ if(isset($_GET['cat5'])){
                     <?php 
                         foreach($arrayTaxesKey as $key => $value){ 
                             if($arrayTaxesKey[$key]["Montant"]>0){
-                                print_r(arrayTaxesKey);
+                                print_r($arrayTaxesKey);
                     ?>
                     <div class="row static-info align-reverse">
                         <div class="col-md-8 name" style="font-size: 11px; font-style: italic;"> <?php echo $arrayTaxesKey[$key]["Taxe"]; ?> : </div>
