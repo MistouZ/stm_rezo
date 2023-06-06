@@ -174,6 +174,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
 
     $data = array(
         'idQuotation' => $quotationGet->getIdQuotation(),
+        'quotationNumber' => $counterInvoice,
         'status' => 'En cours',
         'date' => $date,
         'validatedDate' => $today,
