@@ -67,7 +67,7 @@ if(is_null($test) || is_null($test2)){
     //incrémentation du nombre de factures créées pour la société
     $counterAsset = $counterAsset + 1;
     echo $counterAsset;
-    $counter->setInvoice($counterAsset);
+    $counter->setAsset($counterAsset);
     print_r($counter);
     $countermanager->updateCounter($counter);
 
