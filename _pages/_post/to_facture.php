@@ -46,7 +46,7 @@ $quotationmanager = new QuotationManager($bdd);
 $test = $quotationmanager->changeType($quotation);
 $test2 = $descriptionmanager->update($descriptions,$test);
 
-if(is_null($test)){
+if(is_null($test) || is_null($test2)){
     header('Location: '.$_SERVER['HTTP_REFERER'].'/errorFacture');
 }else{
     

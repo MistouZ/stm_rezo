@@ -7,19 +7,23 @@ ini_set('display_errors',1); error_reporting(E_ALL | E_STRICT);
  
 include("../../_cfg/cfg.php");
 
-$idQuotation = $_POST['quotationNumber'];
+$quotationNumber = $_POST['quotationNumber'];
 $type2 = $_POST['type'];
 
 $array = array();
-$quotationNumber = new Quotation($array);
+$quotation = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-$quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation);
+$quotation = $quotationmanagerNumber->getByQuotationNumber($quotationNumber);
+
+$descriptions = new Description($array);
+$descriptionmanager = new DescriptionManager($bdd);
+$descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber);
 
 $date = $_POST['date'];
 
 $data = array(
-    'idQuotation' => $quotationNumber->getIdQuotation(),
-    'quotationNumber' => $quotationNumber->getQuotationNumber(),
+    'quotationNumber' => $quotation->getquotationNumber(),
+    'quotationNumber' => $quotation->getQuotationNumber(),
     'status' => 'En cours',
     'label' => $label,
     'date' => $date,
@@ -30,7 +34,10 @@ $quotation = new Quotation($data);
 $quotationmanager = new QuotationManager($bdd);
 
 $test = $quotationmanager->changeType($quotation);
-if(is_null($test)){
+$test2 = $descriptionmanager->update($descriptions,$test);
+
+
+if(is_null($test) || is_null($test2)){
     header('Location: '.$_SERVER['HTTP_REFERER'].'/errorDevis');
 }else{
 
@@ -41,7 +48,7 @@ if(is_null($test)){
         'company' => $companyId,
         'type' => "quotation",
         'action' => "to_devis",
-        'id' => $idQuotation,
+        'id' => $quotationNumber,
         'date' => $date
     );
 
@@ -50,7 +57,7 @@ if(is_null($test)){
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
-    header('Location: '.URLHOST.$_COOKIE['company'].'/devis/afficher/'.$type2.'/'.$idQuotation.'/successDevis');
+    header('Location: '.URLHOST.$_COOKIE['company'].'/devis/afficher/'.$type2.'/'.$quotationNumber.'/successDevis');
 }
 
 ?>
