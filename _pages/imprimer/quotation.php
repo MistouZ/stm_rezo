@@ -52,7 +52,6 @@ switch($type){
         $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
         $entete = "de l'avoir";
         $enteteIcon = '<i class="fas fa-file-prescription"></i>';
-        echo "je suis là";
         break;
 }
 
