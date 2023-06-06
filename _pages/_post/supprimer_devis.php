@@ -45,7 +45,7 @@ if(is_null($test)){
         $log = new Logs($arraylogs);
         $logsmgmt = new LogsManager($bdd);
         $logsmgmt = $logsmgmt->add($log);
-        header('Location: '.$_SERVER['HTTP_REFERER']."/successsuppr");
+        header('Location: '.$_SERVER['HTTP_REFERER']."/successsuppr".$type);
   }
 }
 

@@ -123,9 +123,15 @@ switch($type){
         <?php if($retour == "errorsuppr") { ?>
             <div class="alert alert-danger">
                 <button class="close" data-close="alert"></button> Une erreur est survenue, le devis n'a donc pas pu être être supprimé !</div>
-        <?php }elseif($retour == "successsuppr"){ ?>
+        <?php }elseif($retour == "successsupprdevis"){ ?>
             <div class="alert alert-success">
                 <button class="close" data-close="alert"></button> Le devis a bien été supprimé !</div>
+        <?php }elseif($retour == "successsupprproforma"){ ?>
+            <div class="alert alert-success">
+                <button class="close" data-close="alert"></button> La proforma a bien été supprimée !</div>
+        <?php }elseif($retour == "successsupprfacture"){ ?>
+            <div class="alert alert-success">
+                <button class="close" data-close="alert"></button> La facture a bien été supprimée !</div>
         <?php }elseif($retour == "errorProforma") { ?>
             <div class="alert alert-danger">
                 <button class="close" data-close="alert"></button> Erreur lors du passage en proforma !</div>
