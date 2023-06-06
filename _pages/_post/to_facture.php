@@ -7,13 +7,17 @@ ini_set('display_errors',1); error_reporting(E_ALL | E_STRICT);
  
 include("../../_cfg/cfg.php");
 
-$idQuotation = $_POST['quotationNumber'];
+$quotationNumber = $_POST['quotationNumber'];
 $type2 = $_POST['type'];
 
 $array = array();
 $quotationNumber = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-$quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation);
+$quotationNumber = $quotationmanagerNumber->getByQuotationNumber($quotationNumber);
+
+$descriptions = new Description($array);
+$descriptionmanager = new DescriptionManager($bdd);
+$descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber);
 
 $arraycounter = array();
 $counter = new Counter($arraycounter);
@@ -27,7 +31,7 @@ $date = $_POST['date'];
 $today = date("Y-m-d");
 
 $data = array(
-    'idQuotation' => $quotationNumber->getIdQuotation(),
+    'quotationNumber' => $quotationNumber->getquotationNumber(),
     'quotationNumber' => $counterInvoice,
     'status' => 'En cours',
     'label' => $quotationNumber->getLabel(),
@@ -40,6 +44,8 @@ $quotation = new Quotation($data);
 $quotationmanager = new QuotationManager($bdd);
 
 $test = $quotationmanager->changeType($quotation);
+$test2 = $descriptionmanager->update($descriptions,$test);
+
 if(is_null($test)){
     header('Location: '.$_SERVER['HTTP_REFERER'].'/errorFacture');
 }else{
@@ -51,7 +57,7 @@ if(is_null($test)){
         'company' => $quotationNumber->getCompanyId(),
         'type' => "quotation",
         'action' => "to_facture",
-        'id' => $idQuotation,
+        'id' => $quotationNumber,
         'date' => $date
     );
     $log = new Logs($arraylogs);
@@ -65,7 +71,7 @@ if(is_null($test)){
     print_r($counter);
     $countermanager->updateCounter($counter);
 
-    header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$idQuotation.'/successFacture');
+    header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$quotationNumber.'/successFacture');
 }
 
 ?>

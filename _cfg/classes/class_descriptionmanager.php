@@ -67,7 +67,8 @@ class DescriptionManager
      * @param $quotationNumber
      * @return quotation
      */
-    public function getByQuotationNumber($quotationNumber)
+    public function 
+    ($quotationNumber)
     {
         $description = array();
         try{
