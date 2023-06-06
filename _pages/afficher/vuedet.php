@@ -381,7 +381,9 @@ if(isset($_GET['cat5'])){
                                     <div id="credential_error">
                                         <?php if($quotation->getType() == "S")
                                                 {
-                                                    echo "*restant de la facture initiale";
+                                                    ?>
+                                                    <span class="help-block">*restant de la facture initiale</span>
+                                              <?php
                                                 }
                                         ?> 
                                     </div>
