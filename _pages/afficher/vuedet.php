@@ -148,7 +148,7 @@ if(isset($_GET['cat5'])){
         <?php }elseif($retour == "successAvoir"){ ?>
             <div class="alert alert-success">
                 <button class="close" data-close="alert"></button> Passage en avoir effectué avec succès !</div>
-        <?php } ?> ?>
+        <?php } ?>
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="portlet yellow-crusta box">
