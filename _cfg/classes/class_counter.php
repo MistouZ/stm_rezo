@@ -116,9 +116,9 @@
      *
      * @return  self
      */ 
-    public function setAsset($assets)
+    public function setAsset($asset)
     {
-        $this->assets = $assets;
+        $this->asset = $asset;
 
         return $this;
     }

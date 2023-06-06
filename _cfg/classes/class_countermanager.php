@@ -59,7 +59,6 @@ class CounterManager
             $companyId = (integer) $companyId;
             $q = $this->_db->query("SELECT * FROM company_counting WHERE company =".$companyId);
             $donnees = $q->fetch(PDO::FETCH_ASSOC);
-            print_r($donnees);
             return new Counter($donnees);
         }  
         catch(Exception $e){
@@ -76,11 +75,11 @@ class CounterManager
     public function updateCounter(Counter $counter)
     {
         try{
-            $q = $this->_db->prepare('UPDATE company_counting SET folder = :folder, quotation = :quotation, invoice = :invoice, assets = :assets WHERE company  = :idcompany');
+            $q = $this->_db->prepare('UPDATE company_counting SET folder = :folder, quotation = :quotation, invoice = :invoice, asset = :asset WHERE company = :idcompany');
             $q->bindValue(':folder', $counter->getFolder(), PDO::PARAM_INT);
             $q->bindValue(':quotation', $counter->getQuotation(), PDO::PARAM_INT);
             $q->bindValue(':invoice', $counter->getInvoice(), PDO::PARAM_INT);
-            $q->bindValue(':assets', $counter->getAssets(), PDO::PARAM_INT);
+            $q->bindValue(':asset', $counter->getAsset(), PDO::PARAM_INT);
             $q->bindValue(':idcompany', $counter->getCompany(), PDO::PARAM_INT);
    
             $q->execute();
