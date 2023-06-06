@@ -104,6 +104,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     {
         //si le devis est déjà partiel, je récupère les données initiales
         $shatteredQuotationInit = new ShatteredQuotation($array);
+        echo $quotationNumber;
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
         echo "je suis ici";
         print_r($shatteredQuotationInit);
