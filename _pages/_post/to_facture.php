@@ -31,7 +31,7 @@ $date = $_POST['date'];
 $today = date("Y-m-d");
 
 $data = array(
-    'quotationNumber' => $quotation->getquotationNumber(),
+    'idQuotation' => $quotation->getquotationNumber(),
     'quotationNumber' => $counterInvoice,
     'status' => 'En cours',
     'label' => $quotation->getLabel(),
