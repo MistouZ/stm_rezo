@@ -475,10 +475,8 @@ class QuotationManager
                 $quotationNumber = date("Ym",strtotime($quotation->getDate())).($quotationCounter + 1);
                 $quotation->setQuotationNumber($quotationNumber);*/
             }
-
-            echo $quotation->getType();
             
-            $q = $this->_db->prepare('UPDATE quotation SET quotationNumber =: quotationNumber, type = :type, status = :status, date = :date, validatedDate =:validatedDate WHERE idQuotation= :idQuotation');
+            $q = $this->_db->prepare('UPDATE quotation SET quotationNumber = :quotationNumber, type = :type, status = :status, date = :date, validatedDate =:validatedDate WHERE idQuotation= :idQuotation');
             $q->bindValue(':idQuotation', $quotation->getIdQuotation(), PDO::PARAM_INT);
             $q->bindValue(':quotationNumber', $quotation->getQuotationNumber(), PDO::PARAM_STR);
             $q->bindValue(':status', $quotation->getStatus(), PDO::PARAM_STR);
