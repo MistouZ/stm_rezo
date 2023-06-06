@@ -185,7 +185,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
 }
 
 if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || is_null($test4b) || is_null($test5)){
-  //  header('Location: '.$_SERVER['HTTP_REFERER'].'/errorProforma');
+  header('Location: '.$_SERVER['HTTP_REFERER'].'/errorProforma');
 }else{
 
     //Ajout d'un objet logs pour tracer l'action de passage du devis en proforma
@@ -204,7 +204,7 @@ if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || i
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
-   // header('Location: '.URLHOST.$_COOKIE['company'].'/proforma/afficher/'.$type2.'/'.$quotationNumber.'/successProforma');
+   header('Location: '.URLHOST.$_COOKIE['company'].'/proforma/afficher/'.$type2.'/'.$quotationNumber.'/successProforma');
 }
 
 ?>
