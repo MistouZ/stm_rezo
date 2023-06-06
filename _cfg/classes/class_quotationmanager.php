@@ -483,7 +483,7 @@ class QuotationManager
             $q->bindValue(':type', $quotation->getType(), PDO::PARAM_STR);
             $q->bindValue(':validatedDate', $quotation->getValidatedDate(), PDO::PARAM_STR);
             $q->execute();
-            return "ok";
+            return $quotation->getQuotationNumber();
         }
         catch(Exception $e){
             return null;
