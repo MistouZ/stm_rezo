@@ -22,7 +22,7 @@ $descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber);
 $date = $_POST['date'];
 
 $data = array(
-    'quotationNumber' => $quotation->getquotationNumber(),
+    'idQuotation' => $quotation->getIdQuotation(),
     'quotationNumber' => $quotation->getQuotationNumber(),
     'status' => 'En cours',
     'label' => $label,
