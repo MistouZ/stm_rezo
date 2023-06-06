@@ -97,6 +97,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
 
     $duplicate = new Quotation($data);
     $newquotationNumber = $quotationmanager->add($duplicate);
+    //ici j'ai créé mon nouveau devis dans la table pour quotation.
 
     //si le devis est déjà partiel, je récupère les données initiales
     if($type3 == "S")
@@ -113,6 +114,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     }
     else
     {
+        //fonctionne bien lors du premier partiel
         $getDescription = $descriptionmanager->getByQuotationNumber($quotationNumber);
         $quotationInit = $quotationGet->getQuotationNumber()."_init";
         $rest = 100 - $percent;
