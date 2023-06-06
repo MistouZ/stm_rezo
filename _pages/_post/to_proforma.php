@@ -74,6 +74,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $counter = new Counter($arraycounter);
     $countermanager = new CounterManager($bdd);
     $counter = $countermanager->getCount($companyId);
+    print_r($counter);
 
     $counterQuotation = $counter->getQuotation();
 
