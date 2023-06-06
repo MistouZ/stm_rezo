@@ -69,11 +69,20 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     $label = $quotationGet->getLabel();
     $type3 = $quotationGet->getType();
 
+    //Récupération du nombre de devis pour créer le nouveau QuotationNumber
+    $arraycounter = array();
+    $counter = new Counter($arraycounter);
+    $countermanager = new CounterManager($bdd);
+    $counter = $countermanager->getCount($companyId);
+
+    $counterQuotation = $counter->getQuotation();
+
     $date = date("Y-m-d");
     $status = "En cours";
     $type = "S"; // shattered quotation
 
     $data = array(
+        'quotationNumber' => $counterQuotation,
         'status' => $status,
         'label' => $label,
         'date' => $date,
