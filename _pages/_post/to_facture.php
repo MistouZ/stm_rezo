@@ -71,7 +71,7 @@ if(is_null($test) || is_null($test2)){
     print_r($counter);
     $countermanager->updateCounter($counter);
 
-    header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.test.'/successFacture');
+    header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$test.'/successFacture');
 }
 
 ?>
