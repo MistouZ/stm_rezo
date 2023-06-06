@@ -41,7 +41,7 @@ $quotationmanager = new QuotationManager($bdd);
 
 $test = $quotationmanager->changeType($quotation);
 if(is_null($test)){
-    //header('Location: '.$_SERVER['HTTP_REFERER'].'/errorFacture');
+    header('Location: '.$_SERVER['HTTP_REFERER'].'/errorFacture');
 }else{
     
     //Ajout d'un objet logs pour tracer l'action de passage en facture de la proforma
@@ -65,7 +65,7 @@ if(is_null($test)){
     print_r($counter);
     $countermanager->updateCounter($counter);
 
-    //header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$idQuotation.'/successFacture');
+    header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$idQuotation.'/successFacture');
 }
 
 ?>
