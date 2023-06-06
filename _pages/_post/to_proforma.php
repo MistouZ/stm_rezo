@@ -224,7 +224,7 @@ if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || i
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
-   //header('Location: '.URLHOST.$_COOKIE['company'].'/proforma/afficher/'.$type2.'/'.$quotationNumber.'/successProforma');
+   header('Location: '.URLHOST.$_COOKIE['company'].'/proforma/afficher/'.$type2.'/'.$quotationNumber.'/successProforma');
 }
 
 ?>
