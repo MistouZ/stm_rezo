@@ -203,7 +203,7 @@ else{
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
 
-    //incrémentation du nombre de devis créer pour la société
+    //incrémentation du nombre de devis créé pour la société
     $counterQuotation = $counterQuotation + 1;
     echo $counterQuotation;
     $counter->setQuotation($counterQuotation);

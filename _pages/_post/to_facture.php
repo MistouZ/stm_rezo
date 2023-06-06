@@ -13,10 +13,14 @@ $type2 = $_POST['type'];
 $array = array();
 $quotationNumber = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-
-
-
 $quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation);
+
+$arraycounter = array();
+$counter = new Counter($arraycounter);
+$countermanager = new CounterManager($bdd);
+$counter = $countermanager->getCount($companyId);
+
+$counterInvoice = $counter->getInvoice();
 
 $date = $_POST['date'];
 
@@ -24,6 +28,7 @@ $today = date("Y-m-d");
 
 $data = array(
     'idQuotation' => $quotationNumber->getIdQuotation(),
+    'quotationNumber' => $counterInvoice,
     'status' => 'En cours',
     'label' => $label,
     'date' => $date,
@@ -45,16 +50,21 @@ if(is_null($test)){
         'username' => $_COOKIE["username"],
         'company' => $companyId,
         'type' => "quotation",
-        'action' => "to_avoir",
+        'action' => "to_facture",
         'id' => $idQuotation,
         'date' => $date
     );
-
-    print_r($arraylogs);
-
     $log = new Logs($arraylogs);
     $logsmgmt = new LogsManager($bdd);
     $logsmgmt = $logsmgmt->add($log);
+
+    //incrémentation du nombre de factures créées pour la société
+    $counterInvoice = $counterInvoice + 1;
+    echo $counterInvoice;
+    $counter->setInvoice($counterInvoice);
+    print_r($counter);
+    $countermanager->updateCounter($counter);
+
     header('Location: '.URLHOST.$_COOKIE['company'].'/facture/afficher/'.$type2.'/'.$idQuotation.'/successFacture');
 }
 
