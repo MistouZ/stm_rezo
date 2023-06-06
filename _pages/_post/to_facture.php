@@ -54,7 +54,7 @@ if(is_null($test) || is_null($test2)){
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
         'username' => $_COOKIE["username"],
-        'company' => $quotationNumber->getCompanyId(),
+        'company' => $quotation->getCompanyId(),
         'type' => "quotation",
         'action' => "to_facture",
         'id' => $quotationNumber,
