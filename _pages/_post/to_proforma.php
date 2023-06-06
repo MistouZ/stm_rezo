@@ -192,7 +192,7 @@ if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || i
     $date = date('Y-m-d H:i:s');
     $arraylogs = array(
         'username' => $_COOKIE["username"],
-        'company' => $companyId,
+        'company' => $quotationGet->getCompanyId(),
         'type' => "quotation",
         'action' => "to_proforma",
         'id' => $quotationNumber,
