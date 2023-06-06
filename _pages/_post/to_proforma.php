@@ -123,6 +123,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     else
     {
         //fonctionne bien lors du premier partiel
+        $quotationNumberInit = $quotationNumber;
         $getDescription = $descriptionmanager->getByQuotationNumber($quotationNumber);
         $quotationInit = $quotationGet->getQuotationNumber()."_init";
         $rest = 100 - $percent;
@@ -149,7 +150,6 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
    
     $test2 = $shatteredQuotationManager->add($shatteredQuotation);
 
-    echo $test2;
     //Copie effectuée sur la description, on a créé l'object devis partiel et on a stocké le pourcentage restant à facturer
     
     $j = 0;
@@ -169,7 +169,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     else{
         $test3 = $descriptionmanager->update($descriptionsReduced,$quotationNumber);
     }
-    echo $test3;
+   
 
     if($rest != 0)
     {   //il reste à facturer alors je stocke les données restantes
@@ -195,7 +195,6 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $test4b = $shatteredQuotationManager->delete($quotationInit);
     }
 
-    echo $test4a." ".$test4b;
 
 
     $data = array(
