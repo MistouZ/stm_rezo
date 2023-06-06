@@ -105,13 +105,14 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         //si le devis est déjà partiel, je récupère les données initiales
         $shatteredQuotationInit = new ShatteredQuotation($array);
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
-        $quotationNumber = $shatteredQuotationInit->getQuotationNumberInit();
+        print_r($sshatteredQuotationInit);
+        /*$quotationNumber = $shatteredQuotationInit->getQuotationNumberInit();
         $quotationNumberChild = $shatteredQuotationInit->getQuotationNumberChild();
         $quotationInit = $quotationNumber."_init";
         $getDescription = $descriptionmanager->getByQuotationNumber($quotationInit);
         $rest = $shatteredQuotationInit->getPercent();
         $rest = $rest - $percent;
-        $idShatteredQuotation = $shatteredQuotationInit->getIdShatteredQuotation();
+        $idShatteredQuotation = $shatteredQuotationInit->getIdShatteredQuotation();*/
     }
     else
     {
@@ -136,8 +137,8 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         'quotationNumberChild' => $newquotationNumber,
         'percent' => $rest
     );
-    $shatteredQuotation = new ShatteredQuotation($dataShattered);
-    $test2 = $shatteredQuotationManager->add($shatteredQuotation);
+    //$shatteredQuotation = new ShatteredQuotation($dataShattered);
+    //$test2 = $shatteredQuotationManager->add($shatteredQuotation);
 
     //Copie effectuée sur la description, on a créé l'object devis partiel et on a stocké le pourcentage restant à facturer
 
