@@ -102,6 +102,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     
     if($type3 == "S")
     {
+        echo $quotationNumber;
         //si le devis est déjà partiel, je récupère les données initiales
         $shatteredQuotationInit = new ShatteredQuotation($array);
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
