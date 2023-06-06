@@ -308,6 +308,7 @@ if(isset($_GET['cat5'])){
                         <div class="col-md-3 value"> <?php echo number_format($totalTaxe,0,","," "); ?> XPF</div>
                     </div>
                     <?php 
+                        print_r($arrayTaxesKey);
                         foreach($arrayTaxesKey as $key => $value){ 
                             if($arrayTaxesKey[$key]["Montant"]>0){
                     ?>
