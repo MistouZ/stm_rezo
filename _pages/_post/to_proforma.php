@@ -72,10 +72,9 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     //Récupération du nombre de devis pour créer le nouveau QuotationNumber
     $arraycounter = array();
     $counter = new Counter($arraycounter);
-    print_r($counter);
     $countermanager = new CounterManager($bdd);
     $counter = $countermanager->getCount($companyId);
-    print_r($counter);
+    
 
     $counterQuotation = $counter->getQuotation();
     echo "counter quotation : ".$counter->getQuotation();
