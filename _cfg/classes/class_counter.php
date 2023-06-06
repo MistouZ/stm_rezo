@@ -1,7 +1,7 @@
 <?php
 
   class Counter extends Features{
-    private $company_idcompany;
+    private $company;
     private $folder;
     private $quotation;
     private $invoice;
