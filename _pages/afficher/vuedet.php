@@ -152,15 +152,15 @@ if(isset($_GET['cat5'])){
                     </div>
                     <div class="portlet-body">
                         <div class="row static-info">
-                            <div class="col-md-5 name"> <?php echo ucwords($type); ?>: </div>
+                            <div class="col-md-5 name"> <?php echo ucwords($type); ?> : </div>
                             <div class="col-md-7 value"> <?php echo $quotation->getQuotationNumber(); ?></div>
                         </div>
                         <div class="row static-info">
-                            <div class="col-md-5 name"> Date: </div>
+                            <div class="col-md-5 name"> Date : </div>
                             <div class="col-md-7 value"> <?php echo $date; ?> <a data-toggle="modal" href="#modif_date" ><i class="fas fa-edit"></i></a></div>
                         </div>
                         <div class="row static-info">
-                            <div class="col-md-5 name"> Dossier N°: </div>
+                            <div class="col-md-5 name"> Dossier N° : </div>
                             <div class="col-md-7 value"><?php echo $folder->getFolderNumber(); ?></div>
                         </div>
                         <div class="row static-info">
