@@ -11,9 +11,9 @@ $quotationNumber = $_POST['quotationNumber'];
 $type2 = $_POST['type'];
 
 $array = array();
-$quotationNumber = new Quotation($array);
+$quotation = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-$quotationNumber = $quotationmanagerNumber->getByQuotationNumber($quotationNumber);
+$quotation = $quotationmanagerNumber->getByQuotationNumber($quotationNumber);
 
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
@@ -31,7 +31,7 @@ $date = $_POST['date'];
 $today = date("Y-m-d");
 
 $data = array(
-    'quotationNumber' => $quotationNumber->getquotationNumber(),
+    'quotationNumber' => $quotation->getquotationNumber(),
     'quotationNumber' => $counterInvoice,
     'status' => 'En cours',
     'label' => $quotationNumber->getLabel(),
