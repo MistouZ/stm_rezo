@@ -192,27 +192,26 @@ foreach ($customermanager as $customer) {
                                                     ?>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3" for="seller-select">Commercial
-                                                <span class="required"> * </span>
-                                            </label>
-                                            <div class="col-md-4">
-                                                <select id="seller-select" name="seller-select" class="form-control">
-                                                    <option value="">--Choississez le commercial--</option>
-                                                    <?php
-                                                        foreach ($usermanager as $user)
-                                                        {
-                                                            if($user->getIsSeller() == 1)
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3" for="seller-select">Commercial
+                                                    <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-4">
+                                                    <select id="seller-select" name="seller-select" class="form-control">
+                                                        <option value="">--Choississez le commercial--</option>
+                                                        <?php
+                                                            foreach ($usermanager as $user)
                                                             {
-                                                                echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                                if($user->getIsSeller() == 1)
+                                                                {
+                                                                    echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                                }
                                                             }
-                                                        }
-                                                    ?>
-                                                </select>
+                                                        ?>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                                    </div>
                                     </div>
                                 </div>
                             </div>
