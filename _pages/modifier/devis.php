@@ -47,6 +47,7 @@ $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
 $descriptionsOption = $descriptionmanager->getOption($quotation->getQuotationNumber());
 $contact = $contactmanager->getById($quotation->getContactId());
+$usermanager = $usermanager->getListByCompany($company->getIdcompany());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 $costmanager = $costmanager->getByQuotationNumber($quotation->getQuotationNumber());
@@ -194,9 +195,12 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                                         <?php
                                                             foreach ($usermanager as $user)
                                                             {
-                                                                if($user->getIsSeller() == 1)
-                                                                {
-                                                                    echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                                if($user->getIsSeller() == 1){
+                                                                    if($user->getUsername() == $quotation->getSeller()){
+                                                                        echo "<option value=".$user->getUsername()." selected=\"selected\">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                                    }else{
+                                                                        echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                                    }
                                                                 }
                                                             }
                                                         ?>
