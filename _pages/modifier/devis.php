@@ -47,10 +47,10 @@ $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
 $descriptionsOption = $descriptionmanager->getOption($quotation->getQuotationNumber());
 $contact = $contactmanager->getById($quotation->getContactId());
-$usermanager = $usermanager->getListByCompany($company->getIdcompany());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 $costmanager = $costmanager->getByQuotationNumber($quotation->getQuotationNumber());
+$usermanager = $usermanager->getListByCompany($company->getIdcompany());
 
 $suppliermanager = $suppliermanager->getListAllByCompany($company->getIdcompany());
 
