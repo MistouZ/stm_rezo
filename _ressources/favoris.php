@@ -23,6 +23,9 @@ $company = $companymanager->getByNameData($companyNameData);
 //$foldermanager = $foldermanager->getListByUser($username, $company->getIdcompany());
 $quotations = $quotationmanager->getListByUser($username, $company->getIdcompany());
 
+echo $username;
+echo $company->getIdcompany();
+
 ?>
 
 

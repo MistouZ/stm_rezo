@@ -348,7 +348,7 @@ class QuotationManager
         try{
             $quotations = [];
 
-            $q=$this->_db->query("SELECT * FROM quotation WHERE seller='".$username."' AND companyId=$companyid AND isActive ='1' ORDER BY folderNumber DESC ");
+            $q=$this->_db->query("SELECT * FROM quotation WHERE seller='".$username."' AND companyId='$companyid' AND isActive ='1' ORDER BY folderNumber DESC ");
             while($donnees = $q->fetch(PDO::FETCH_ASSOC))
             {
                 $quotations[] = new Quotation($donnees);
