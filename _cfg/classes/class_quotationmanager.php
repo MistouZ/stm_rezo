@@ -340,6 +340,28 @@ class QuotationManager
     }
 
     /**
+     * Get all the active folder in the BDD for the user
+     * @return array
+     */
+    /ublic function getListByUser($companyid, $username)
+    {
+        try{
+            $quotations = [];
+
+            $q=$this->_db->query("SELECT * FROM quotation WHERE seller='".$username."' AND companyId=$companyid AND isActive ='1' ORDER BY folderNumber DESC ");
+            while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+            {
+                $quotations[] = new Quotation($donnees);
+            }
+
+            return $quotations;
+        }
+        catch(Exception $e){
+            return null;
+        }
+    }*/
+
+    /**
      * Get all the invoice in the BDD from Filtered Folders
      * @return array
      */
