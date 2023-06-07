@@ -17,6 +17,7 @@ $folderId = $folder->getIdFolder();
 $companyId = $folder->getCompanyId();
 $customerId = $_POST["customer-select"];
 $contactId = $_POST["contact-select"];
+$seller = $_POST["seller-select"];
 
 $arraycounter = array();
 $counter = new Counter($arraycounter);
@@ -46,6 +47,7 @@ $date = date("Y-m-d");
 $status = "En cours";
 $type = "D";
 
+
 $data = array(
     'quotationNumber' => $counterQuotation,
     'status' => $status,
@@ -55,6 +57,7 @@ $data = array(
     'comment' => $comment,
     'folderId' => $folderId,
     'companyId' => $companyId,
+    'seller' => $seller,
     'customerId' => $customerId,
     'contactId' => $contactId
 );

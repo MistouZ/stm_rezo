@@ -15,7 +15,6 @@ class Folder extends Features
     private $date;
     private $description;
     private $companyId;
-    private $seller;
 
     /**
      * Folder constructor.
@@ -137,20 +136,6 @@ class Folder extends Features
         $this->companyId = $companyId;
     }
     
-     /**
-     * @return mixed
-     */
-    public function getSeller()
-    {
-        return $this->seller;
-    }
-
-    /**
-     * @param mixed $seller
-     */
-    public function setSeller($seller)
-    {
-        $this->seller = $seller;
-    }
+     
 
 }

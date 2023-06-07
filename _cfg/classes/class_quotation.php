@@ -15,6 +15,7 @@ class Quotation extends Features
     private $date;
     private $type;
     private $companyId;
+    private $seller;
     private $folderId;
     private $customerId;
     private $contactId;
@@ -155,6 +156,22 @@ class Quotation extends Features
     public function setCompanyId($companyId)
     {
         $this->companyId = $companyId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSeller()
+    {
+        return $this->seller;
+    }
+
+    /**
+     * @param mixed $seller
+     */
+    public function setSeller($seller)
+    {
+        $this->seller = $seller;
     }
 
     /**

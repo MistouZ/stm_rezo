@@ -30,6 +30,7 @@ $company = $companymanager->getByNameData($companyNameData);
 $idCompany = $company->getIdcompany();
 $foldermanager = $foldermanager->getListActive($idCompany);
 $customermanager = $customermanager->getListByCompany($company->getIdcompany());
+$usermanager = $usermanager->getListByCompany($company->getIdcompany());
 
 $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
@@ -195,6 +196,25 @@ foreach ($customermanager as $customer) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-3" for="seller-select">Commercial
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <select id="seller-select" name="seller-select" class="form-control">
+                                    <option value="">--Choississez le commercial--</option>
+                                    <?php
+                                        foreach ($usermanager as $user)
+                                        {
+                                            if($user->getIsSeller() == 1)
+                                            {
+                                                echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                             <!--<div id="infos" class="row form-section" style="margin: 10px 0px 0px 0px !important;">-->
                                 <div class="col-md-12">
                                     <div class="portlet box purple-sharp" style="margin-bottom: 0px !important;">

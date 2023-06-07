@@ -17,7 +17,7 @@ $usermanager = new UsersManager($bdd);
 
 /*récupération des objets en base*/
 $company = $companymanager->getByNameData($companyNameData);
-$usermanager = $usermanager->getListByCompany($company->getIdcompany());
+//$usermanager = $usermanager->getListByCompany($company->getIdcompany());
 
 ?>
 
@@ -52,25 +52,6 @@ $usermanager = $usermanager->getListByCompany($company->getIdcompany());
                             </label>
                             <div class="col-md-4">
                                 <input name="description" id="description" type="text" class="form-control" /> </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3" for="seller-select">Commercial
-                                <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                                <select id="seller-select" name="seller-select" class="form-control">
-                                    <option value="">--Choississez le commercial--</option>
-                                    <?php
-                                        foreach ($usermanager as $user)
-                                        {
-                                            if($user->getIsSeller() == 1)
-                                            {
-                                                echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
                         </div>
                     <div class="form-actions">
                         <div class="row">

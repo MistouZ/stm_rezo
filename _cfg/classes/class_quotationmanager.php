@@ -52,7 +52,7 @@ class QuotationManager
         $quotation->setDate(date('Y-m-d',strtotime(str_replace('/','-',$quotation->getDate()))));
 
         try{
-            $q = $this->_db->prepare('INSERT INTO quotation (quotationNumber, status, label, date, type, comment, companyId,folderId,customerId, contactId) VALUES (:quotationNumber, :status, :label, :date, :type, :comment, :companyId, :folderId, :customerId, :contactId)');
+            $q = $this->_db->prepare('INSERT INTO quotation (quotationNumber, status, label, date, type, comment, companyId, seller,folderId,customerId, contactId) VALUES (:quotationNumber, :status, :label, :date, :type, :comment, :companyId, :seller, :folderId, :customerId, :contactId)');
             $q->bindValue(':quotationNumber', $quotation->getQuotationNumber(), PDO::PARAM_INT);
             $q->bindValue(':label', $quotation->getLabel(), PDO::PARAM_STR);
             $q->bindValue(':status', $quotation->getStatus(), PDO::PARAM_STR);
@@ -60,6 +60,7 @@ class QuotationManager
             $q->bindValue(':type', $quotation->getType(), PDO::PARAM_STR);
             $q->bindValue(':comment', $quotation->getComment(), PDO::PARAM_STR);
             $q->bindValue(':companyId', $quotation->getCompanyId(), PDO::PARAM_INT);
+            $q->bindValue(':seller', $folder->getSeller(), PDO::PARAM_STR);
             $q->bindValue(':folderId', $quotation->getFolderId(), PDO::PARAM_INT);
             $q->bindValue(':customerId', $quotation->getCustomerId(), PDO::PARAM_INT);
             $q->bindValue(':contactId', $quotation->getContactId(), PDO::PARAM_INT);
@@ -437,7 +438,7 @@ class QuotationManager
     {
         try{
 
-            $q = $this->_db->prepare('UPDATE quotation SET status = :status, label = :label, date= :date, type = :type, comment = :comment, companyId = :companyId, folderId = :folderId, customerId = :customerId, contactId = :contactId WHERE idQuotation= :idQuotation');
+            $q = $this->_db->prepare('UPDATE quotation SET status = :status, label = :label, date= :date, type = :type, comment = :comment, companyId = :companyId, seller = :seller,folderId = :folderId, customerId = :customerId, contactId = :contactId WHERE idQuotation= :idQuotation');
             $q->bindValue(':idQuotation', $quotation->getIdQuotation(), PDO::PARAM_INT);
             $q->bindValue(':label', $quotation->getLabel(), PDO::PARAM_STR);
             $q->bindValue(':status', $quotation->getStatus(), PDO::PARAM_STR);
@@ -445,6 +446,7 @@ class QuotationManager
             $q->bindValue(':type', $quotation->getType(), PDO::PARAM_STR);
             $q->bindValue(':comment', $quotation->getComment(), PDO::PARAM_STR);
             $q->bindValue(':companyId', $quotation->getCompanyId(), PDO::PARAM_INT);
+            $q->bindValue(':seller', $folder->getSeller(), PDO::PARAM_STR);
             $q->bindValue(':folderId', $quotation->getFolderId(), PDO::PARAM_INT);
             $q->bindValue(':customerId', $quotation->getCustomerId(), PDO::PARAM_INT);
             $q->bindValue(':contactId', $quotation->getContactId(), PDO::PARAM_INT);
