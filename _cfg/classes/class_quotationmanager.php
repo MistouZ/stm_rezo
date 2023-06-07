@@ -343,7 +343,7 @@ class QuotationManager
      * Get all the active folder in the BDD for the user
      * @return array
      */
-    /ublic function getListByUser($companyid, $username)
+    public function getListByUser($companyid, $username)
     {
         try{
             $quotations = [];
@@ -359,7 +359,7 @@ class QuotationManager
         catch(Exception $e){
             return null;
         }
-    }*/
+    }
 
     /**
      * Get all the invoice in the BDD from Filtered Folders
