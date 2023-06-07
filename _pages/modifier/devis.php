@@ -47,7 +47,7 @@ $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
 $descriptionsOption = $descriptionmanager->getOption($quotation->getQuotationNumber());
 $contact = $contactmanager->getById($quotation->getContactId());
-$user = $usermanager->get($folderRecup->getSeller());
+$user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 $costmanager = $costmanager->getByQuotationNumber($quotation->getQuotationNumber());
 
@@ -130,7 +130,6 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                                     </div>
                                                     <div class="portlet-body" style="display: block;">
                                                         <h5 style="font-weight: 800;">Société : <span id="spanCompany"><?php echo $company->getName(); ?></span></h5>
-                                                        <h5 style="font-weight: 800;">Comercial : <span id="spanSeller"><?php echo $user->getName()." ".$user->getFirstName() ?></span></h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,6 +153,28 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="seller-select">Commercial
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <select id="seller-select" name="seller-select" class="form-control">
+                                    <option value="">--Choississez le commercial--</option>
+                                    <?php
+                                        foreach ($usermanager as $user)
+                                        {
+                                            if($user->getIsSeller() == 1){
+                                                if($user->getUsername() == $quotation->getSeller()){
+                                                    echo "<option value=".$user->getUsername()." selected=\"selected\">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                }else{
+                                                    echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <div class="row" id="detaildevis">
