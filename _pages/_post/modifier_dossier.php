@@ -14,7 +14,6 @@ if(isset($_POST['valider'])){
     $folderNumber = $_POST['folderNumber'];
     $label = $_POST["label"];
     $description = $_POST["description"];
-    $seller = $_POST["seller-select"];
     $date = date("Y-m-d");
     $companyId = $_POST["idcompany"];
 
@@ -26,7 +25,6 @@ if(isset($_POST['valider'])){
         'date' => $date,
         'isActive' => $isActive,
         'description' => $description,
-        'seller' => $seller,
         'companyId' => $companyId
     );
 

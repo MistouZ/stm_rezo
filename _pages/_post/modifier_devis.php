@@ -25,6 +25,7 @@ $quotationmanager = new QuotationManager($bdd);
 $quotationGet = $quotationmanager->getByQuotationNumber($quotationNumber);
 $customerId = $quotationGet->getCustomerId();
 $contactId = $quotationGet->getContactId();
+$seller = $_POST["seller-select"];
 
 if(empty($_POST["label"]))
 {
@@ -57,6 +58,7 @@ $data = array(
     'comment' => $comment,
     'folderId' => $folderId,
     'companyId' => $companyId,
+    'seller' => $seller,
     'customerId' => $customerId,
     'contactId' => $contactId
 );
