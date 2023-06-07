@@ -24,14 +24,8 @@ $quotationmanager = new QuotationManager($bdd);
 $company = $companymanager->getByNameData($companyNameData);
 
 $verif= $_GET['soussoussouscat'];
+$retour = $verif;
 
-if($verif != $username){
-    $retour = $verif;
-}
-else{
-    $folder2 = new Folder($array);
-    $foldermanager2 = new FoldersManager($bdd);
-}
 
 switch($type){
     case "devis":
