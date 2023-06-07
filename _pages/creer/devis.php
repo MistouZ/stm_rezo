@@ -192,25 +192,6 @@ foreach ($customermanager as $customer) {
                                                     ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3" for="seller-select">Commercial
-                                                    <span class="required"> * </span>
-                                                </label>
-                                                <div class="col-md-4">
-                                                    <select id="seller-select" name="seller-select" class="form-control">
-                                                        <option value="">--Choississez le commercial--</option>
-                                                        <?php
-                                                            foreach ($usermanager as $user)
-                                                            {
-                                                                if($user->getIsSeller() == 1)
-                                                                {
-                                                                    echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
-                                                                }
-                                                            }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -270,8 +251,26 @@ foreach ($customermanager as $customer) {
                                             <div class="tools">
                                                 <a href="" class="collapse" data-original-title="" title=""> </a>
                                             </div>
-                                        </div>
+                                        </div>                                        
                                         <div class="portlet-body form" style="display: block;">
+                                            <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
+                                                <label class="col-md-2 control-label">Commercial <span class="required"> * </span>
+                                                </label>
+                                                <div class="col-md-6">
+                                                    <select id="seller-select" name="seller-select" class="form-control">
+                                                        <option value="">--Choississez le commercial--</option>
+                                                        <?php
+                                                            foreach ($usermanager as $user)
+                                                            {
+                                                                if($user->getIsSeller() == 1)
+                                                                {
+                                                                    echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
+                                                                }
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
                                                 <label class="col-md-2 control-label">Libellé du devis
                                                 </label>
