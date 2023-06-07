@@ -58,28 +58,7 @@ $usermanager = $usermanager->getListByCompany($company->getIdcompany());
                             <div class="col-md-4">
                                 <input name="description" id="description" type="text" class="form-control" value="<?php echo $folder->getDescription(); ?>" /> </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3" for="seller-select">Commercial
-                                <span class="required"> * </span>
-                            </label>
-                            <div class="col-md-4">
-                                <select id="seller-select" name="seller-select" class="form-control">
-                                    <option value="">--Choississez le commercial--</option>
-                                    <?php
-                                        foreach ($usermanager as $user)
-                                        {
-                                            if($user->getIsSeller() == 1){
-                                                if($user->getUsername() == $folder->getSeller()){
-                                                    echo "<option value=".$user->getUsername()." selected=\"selected\">".$user->getFirstName()." ".$user->getName()."</option>";
-                                                }else{
-                                                    echo "<option value=".$user->getUsername().">".$user->getFirstName()." ".$user->getName()."</option>";
-                                                }
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
+                        
                      <input type="hidden" id="idFolder" name="idFolder" value="<?php echo $idFolder; ?>">
                      <input type="hidden" id="folderNumber" name="folderNumber" value="<?php echo $folder->getFolderNumber(); ?>">
                     <div class="form-actions">
