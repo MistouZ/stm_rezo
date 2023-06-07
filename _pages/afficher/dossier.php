@@ -33,7 +33,6 @@ $suppliermanager = new SuppliersManager($bdd);
 $folder = $foldermanager->get($folderId);
 
 $company = $companymanager->getByNameData($companyNameData);
-$user = $usermanager->get($folder->getSeller());
 //$customer = $customermanager->getById($folder->getCustomerId());
 //$contact = $contactmanager->getById($folder->getContactId());
 $quotations = $quotationmanager->getByFolderId($folderId);
@@ -103,10 +102,6 @@ switch($type){
                             <div class="col-md-7 value"> <?php echo $folder->getLabel(); ?> </div>
                         </div>
                         <div class="row static-info">
-                            <div class="col-md-5 name"> Commercial : </div>
-                            <div class="col-md-7 value"> <?php echo $user->getName().' '.$user->getFirstName(); ?> </div>
-                        </div>
-                        <div class="row static-info">
                             <div class="col-md-5 name">&nbsp;</div>
                             <div class="col-md-7 value">&nbsp;</div>
                         </div>
@@ -129,6 +124,7 @@ switch($type){
                             <th class="all">Date</th>
                             <th class="min-phone-l">Numéro de devis</th>
                             <th class="desktop">Client</th>
+                            <th class="desktop">Commercial</th>            
                             <th class="none">Montant total</th>
                             <th class="desktop">Détail</th>
                             <th class="desktop">Modifier</th>
@@ -138,6 +134,8 @@ switch($type){
                         <tbody>
                         <?php
                         foreach($quotations as $quotation){
+                            $user = $usermanager->get($quotation->getSeller());
+
                             if($quotation->getType() == "D") {
                                 $type = "devis";
                                 if($quotation->getStatus() == "En cours"){
@@ -158,6 +156,7 @@ switch($type){
                                 <td><?php echo $date; ?></td>
                                 <td><?php echo $quotation->getQuotationNumber(); ?></td>
                                 <td><?php $customer = $customermanager->getById($quotation->getCustomerId()); echo $customer->getName(); ?></td>
+                                <td><?php echo $user->getName().' '.$user->getFirstName(); ?></td>
                                 <td><?php echo number_format($montant, 0, ",", " "); ?> XPF</td>
                                 <td><a class="btn green-meadow"
                                        href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i
@@ -196,6 +195,7 @@ switch($type){
                             <th class="all">Date</th>
                             <th class="min-phone-l">Numéro de proforma</th>
                             <th class="desktop">Client</th>
+                            <th class="desktop">Commercial</th>
                             <th class="none">Montant total</th>
                             <th class="desktop">Détail</th>
                             <th class="desktop">Modifier</th>
@@ -205,6 +205,7 @@ switch($type){
                         <tbody>
                         <?php
                         foreach($quotations as $quotation){
+                            $user = $usermanager->get($quotation->getSeller());
                             if($quotation->getType() == "P") {
                                 $type = "proforma";
                                 if($quotation->getStatus() == "En cours"){
@@ -225,6 +226,7 @@ switch($type){
                                     <td><?php echo $date; ?></td>
                                     <td><?php echo $quotation->getQuotationNumber(); ?></td>
                                     <td><?php $customer = $customermanager->getById($quotation->getCustomerId()); echo $customer->getName(); ?></td>
+                                    <td><?php echo $user->getName().' '.$user->getFirstName(); ?></td>
                                     <td><?php echo number_format($montant, 0, ",", " "); ?> XPF</td>
                                     <td><a class="btn green-meadow"
                                            href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i
@@ -264,6 +266,7 @@ switch($type){
                             <th class="all">Date</th>
                             <th class="min-phone-l">Numéro de facture</th>
                             <th class="desktop">Client</th>
+                            <th class="desktop">Commercial</th>
                             <th class="none">Montant total</th>
                             <th class="desktop">Détail</th>
                             <th class="desktop">Modifier</th>
@@ -273,6 +276,7 @@ switch($type){
                         <tbody>
                         <?php
                         foreach($quotations as $quotation){
+                            $user = $usermanager->get($quotation->getSeller());
                             if($quotation->getType() == "F") {
                                 $type = "facture";
                                 if($quotation->getStatus() == "En cours"){
@@ -293,6 +297,7 @@ switch($type){
                                     <td><?php echo $date; ?></td>
                                     <td><?php echo $quotation->getQuotationNumber(); ?></td>
                                     <td><?php $customer = $customermanager->getById($quotation->getCustomerId()); echo $customer->getName(); ?></td>
+                                    <td><?php echo $user->getName().' '.$user->getFirstName(); ?></td>
                                     <td><?php echo number_format($montant, 0, ",", " "); ?> XPF</td>
                                     <td><a class="btn green-meadow"
                                            href="<?php echo URLHOST . $_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'. $quotation->getQuotationNumber(); ?>"><i
@@ -332,6 +337,7 @@ switch($type){
                             <th class="all">Date</th>
                             <th class="min-phone-l">Numéro d'avoir</th>
                             <th class="desktop">Client</th>
+                            <th class="desktop">Commercial</th>
                             <th class="none">Montant total</th>
                             <th class="desktop">Détail</th>
                             <th class="desktop">Modifier</th>
@@ -341,6 +347,7 @@ switch($type){
                         <tbody>
                         <?php
                         foreach($quotations as $quotation){
+                            $user = $usermanager->get($quotation->getSeller());
                             if($quotation->getType() == "A") {
                                 $type = "avoir";
                                 if($quotation->getStatus() == "En cours"){
@@ -361,6 +368,7 @@ switch($type){
                                     <td><?php echo $date; ?></td>
                                     <td><?php echo $quotation->getQuotationNumber(); ?></td>
                                     <td><?php $customer = $customermanager->getById($quotation->getCustomerId()); echo $customer->getName(); ?></td>
+                                    <td><?php echo $user->getName().' '.$user->getFirstName(); ?></td>
                                     <td><?php echo number_format($montant, 0, ",", " "); ?> XPF</td>
                                     <td><a class="btn green-meadow"
                                            href="<?php echo URLHOST . $_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'. $quotation->getQuotationNumber(); ?>"><i
