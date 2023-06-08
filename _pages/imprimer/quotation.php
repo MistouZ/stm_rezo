@@ -61,7 +61,7 @@ $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
 $contact = $contactmanager->getById($quotation->getContactId());
-$user = $usermanager->get($folder->getSeller());
+$user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 if($quotation->getType() == "S")
 {
