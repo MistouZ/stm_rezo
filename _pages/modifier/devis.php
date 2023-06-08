@@ -109,7 +109,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                                                             <?php
                                                         }else{
                                                             ?>
-                                                            <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber()." ".$folder->getLabel()." (".strtoupper($customer->getName()).")"; ?></option>
+                                                            <option value="<?php echo $folder->getIdFolder(); ?>">N° <?php echo $folder->getFolderNumber(); ?></option>
                                                             <?php
                                                         }
                                                     }
