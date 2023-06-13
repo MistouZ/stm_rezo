@@ -330,7 +330,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
         text-align: center;
     }
     .page-template .footer {
-        bottom: 10px;
+        bottom: 0px;
         /*border-top: 1px solid #000;*/
         text-align: center;
     }
