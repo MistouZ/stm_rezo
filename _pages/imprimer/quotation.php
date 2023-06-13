@@ -278,7 +278,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
         </div>
         <div class="footer">
             <h5> #:pageNum# / #:totalPages# </h5>
-            <img src="<?php echo URLHOST; ?>images/societe/footers/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>" style="max-height: 40px;" />
+            <img src="<?php echo URLHOST; ?>images/societe/footers/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>"  style="max-height: 40px;" />
         </div>
     </div>
 </script>
@@ -330,7 +330,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
         text-align: center;
     }
     .page-template .footer {
-        /*bottom: 20px;*/
+        bottom: 20px;
         border-top: 1px solid #000;
         text-align: center;
     }
