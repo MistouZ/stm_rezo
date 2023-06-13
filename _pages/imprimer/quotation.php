@@ -277,7 +277,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
             <img src="<?php echo URLHOST; ?>images/societe/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>" class="logo-default" style="max-height: 60px;" />
         </div>
         <div class="footer">
-            <img src="<?php echo URLHOST; ?>images/societe/footers/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>"  style="max-height: 40px;" />
+            <img src="<?php echo URLHOST; ?>images/societe/footers/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>"   />
             <h5> #:pageNum# / #:totalPages# </h5>            
         </div>
     </div>
