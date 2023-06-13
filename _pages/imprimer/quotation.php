@@ -331,8 +331,11 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
     }
     .page-template .footer {
         bottom: 20px;
-        /*border-top: 1px solid #000;*/
-        text-align: center;
+        /*border-top: 1px solid #000;
+        text-align: center;*/
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
     }
 
     .fas{
