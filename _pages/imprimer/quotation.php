@@ -198,7 +198,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                     </div>
                 </div>
             </div>
-            <div class="row" style="bottom : 5px;" >
+            <div class="row">
                 <div style="font-size: 11px; font-weight: bold; text-align: center">
                     Option de paiement de la TGC sur les débits conformément à l'article Lp 500-2 du codes des impôts de la Nouvelle-Calédonie.
                 </div>
@@ -289,7 +289,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
 <script type="x/kendo-template" id="page-template">
     <div class="page-template">
         <div class="header" >
-            <img src="<?php echo URLHOST; ?>images/societe/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>" class="logo-default" style="max-height: 90px;" />
+            <img src="<?php echo URLHOST; ?>images/societe/<?php echo $companyNameData; ?>.jpg" alt="<?php if($type != "facture"){echo $companyNameData;} ?>" class="logo-default" style="max-height:80px;" />
         </div>
         <div class="footer">
             <h5> #:pageNum# / #:totalPages# </h5>  
