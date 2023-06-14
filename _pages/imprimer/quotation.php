@@ -209,7 +209,9 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                 <?php if ($type == "devis"){
                 ?>
                 <div class="row">
-                    <div class="col-md-6">Le client</div>  
+                    <div class="col-md-6">Le client</div>
+                </div>
+                <div class="row">  
                     <div class="col-md-6" style="font-style: italic;">"Bon pour accord"</div>
                 </div>
                 <?php
