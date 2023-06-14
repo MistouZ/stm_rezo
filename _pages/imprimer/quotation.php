@@ -202,7 +202,6 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                         Option de paiement de la TGC sur les débits conformément à l'article Lp 500-2 du codes des impôts de la Nouvelle-Calédonie.
                     </div>
                 </div>
-                                    </div>
             </div>
         </div>
         <div class="row">
