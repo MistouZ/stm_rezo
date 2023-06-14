@@ -228,7 +228,9 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
             </div>
         </div>
         <div class="row">
-            Option de paiement de la TGC sur les débits conformément à l'article Lp 500-2 du codes des impôts de la Nouvelle-Calédonie.
+            <div class="col-md-6">
+                Option de paiement de la TGC sur les débits conformément à l'article Lp 500-2 du codes des impôts de la Nouvelle-Calédonie.
+            </div>
         </div>
         <?php if ($type == "devis"){
             ?>
@@ -239,7 +241,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6"></div> Le client 
+            <div class="col-md-6">Le client</div>  
             <div class="col-md-6" style="font-size: 10px; font-style: italic;">
                 "Bon pour accord"
             </div>
