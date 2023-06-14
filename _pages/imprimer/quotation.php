@@ -228,7 +228,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="font-size: 8px; font-style: bold;">
+            <div class="col-md-18" style="font-size: 13px; font-style: bold;">
                 Option de paiement de la TGC sur les débits conformément à l'article Lp 500-2 du codes des impôts de la Nouvelle-Calédonie.
             </div>
         </div>
