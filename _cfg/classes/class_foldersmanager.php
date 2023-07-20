@@ -160,7 +160,7 @@ class FoldersManager
         try{
             $folders = [];
 
-            $q=$this->_db->query("SELECT * FROM folder WHERE seller='".$username."' AND companyId=$companyid AND isActive ='1' ORDER BY folderNumber DESC ");
+            $q=$this->_db->query("SELECT * FROM folder WHERE companyId='".$companyid."' AND isActive ='1' ORDER BY folderNumber DESC ");
             while($donnees = $q->fetch(PDO::FETCH_ASSOC))
             {
                 $folders[] = new Folder($donnees);
@@ -213,7 +213,7 @@ class FoldersManager
 
             $folders = [];
 
-            $q=$this->_db->query("SELECT * FROM folder WHERE date BETWEEN '".$datefrom."' AND '".$dateto."' AND companyId='".$companyid."' AND seller='".$username."' AND  isActive ='1' ORDER BY folderNumber ASC");
+            $q=$this->_db->query("SELECT * FROM folder WHERE date BETWEEN '".$datefrom."' AND '".$dateto."' AND companyId='".$companyid."' AND  isActive ='1' ORDER BY folderNumber ASC");
             while($donnees = $q->fetch(PDO::FETCH_ASSOC))
             {
                 $folders[] = new Folder($donnees);
