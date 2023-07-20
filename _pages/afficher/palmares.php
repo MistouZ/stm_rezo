@@ -111,7 +111,7 @@ if(isset($_POST['valider'])) {
 
                     print_r($quotations);
 
-                    foreach($quotations as $quotation){
+                    /*foreach($quotations as $quotation){
                         $j = $quotation->getFolderId();
 
                         // $customer = $customermanager->getById($quotation->getCustomerId());
@@ -182,7 +182,7 @@ if(isset($_POST['valider'])) {
                         $costsFolder = $costsFolder->getByFolderId($j);
                         $TotalCostFolder = 0;
                         /*récupérer les cout sur le dossier */
-                        foreach ($costsFolder as $costFolder) {
+                        /*foreach ($costsFolder as $costFolder) {
                             $TotalCostFolder = calculCoutTotal($costFolder, $TotalCostFolder);
                         }
                         if($i == $j && $k == 0){
@@ -224,7 +224,7 @@ if(isset($_POST['valider'])) {
                             <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/dossier/afficher/'.$folder->getIdFolder(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
                         </tr>
                         <?php
-                    }
+                    }*/
                     ?>
                     </tbody>
                 </table>
