@@ -54,8 +54,6 @@ if(isset($_POST['valider'])) {
         $filteredFolder = $foldermanager->getListByDateAndUser($idCompany,$seller,$datefrom,$dateto);
     }
 
-    print_r($filteredFolder);
-
     if ($type == "devis") {
         $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
         $enteteIcon = '<i class="fas fa-chart-pie"></i>';
@@ -108,10 +106,7 @@ if(isset($_POST['valider'])) {
                     $TotalPalmaresDossier[$k] = 0;
                     $TotalCoutDossier[$k] = 0;
                     $InvoiceFolderList[$k] = "";
-
-                    print_r($quotations);
-
-                    /*foreach($quotations as $quotation){
+                    foreach($quotations as $quotation){
                         $j = $quotation->getFolderId();
 
                         // $customer = $customermanager->getById($quotation->getCustomerId());
@@ -182,7 +177,7 @@ if(isset($_POST['valider'])) {
                         $costsFolder = $costsFolder->getByFolderId($j);
                         $TotalCostFolder = 0;
                         /*récupérer les cout sur le dossier */
-                        /*foreach ($costsFolder as $costFolder) {
+                        foreach ($costsFolder as $costFolder) {
                             $TotalCostFolder = calculCoutTotal($costFolder, $TotalCostFolder);
                         }
                         if($i == $j && $k == 0){
@@ -224,7 +219,7 @@ if(isset($_POST['valider'])) {
                             <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/dossier/afficher/'.$folder->getIdFolder(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
                         </tr>
                         <?php
-                    }*/
+                    }
                     ?>
                     </tbody>
                 </table>
