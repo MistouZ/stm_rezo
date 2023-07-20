@@ -54,6 +54,8 @@ if(isset($_POST['valider'])) {
         $filteredFolder = $foldermanager->getListByDateAndUser($idCompany,$seller,$datefrom,$dateto);
     }
 
+    print_r($filteredFolder);
+
     if ($type == "devis") {
         $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
         $enteteIcon = '<i class="fas fa-chart-pie"></i>';
@@ -106,6 +108,9 @@ if(isset($_POST['valider'])) {
                     $TotalPalmaresDossier[$k] = 0;
                     $TotalCoutDossier[$k] = 0;
                     $InvoiceFolderList[$k] = "";
+
+                    print_r($quotations);
+
                     foreach($quotations as $quotation){
                         $j = $quotation->getFolderId();
 
