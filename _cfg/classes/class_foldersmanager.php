@@ -204,7 +204,7 @@ class FoldersManager
      * Get all the active folder in the BDD between date and for a user
      * @return array
      */
-    /*public function getListByDateAndUser($companyid, $username, $datefrom, $dateto)
+    public function getListByDateAndUser($companyid, $username, $datefrom, $dateto)
     {
         try{
 
@@ -224,7 +224,7 @@ class FoldersManager
         catch(Exception $e){
             return null;
         }
-    }*/
+    }
 
     /**
      * Update folders information
