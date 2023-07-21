@@ -213,6 +213,7 @@ class QuotationManager
             {
                 $folderId = $folder->getIdFolder();
                 $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$username."' AND type ='D' AND STATUS ='En cours' GROUP BY quotationNumber ORDER BY quotationNumber DESC";
+                echo $query;
                 $q=$this->_db->query($query);
                 while($donnees = $q->fetch(PDO::FETCH_ASSOC))
                 {
