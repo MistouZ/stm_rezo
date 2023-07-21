@@ -101,6 +101,7 @@ if(isset($_POST['valider'])) {
                     </thead>
                     <tbody>
                     <?php
+                    echo "je passe là";
                     //Initialisation des valueurs pour le premier dossier
                     $k = 0;
                     $TotalPalmares = 0;
@@ -202,6 +203,7 @@ if(isset($_POST['valider'])) {
                         $k++;
 
                     }
+                    echo "je sors du foreach";
                     foreach($folderList as $folder){
                         $customer = $customermanager->getById($folder->getCustomerId());
                         //initialisation au format date pour organiser le tableau
