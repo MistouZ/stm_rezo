@@ -372,14 +372,14 @@ class QuotationManager
      * Get all the Invoices in the BDD from the Filtered Folders and Seller for palmares
      * @return array
      */
-    public function getListInvoiceByFilteredFoldersAndSeller($folders, $folder,$username)
+    public function getListInvoiceByFilteredFoldersAndSeller($folders, $folder,$seller)
     {
         try{
             $quotations = [];
             foreach ($folders as $folder)
             {
                 $folderId = $folder->getIdFolder();
-                $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$username."' AND type ='F' ORDER BY quotationNumber DESC";
+                $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$seller."' AND type ='F' ORDER BY quotationNumber DESC";
                 $q=$this->_db->query($query);
                 while($donnees = $q->fetch(PDO::FETCH_ASSOC))
                 {
@@ -449,6 +449,31 @@ class QuotationManager
             {
                 $folderId = $folder->getIdFolder();
                 $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND type ='A' ORDER BY quotationNumber DESC";
+                $q=$this->_db->query($query);
+                while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+                {
+                    $quotations[] = new Quotation($donnees);
+                }
+            }
+            return $quotations;
+        }
+        catch(Exception $e){
+            return null;
+        }
+    }
+
+    /**
+     * Get all the invoice in the BDD from Filtered Folders
+     * @return array
+     */
+    public function getListAssetsByFilteredFoldersAndSeller($folders, $folder,$seller)
+    {
+        try{
+            $quotations = [];
+            foreach ($folders as $folder)
+            {
+                $folderId = $folder->getIdFolder();
+                $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$seller."' AND type ='A' ORDER BY quotationNumber DESC";
                 $q=$this->_db->query($query);
                 while($donnees = $q->fetch(PDO::FETCH_ASSOC))
                 {
