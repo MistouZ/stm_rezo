@@ -68,6 +68,8 @@ if(isset($_POST['valider'])) {
         $enteteIcon = '<i class="fas fa-chart-bar"></i>';
     }
 
+    print_r($filteredFolder);
+
     //récupération des coûts liés au dossier.
 
     $costs = $costmanager->getCostByFilteredQuotation($quotations,$quotation);
