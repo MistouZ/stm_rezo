@@ -68,7 +68,7 @@ if(isset($_POST['valider'])) {
         $enteteIcon = '<i class="fas fa-chart-bar"></i>';
     }
 
-    print_r($filteredFolder);
+    
 
     //récupération des coûts liés au dossier.
 
@@ -140,6 +140,8 @@ if(isset($_POST['valider'])) {
                             $folderList[$k] = $folderQuotation;
                             $InvoiceFolderList[$j] = '<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().'</>';
                         }
+
+                       print_($folderQuotation); 
 
 
                         $descriptions = new Description($array);
