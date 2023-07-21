@@ -92,7 +92,6 @@ if(isset($_POST['valider'])) {
                         <th class="desktop">Dossier</th>
                         <th class="desktop">Libellé</th>
                         <th class="none">Numéro de <?php echo $type; ?></th>
-                        <th class="min-tablet">Client</th>
                         <th class="min-phone-l">Montant total</th>
                         <th class="min-tablet">Marge</th>
                         <th class="none">Coûts</th>
@@ -109,10 +108,9 @@ if(isset($_POST['valider'])) {
                     $TotalPalmaresDossier[$k] = 0;
                     $TotalCoutDossier[$k] = 0;
                     $InvoiceFolderList[$k] = "";
+                    $CustomerQuotationList[$k] = "";
                     foreach($quotations as $quotation){
                         $j = $quotation->getFolderId();
-
-                        $customer = $customermanager->getById($quotation->getCustomerId());
 
                         $folderQuotation = new Folder($array);
                         $foldermanagerQuotation = new FoldersManager($bdd);
@@ -122,7 +120,6 @@ if(isset($_POST['valider'])) {
                         {
                             $folderList[$k] = $folderQuotation;
                         }
-
 
                         if($quotation->getStatus() == "En cours"){
                             $status = "cours";
@@ -204,18 +201,14 @@ if(isset($_POST['valider'])) {
 
                     }
                     foreach($folderList as $folder){
-                        //$customer = $customermanager->getById($quotation->getCustomerId());
                         //initialisation au format date pour organiser le tableau
                         $date = date('d/m/y', strtotime($folder->getDate()));
-                        echo $date;
-
                         ?>
                         <tr>
                             <td><?php echo $date; ?></td>
                             <td><?php echo $folder->getFolderNumber(); ?></td>
                             <td><?php echo $folder->getLabel(); ?></td>
                             <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
-                            <td><?php echo $customer->getName(); ?></td>
                             <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
                             <td><?php echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
                             <td><?php echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
@@ -223,7 +216,6 @@ if(isset($_POST['valider'])) {
                         </tr>
                         <?php
                     }
-                    echo "je sors d'ici"
                     ?>
                     </tbody>
                 </table>
