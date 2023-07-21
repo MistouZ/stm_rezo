@@ -199,8 +199,6 @@ if(isset($_POST['valider'])) {
                         $TotalMargeDossier[$i] = $TotalPalmaresDossier[$i] - $TotalCoutDossier[$i];
                         $PercentMarge = calculMarge($TotalPalmares, $TotalMarge);
                         $PercentDossier[$i] = calculMarge($TotalPalmaresDossier[$i], $TotalMargeDossier[$i]);
-                        echo $TotalMargeDossier[$i];
-                        echo $PercentDossier[$i];
                         $i = $j;
                         $k++;
 
@@ -218,9 +216,9 @@ if(isset($_POST['valider'])) {
                             <td><?php echo $folder->getLabel(); ?></td>
                             <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
                             <td><?php echo $customer->getName(); ?></td>
-                            <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
-                            <td><?php echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
-                            <td><?php echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
+                            <td><?php //echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
+                            <td><?php //echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
+                            <td><?php //echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
 
                             <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/dossier/afficher/'.$folder->getIdFolder(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
                         </tr>
