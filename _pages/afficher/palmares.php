@@ -199,12 +199,7 @@ if(isset($_POST['valider'])) {
                         $TotalMargeDossier[$i] = $TotalPalmaresDossier[$i] - $TotalCoutDossier[$i];
                         $PercentMarge = calculMarge($TotalPalmares, $TotalMarge);
                         $PercentDossier[$i] = calculMarge($TotalPalmaresDossier[$i], $TotalMargeDossier[$i]);
-                       
-                        echo $TotalMargeDossier[$i]
-                        echo $PercentMarge;
-                        echo $PercentDossier[$i];
-
-                        $i = $j
+                        $i = $j;
                         $k++;
 
                     }
@@ -229,7 +224,7 @@ if(isset($_POST['valider'])) {
                         </tr>
                         <?php
                     }
-                    echo "je sors d'ici";
+                    echo "je sors d'ici"
                     ?>
                     </tbody>
                 </table>
