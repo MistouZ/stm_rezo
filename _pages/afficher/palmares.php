@@ -224,6 +224,7 @@ if(isset($_POST['valider'])) {
                         </tr>
                         <?php
                     }
+                    echo "je sors d'ici";
                     ?>
                     </tbody>
                 </table>
