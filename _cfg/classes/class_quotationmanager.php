@@ -202,6 +202,31 @@ class QuotationManager
     }
 
     /**
+     * Get all the quotation in the BDD from the Filtered Folders and Seller for palmares
+     * @return array
+     */
+    public function getListQuotationByFilteredFoldersAndSeller($folders, $folder,$username)
+    {
+        try{
+            $quotations = [];
+            foreach ($folders as $folder)
+            {
+                $folderId = $folder->getIdFolder();
+                $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$username."' AND type ='D' AND STATUS ='En cours' GROUP BY quotationNumber ORDER BY quotationNumber DESC";
+                $q=$this->_db->query($query);
+                while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+                {
+                    $quotations[] = new Quotation($donnees);
+                }
+            }
+            return $quotations;
+        }
+        catch(Exception $e){
+            return null;
+        }
+    }
+
+    /**
      * Get all the quotation in the BDD for the selected company
      * @return array
      */
@@ -270,6 +295,32 @@ class QuotationManager
         }
     }
 
+
+    /**
+     * Get all the Proformas in the BDD from the Filtered Folders and Seller for palmares
+     * @return array
+     */
+    public function getListProformaByFilteredFoldersAndSeller($folders, $folder,$username)
+    {
+        try{
+            $quotations = [];
+            foreach ($folders as $folder)
+            {
+                $folderId = $folder->getIdFolder();
+                $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$username."' AND type ='P' ORDER BY quotationNumber DESC";
+                $q=$this->_db->query($query);
+                while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+                {
+                    $quotations[] = new Quotation($donnees);
+                }
+            }
+            return $quotations;
+        }
+        catch(Exception $e){
+            return null;
+        }
+    }
+
     /**
      * Get all the invoice in the BDD for the selected company
      * @return array
@@ -304,6 +355,31 @@ class QuotationManager
             {
                 $folderId = $folder->getIdFolder();
                 $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND type ='F' ORDER BY quotationNumber DESC";
+                $q=$this->_db->query($query);
+                while($donnees = $q->fetch(PDO::FETCH_ASSOC))
+                {
+                    $quotations[] = new Quotation($donnees);
+                }
+            }
+            return $quotations;
+        }
+        catch(Exception $e){
+            return null;
+        }
+    }
+
+    /**
+     * Get all the Invoices in the BDD from the Filtered Folders and Seller for palmares
+     * @return array
+     */
+    public function getListInvoiceByFilteredFoldersAndSeller($folders, $folder,$username)
+    {
+        try{
+            $quotations = [];
+            foreach ($folders as $folder)
+            {
+                $folderId = $folder->getIdFolder();
+                $query = "SELECT * FROM quotation WHERE folderId='$folderId' AND seller='".$username."' AND type ='F' ORDER BY quotationNumber DESC";
                 $q=$this->_db->query($query);
                 while($donnees = $q->fetch(PDO::FETCH_ASSOC))
                 {

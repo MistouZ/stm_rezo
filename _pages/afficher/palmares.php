@@ -38,30 +38,46 @@ if(isset($_POST['valider'])) {
     $company = $companymanager->getByNameData($companyNameData);
     $idCompany = $company->getIdcompany();
 
-    if(empty($seller) && empty($datefrom)){
+    if(empty($datefrom)){
         $filteredFolder = $foldermanager->getList($idCompany);
     }
-    elseif(empty($seller))
+    else
     {
         $filteredFolder = $foldermanager->getListByDate($idCompany,$datefrom,$dateto);
     }
-    elseif(!empty($seller) && empty($datefrom))
+    /*elseif(!empty($seller) && empty($datefrom))
     {
         $filteredFolder = $foldermanager->getListByUser($idCompany, $seller);
     }
     elseif (!empty($seller) && !empty($datefrom))
     {
         $filteredFolder = $foldermanager->getListByDateAndUser($idCompany,$seller,$datefrom,$dateto);
-    }
+    }*/
 
     if ($type == "devis") {
-        $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
+        if(!empty($seller))
+        {
+            $quotations = $quotationmanager->getListQuotationByFilteredFoldersAndSeller($filteredFolder, $folder,$username);
+        }
+        else{
+            $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
+        }
         $enteteIcon = '<i class="fas fa-chart-pie"></i>';
     } elseif ($type == "proforma") {
-        $quotations = $quotationmanager->getListProformaByFilteredFolders($filteredFolder, $folder);
+        if(!empty($seller)){
+            $quotations = $quotationmanager->getListProformaByFilteredFoldersAndSeller($filteredFolder, $folder,$username);
+        }
+        else{
+            $quotations = $quotationmanager->getListProformaByFilteredFolders($filteredFolder, $folder);
+        }
         $enteteIcon = '<i class="fas fa-chart-area"></i>';
     } elseif ($type == "facture") {
-        $quotations = $quotationmanager->getListInvoiceByFilteredFolders($filteredFolder, $folder);
+        if(!empty($seller)){
+            $quotations = $quotationmanager->getListInvoiceByFilteredFoldersAndSeller($filteredFolder, $folder,$username);
+        }
+        else{
+            $quotations = $quotationmanager->getListInvoiceByFilteredFolders($filteredFolder, $folder);
+        }
         $enteteIcon = '<i class="fas fa-chart-line"></i>';
     } elseif ($type == "avoir") {
         $quotations = $quotationmanager->getListAssetsByFilteredFolders($filteredFolder, $folder);
