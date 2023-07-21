@@ -139,9 +139,7 @@ if(isset($_POST['valider'])) {
                         else{
                             $folderList[$k] = $folderQuotation;
                             $InvoiceFolderList[$j] = '<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().'</>';
-                        }
-
-                       print_($folderQuotation); 
+                        } 
 
 
                         $descriptions = new Description($array);
