@@ -57,7 +57,7 @@ if(isset($_POST['valider'])) {
     if ($type == "devis") {
         if(!empty($seller))
         {
-            $quotations = $quotationmanager->getListQuotationByFilteredFoldersAndSeller($filteredFolder, $folder,$username);
+            $quotations = $quotationmanager->getListQuotationByFilteredFoldersAndSeller($filteredFolder, $folder,$seller);
         }
         else{
             $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
@@ -65,7 +65,7 @@ if(isset($_POST['valider'])) {
         $enteteIcon = '<i class="fas fa-chart-pie"></i>';
     } elseif ($type == "proforma") {
         if(!empty($seller)){
-            $quotations = $quotationmanager->getListProformaByFilteredFoldersAndSeller($filteredFolder, $folder,$username);
+            $quotations = $quotationmanager->getListProformaByFilteredFoldersAndSeller($filteredFolder, $folder,$seller);
         }
         else{
             $quotations = $quotationmanager->getListProformaByFilteredFolders($filteredFolder, $folder);
@@ -73,7 +73,7 @@ if(isset($_POST['valider'])) {
         $enteteIcon = '<i class="fas fa-chart-area"></i>';
     } elseif ($type == "facture") {
         if(!empty($seller)){
-            $quotations = $quotationmanager->getListInvoiceByFilteredFoldersAndSeller($filteredFolder, $folder,$username);
+            $quotations = $quotationmanager->getListInvoiceByFilteredFoldersAndSeller($filteredFolder, $folder,$seller);
         }
         else{
             $quotations = $quotationmanager->getListInvoiceByFilteredFolders($filteredFolder, $folder);
