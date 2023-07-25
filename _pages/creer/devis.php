@@ -228,7 +228,6 @@ foreach ($customermanager as $customer) {
                                             </div>
                                             <div class="row form-section" style="padding: 12px 20px 15px 20px; margin: 10px 0px 10px 0px !important;">
                                                 <label class="col-md-2 control-label">Contact
-                                                <span class="required" aria-required="true"> * </span>
                                                 </label>
                                                 <div class="col-md-10">
                                                     <select id="contact-select" name="contact-select" class="form-control">
