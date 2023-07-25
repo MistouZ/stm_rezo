@@ -164,7 +164,7 @@ if(isset($_POST['valider'])) {
                         //Calcul du montant des devis / factures et cumul pour le Palmares
                         $montant = 0;
                         foreach ($descriptions as $description) {
-                            $montant = calculMontantTotalTTC($description, $montant);
+                            $montant = calculMontantTotalHT($description, $montant);
                         }
 
                         //Calcul du cumul du montant par dossier avec vérification de l'ID pour le cumul
