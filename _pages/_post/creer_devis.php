@@ -26,7 +26,10 @@ $counter = $countermanager->getCount($companyId);
 
 $counterQuotation = $counter->getQuotation();
 
-
+if(is_null($contactId))
+{
+    $contactId = 0;
+}
 
 if(empty($_POST["label"]))
 {
