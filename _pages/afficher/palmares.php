@@ -116,124 +116,124 @@ if(isset($_POST['valider'])) {
                     </thead>
                     <tbody>
                     <?php
-                    if(count($quotations)>0) {
-                        //Initialisation des valueurs pour le premier dossier
-                        $k = 0;
-                        $TotalPalmares = 0;
-                        $i = $quotations[$k]->getFolderId();
-                        $TotalPalmaresDossier[$k] = 0;
-                        $TotalCoutDossier[$k] = 0;
-                        $InvoiceFolderList[$k] = "";
-                        $CustomerQuotationList[$k] = "";
-                        foreach($quotations as $quotation){
-                            $j = $quotation->getFolderId();
+                    
+                    //Initialisation des valueurs pour le premier dossier
+                    $k = 0;
+                    $TotalPalmares = 0;
+                    $i = $quotations[$k]->getFolderId();
+                    $TotalPalmaresDossier[$k] = 0;
+                    $TotalCoutDossier[$k] = 0;
+                    $InvoiceFolderList[$k] = "";
+                    $CustomerQuotationList[$k] = "";
+                    foreach($quotations as $quotation){
+                        $j = $quotation->getFolderId();
 
-                            $folderQuotation = new Folder($array);
-                            $foldermanagerQuotation = new FoldersManager($bdd);
+                        $folderQuotation = new Folder($array);
+                        $foldermanagerQuotation = new FoldersManager($bdd);
 
-                            $folderQuotation = $foldermanagerQuotation->get($quotation->getFolderId());
-                            if($k == 0)
-                            {
-                                $folderList[$k] = $folderQuotation;
-                            }
+                        $folderQuotation = $foldermanagerQuotation->get($quotation->getFolderId());
+                        if($k == 0)
+                        {
+                            $folderList[$k] = $folderQuotation;
+                        }
 
-                            if($quotation->getStatus() == "En cours"){
-                                $status = "cours";
-                            }
-                            elseif($quotation->getStatus() == "Validated"){
-                                $status = "valides";
-                            }
+                        if($quotation->getStatus() == "En cours"){
+                            $status = "cours";
+                        }
+                        elseif($quotation->getStatus() == "Validated"){
+                            $status = "valides";
+                        }
 
-                            if($i == $j && $k == 0 ){
-                                $InvoiceFolderList[$i] = '<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().' </>';
-                            }
-                            elseif($i == $j && $k != 0 ){
-                                $InvoiceFolderList[$i] = $InvoiceFolderList[$i]." / ".'<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().' </>';
-                            }
-                            else{
-                                $folderList[$k] = $folderQuotation;
-                                $InvoiceFolderList[$j] = '<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().'</>';
-                            } 
-
-
-                            $descriptions = new Description($array);
-                            $descriptionmanager = new DescriptionManager($bdd);
-
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
-
-                            //Calcul du montant des devis / factures et cumul pour le Palmares
-                            $montant = 0;
-                            foreach ($descriptions as $description) {
-                                $montant = calculMontantTotalHT($description, $montant);
-                            }
-
-                            //Calcul du cumul du montant par dossier avec vérification de l'ID pour le cumul
-                            if($i == $j && $k == 0 ){
-                                $TotalPalmaresDossier[$i] = $montant;
-                            }
-                            elseif($i == $j && $k != 0 ){
-                                $TotalPalmaresDossier[$i] = $TotalPalmaresDossier[$i] + $montant;
-                            }
-                            else{
-                                $TotalPalmaresDossier[$j] = 0;
-                                $TotalPalmaresDossier[$j] = $montant;
-                            }
+                        if($i == $j && $k == 0 ){
+                            $InvoiceFolderList[$i] = '<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().' </>';
+                        }
+                        elseif($i == $j && $k != 0 ){
+                            $InvoiceFolderList[$i] = $InvoiceFolderList[$i]." / ".'<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().' </>';
+                        }
+                        else{
+                            $folderList[$k] = $folderQuotation;
+                            $InvoiceFolderList[$j] = '<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$status.'/'.$quotation->getQuotationNumber().'">'. $quotation->getQuotationNumber().'</>';
+                        } 
 
 
-                            $TotalPalmares = $TotalPalmares + $montant;
-                            $TotalCost = 0;
+                        $descriptions = new Description($array);
+                        $descriptionmanager = new DescriptionManager($bdd);
 
-                            foreach ($costs as $cost) {
-                                $TotalCost = calculCoutTotal($cost, $TotalCost);
-                            }
+                        $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
 
-                            $costFolder = new Cost($array);
-                            $costsFolder = new CostManager($bdd);
+                        //Calcul du montant des devis / factures et cumul pour le Palmares
+                        $montant = 0;
+                        foreach ($descriptions as $description) {
+                            $montant = calculMontantTotalHT($description, $montant);
+                        }
 
-                            $costsFolder = $costsFolder->getByFolderId($j);
-                            $TotalCostFolder = 0;
-                            /*récupérer les cout sur le dossier */
-                            foreach ($costsFolder as $costFolder) {
-                                $TotalCostFolder = calculCoutTotal($costFolder, $TotalCostFolder);
-                            }
-                            if($i == $j && $k == 0){
-                                $TotalCoutDossier[$i] = $TotalCostFolder;
-                            }
-                            elseif($i == $j && $k != 0 ){
-                                $TotalCoutDossier[$i] = $TotalCoutDossier[$i] + $TotalCostFolder;
-                            }
-                            else{
-                                $i = $j;
-                                $TotalCoutDossier[$i] = 0;
-                                $TotalCoutDossier[$i] = $TotalCostFolder;
-                            }
+                        //Calcul du cumul du montant par dossier avec vérification de l'ID pour le cumul
+                        if($i == $j && $k == 0 ){
+                            $TotalPalmaresDossier[$i] = $montant;
+                        }
+                        elseif($i == $j && $k != 0 ){
+                            $TotalPalmaresDossier[$i] = $TotalPalmaresDossier[$i] + $montant;
+                        }
+                        else{
+                            $TotalPalmaresDossier[$j] = 0;
+                            $TotalPalmaresDossier[$j] = $montant;
+                        }
 
-                            $TotalMarge = $TotalPalmares - $TotalCost;
-                            $TotalMargeDossier[$i] = $TotalPalmaresDossier[$i] - $TotalCoutDossier[$i];
-                            $PercentMarge = calculMarge($TotalPalmares, $TotalMarge);
-                            $PercentDossier[$i] = calculMarge($TotalPalmaresDossier[$i], $TotalMargeDossier[$i]);
+
+                        $TotalPalmares = $TotalPalmares + $montant;
+                        $TotalCost = 0;
+
+                        foreach ($costs as $cost) {
+                            $TotalCost = calculCoutTotal($cost, $TotalCost);
+                        }
+
+                        $costFolder = new Cost($array);
+                        $costsFolder = new CostManager($bdd);
+
+                        $costsFolder = $costsFolder->getByFolderId($j);
+                        $TotalCostFolder = 0;
+                        /*récupérer les cout sur le dossier */
+                        foreach ($costsFolder as $costFolder) {
+                            $TotalCostFolder = calculCoutTotal($costFolder, $TotalCostFolder);
+                        }
+                        if($i == $j && $k == 0){
+                            $TotalCoutDossier[$i] = $TotalCostFolder;
+                        }
+                        elseif($i == $j && $k != 0 ){
+                            $TotalCoutDossier[$i] = $TotalCoutDossier[$i] + $TotalCostFolder;
+                        }
+                        else{
                             $i = $j;
-                            $k++;
+                            $TotalCoutDossier[$i] = 0;
+                            $TotalCoutDossier[$i] = $TotalCostFolder;
+                        }
 
-                        }
+                        $TotalMarge = $TotalPalmares - $TotalCost;
+                        $TotalMargeDossier[$i] = $TotalPalmaresDossier[$i] - $TotalCoutDossier[$i];
+                        $PercentMarge = calculMarge($TotalPalmares, $TotalMarge);
+                        $PercentDossier[$i] = calculMarge($TotalPalmaresDossier[$i], $TotalMargeDossier[$i]);
+                        $i = $j;
+                        $k++;
+
                     }
-                        foreach($folderList as $folder){
-                            //initialisation au format date pour organiser le tableau
-                            $date = date('d/m/y', strtotime($folder->getDate()));
-                            ?>
-                            <tr>
-                                <td><?php echo $date; ?></td>
-                                <td><?php echo $folder->getFolderNumber(); ?></td>
-                                <td><?php echo $folder->getLabel(); ?></td>
-                                <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
-                                <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
-                                <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
-                                <td><?php echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
-                                <td><?php echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
-                                <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/dossier/afficher/'.$folder->getIdFolder(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
-                            </tr>
-                            <?php
-                        }
+                    foreach($folderList as $folder){
+                        //initialisation au format date pour organiser le tableau
+                        $date = date('d/m/y', strtotime($folder->getDate()));
+                        ?>
+                        <tr>
+                            <td><?php echo $date; ?></td>
+                            <td><?php echo $folder->getFolderNumber(); ?></td>
+                            <td><?php echo $folder->getLabel(); ?></td>
+                            <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
+                            <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
+                            <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
+                            <td><?php echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
+                            <td><?php echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
+                            <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/dossier/afficher/'.$folder->getIdFolder(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
+                        </tr>
+                        <?php
+                    }
+            
                     ?>
                     </tbody>
                 </table>
