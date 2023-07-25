@@ -225,7 +225,7 @@ if(isset($_POST['valider'])) {
                             <td><?php echo $folder->getFolderNumber(); ?></td>
                             <td><?php echo $folder->getLabel(); ?></td>
                             <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
-                            <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF HT</td>
+                            <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
                             <td><?php echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
                             <td><?php echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
                             <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/dossier/afficher/'.$folder->getIdFolder(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
@@ -244,7 +244,7 @@ if(isset($_POST['valider'])) {
     <div class="col-md-6"> </div>
     <div class="col-md-6">
         <div class="row static-info align-reverse">
-            <div class="col-md-8 name"> Total TTC : </div>
+            <div class="col-md-8 name"> Total HT : </div>
             <div class="col-md-3 value"> <?php echo number_format($TotalPalmares,0,","," "); ?> XPF</div>
         </div>
     </div>
@@ -259,7 +259,7 @@ if(isset($_POST['valider'])) {
     <div class="col-md-6">
         <div class="well">
             <div class="row static-info align-reverse">
-                <div class="col-md-8 name" style="font-weight: 800; font-size: 16px;"> Marge TTC : </div>
+                <div class="col-md-8 name" style="font-weight: 800; font-size: 16px;"> Marge HT : </div>
                 <div class="col-md-3 value" style="font-weight: 800; font-size: 16px;"> <?php echo number_format($TotalMarge,0,","," "); ?> XPF</div>
             </div>
         </div>
