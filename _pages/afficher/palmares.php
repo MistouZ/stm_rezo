@@ -116,7 +116,7 @@ if(isset($_POST['valider'])) {
                     </thead>
                     <tbody>
                     <?php
-                    
+                    if(count($quotations)>0) {
                     //Initialisation des valueurs pour le premier dossier
                     $k = 0;
                     $TotalPalmares = 0;
@@ -225,6 +225,7 @@ if(isset($_POST['valider'])) {
                             <td><?php echo $folder->getFolderNumber(); ?></td>
                             <td><?php echo $folder->getLabel(); ?></td>
                             <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
+                            <td><?php echo $InvoiceFolderList[$folder->getIdFolder()]; ?></td>
                             <td><?php echo number_format($TotalPalmaresDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
                             <td><?php echo number_format($PercentDossier[$folder->getIdFolder()],0,","," "); ?> %</td>
                             <td><?php echo number_format($TotalCoutDossier[$folder->getIdFolder()],0,","," "); ?> XPF</td>
@@ -232,6 +233,7 @@ if(isset($_POST['valider'])) {
                         </tr>
                         <?php
                     }
+                }
                     ?>
                     </tbody>
                 </table>
