@@ -118,6 +118,12 @@ function calculMontantTotalTTC(Description $description, $montant){
     return $montant;
 }
 
+$montantLigne = $description->getQuantity()*$description->getPrice();
+$remise = $montantLigne*($description->getDiscount()/100);
+$montantLigne = $montantLigne-$remise;
+$taxe = $montantLigne*$description->getTax();
+$tax = $taxmanager->getByPercent($description->getTax()*100);
+
 function calculMontantTotalHT(Description $description, $montant){
     $montantLigne = $description->getQuantity()*$description->getPrice();
     $remise = $montantLigne*($description->getDiscount()/100);
