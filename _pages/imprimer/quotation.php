@@ -115,6 +115,10 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                             <div class="col-md-4 name"> Adresse: </div>
                             <div class="col-md-8 value"><strong><?php echo $customer->getInvoiceAddress(); ?></strong> </div>
                         </div>
+                        <?php
+                            if($contact->getIdContact() != 0)
+                            {
+                        ?>
                         <div class="row static-info">
                             <div class="col-md-4 name"> Contact: </div>
                             <div class="col-md-8 value"><strong><?php echo $contact->getFirstname()." ".$contact->getName(); ?></strong></div>
@@ -127,6 +131,9 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                             <div class="col-md-4 name"> Mail: </div>
                             <div class="col-md-8 value"> <strong><?php echo $contact->getEmailAddress(); ?></strong> </div>
                         </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
