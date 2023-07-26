@@ -116,7 +116,7 @@ if(isset($_POST['valider'])) {
                     </thead>
                     <tbody>
                     <?php
-                    if(count($quotations)>0) {
+                    if(count($quotations)>0){
                     //Initialisation des valueurs pour le premier dossier
                     $k = 0;
                     $TotalPalmares = 0;
