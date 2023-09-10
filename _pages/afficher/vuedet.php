@@ -99,6 +99,7 @@ $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 
 print_r($quotation);
+print_r($descriptions);
 
 
 if($quotation->getType() == "S")
