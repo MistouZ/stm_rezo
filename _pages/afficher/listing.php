@@ -185,7 +185,7 @@ switch($type){
                             $folder = $foldermanager->get($quotation->getFolderId());
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType());
                             $montant = 0;
                             foreach ($descriptions as $description) {
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -295,6 +295,7 @@ if(count($quotations)>0) {
                         <input type="hidden" id="quotationNumber" name="quotationNumber"
                                value="<?php echo $quotation->getQuotationNumber(); ?>">
                         <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+                        <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                         <div class="modal-footer">
                             <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer
                             </button>
@@ -340,6 +341,7 @@ if(count($quotations)>0) {
                         <input type="hidden" id="quotationNumber" name="quotationNumber"
                                value="<?php echo $quotation->getQuotationNumber(); ?>">
                         <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+                        <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                         <div class="modal-footer">
                             <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer
                             </button>
@@ -384,6 +386,7 @@ if(count($quotations)>0) {
                         <input type="hidden" id="quotationNumber" name="quotationNumber"
                                value="<?php echo $quotation->getQuotationNumber(); ?>">
                         <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+                        <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                         <div class="modal-footer">
                             <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer
                             </button>
@@ -408,6 +411,7 @@ if(count($quotations)>0) {
                     <form action="" method="post" id="to_validate" class="form-horizontal form-row-seperated">
                         <input type="hidden" id="quotationNumber" name="quotationNumber"
                                value="<?php echo $quotation->getQuotationNumber(); ?>">
+                        <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                         <div class="modal-footer">
                             <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer
                             </button>

@@ -13,11 +13,11 @@ $type2 = $_POST['type'];
 $array = array();
 $quotation = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-$quotation = $quotationmanagerNumber->getByQuotationNumber($quotationNumber);
+$quotation = $quotationmanagerNumber->getByQuotationNumber($quotationNumber,$type2);
 
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
-$descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber);
+$descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber,$quotation->getType());
 
 $arraycounter = array();
 $counter = new Counter($arraycounter);

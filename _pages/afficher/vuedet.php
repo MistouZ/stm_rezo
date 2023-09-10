@@ -33,7 +33,7 @@ $dateToProforma = date('d/m/Y');
 
 switch($type){
     case "devis":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"D");
         $entete = "du devis";
         $enteteIcon = '<i class="fas fa-file-invoice"></i>';
         $buttons = '<div class="actions">
@@ -52,7 +52,7 @@ switch($type){
                     </div>';
         break;
     case "proforma":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"P");
         $entete = "de la proforma";
         $enteteIcon = '<i class="fas fa-file-alt"></i>';
         $buttons = '<div class="actions">
@@ -65,7 +65,7 @@ switch($type){
                     </div>';
         break;
     case "facture":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"F");
         $entete = "de la facture";
         $enteteIcon = '<i class="fas fa-file-invoice-dollar"></i>';
         $buttons = '<div class="actions">
@@ -78,7 +78,7 @@ switch($type){
                     </div>';
         break;
     case "avoir":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"A");
         $entete = "de l'avoir";
         $enteteIcon = '<i class="fas fa-file-prescription"></i>';
         $buttons = '<div class="actions">
@@ -93,7 +93,7 @@ $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
-$descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+$descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType());
 $contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
@@ -323,6 +323,7 @@ if(isset($_GET['cat5'])){
                 {?>
                     <form action="<?php echo URLHOST."_pages/_post/to_validate.php"; ?>" method="post" id="to_validate" class="form-horizontal form-row-seperated">
                         <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
+                        <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                         <div class="modal-footer">
                             <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                             <button type="submit" class="btn green" name="valider">
@@ -438,6 +439,7 @@ if(isset($_GET['cat5'])){
                             </div>
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+                            <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
@@ -476,6 +478,7 @@ if(isset($_GET['cat5'])){
                             </div>
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+                            <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
@@ -514,6 +517,7 @@ if(isset($_GET['cat5'])){
                             </div>
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+                            <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
