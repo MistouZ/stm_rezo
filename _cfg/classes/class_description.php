@@ -10,6 +10,7 @@ class Description extends Features
 {
     private $idDescription;
     private $quotationNumber;
+    private $quotationType;
     private $description;
     private $quantity;
     private $discount;
@@ -60,6 +61,22 @@ class Description extends Features
         {
             $this->quotationNumber = $quotationNumber;
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuotationType()
+    {
+        return $this->quotationType;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setQuotationType($quotationType): void
+    {
+        $this->quotationType = $quotationType;
     }
 
     /**
