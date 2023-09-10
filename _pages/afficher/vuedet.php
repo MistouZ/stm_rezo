@@ -98,6 +98,8 @@ $contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 
+print_r($quotation);
+
 
 if($quotation->getType() == "S")
 {
