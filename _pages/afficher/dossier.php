@@ -215,7 +215,7 @@ switch($type){
                             $date = date('d/m/Y',strtotime(str_replace('/','-',"".$quotation->getDate()."")));
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType());
                             $montant = 0;
                             foreach($descriptions as $description){
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -286,7 +286,7 @@ switch($type){
                             $date = date('d/m/Y',strtotime(str_replace('/','-',"".$quotation->getDate()."")));
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(), $quotation->getType());
                             $montant = 0;
                             foreach($descriptions as $description){
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -357,7 +357,7 @@ switch($type){
                                 $date = date('d/m/Y',strtotime(str_replace('/','-',"".$quotation->getDate()."")));
                                 $descriptions = new Description($array);
                                 $descriptionmanager = new DescriptionManager($bdd);
-                                $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                                $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(), $quotation->getType());
                                 $montant = 0;
                                 foreach($descriptions as $description){
                                     $montant = calculMontantTotalTTC($description, $montant);
