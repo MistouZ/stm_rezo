@@ -19,13 +19,11 @@ if(isset($_POST['imprimer'])) {
     $user = new Users($array);
     $usermanager = new UsersManager($bdd);
 
-
-
     $folder = $foldermanager->get($folderId);
 
 
     $company = $companymanager->getByNameData($companyNameData);
-    $user = $usermanager->get($folder->getSeller());
+    //$user = $usermanager->get($folder->getSeller());
 
     $date = date('d/m/Y', strtotime(str_replace('/', '-', "" . $folder->getDate() . "")));
     $company = $companymanager->getByNameData($companyNameData);
@@ -54,10 +52,6 @@ if(isset($_POST['imprimer'])) {
                                 <div class="row static-info">
                                     <div class="col-md-5 name"> Libellé : </div>
                                     <div class="col-md-7 value"> <?php echo $folder->getLabel(); ?> </div>
-                                </div>
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Commercial : </div>
-                                    <div class="col-md-7 value"> <?php echo $user->getName().' '.$user->getFirstName(); ?> </div>
                                 </div>
                                 <div class="row static-info">
                                     <div class="col-md-5 name">&nbsp;</div>
