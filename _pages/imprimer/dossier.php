@@ -19,13 +19,11 @@ if(isset($_POST['imprimer'])) {
     $user = new Users($array);
     $usermanager = new UsersManager($bdd);
 
-
-
     $folder = $foldermanager->get($folderId);
 
 
     $company = $companymanager->getByNameData($companyNameData);
-    $user = $usermanager->get($folder->getSeller());
+    //$user = $usermanager->get($folder->getSeller());
 
     $date = date('d/m/Y', strtotime(str_replace('/', '-', "" . $folder->getDate() . "")));
     $company = $companymanager->getByNameData($companyNameData);
@@ -54,10 +52,6 @@ if(isset($_POST['imprimer'])) {
                                 <div class="row static-info">
                                     <div class="col-md-5 name"> Libellé : </div>
                                     <div class="col-md-7 value"> <?php echo $folder->getLabel(); ?> </div>
-                                </div>
-                                <div class="row static-info">
-                                    <div class="col-md-5 name"> Commercial : </div>
-                                    <div class="col-md-7 value"> <?php echo $user->getName().' '.$user->getFirstName(); ?> </div>
                                 </div>
                                 <div class="row static-info">
                                     <div class="col-md-5 name">&nbsp;</div>
@@ -98,16 +92,16 @@ src="
     // Import DejaVu Sans font for embedding
     kendo.pdf.defineFont({
         "DejaVu Sans":
-            "http://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans.ttf",
 
         "DejaVu Sans|Bold":
-            "http://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
 
         "DejaVu Sans|Bold|Italic":
-            "http://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
 
         "DejaVu Sans|Italic":
-            "http://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
 
         "WebComponentsIcons"      :
             "https://kendo.cdn.telerik.com/2020.2.513/styles/fonts/glyphs/WebComponentsIcons.ttf",
