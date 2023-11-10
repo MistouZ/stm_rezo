@@ -29,6 +29,7 @@ $retour = $verif;
 
 switch($type){
     case "devis":
+        $typeMini = 'D';
         if($type2=="cours"){            
             $quotations = $quotationmanager->getListQuotation($company->getIdcompany());
             $buttons = '<div id="actions" style="display:none;">
@@ -64,6 +65,7 @@ switch($type){
         }
         break;
     case "proforma":
+        $typeMini = 'P';
         $quotations = $quotationmanager->getListProforma($company->getIdcompany());
         $buttons = '<div id="actions" style="display:none;">
                         <a data-toggle="modal" href="#to_facture" class="btn grey-mint btn-sm">
@@ -73,6 +75,7 @@ switch($type){
                     </div>';
         break;
     case "facture":
+        $typeMini = 'F';
     if($type2=="cours"){
         $quotations = $quotationmanager->getListInvoice($company->getIdcompany());
         $buttons = '<div id="actions" style="display:none;">
@@ -86,6 +89,7 @@ switch($type){
         break;
     }
     elseif($type2=="valides"){
+        $typeMini = 'V';
         $quotations = $quotationmanager->getListValidatedInvoice($company->getIdcompany());
         $buttons = '<div id="actions" style="display:none;">
                         <a data-toggle="modal" href="#to_avoir" class="btn grey-mint btn-sm">
@@ -97,6 +101,7 @@ switch($type){
     }
 
     case "avoir":
+        $typeMini = 'A';
         $quotations = $quotationmanager->getListAsset($company->getIdcompany());
         $buttons = '<div id="actions" style="display:none;">
                         
@@ -201,7 +206,7 @@ switch($type){
                                 <td><?php echo number_format($montant,0,","," "); ?> XPF</td>
                                 <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
                                 <td><a class="btn blue-steel" href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i class="fas fa-edit" alt="Editer"></i> Modifier</a></td>
-                                <td><a class="btn red-mint" data-placement="top" data-toggle="confirmation" data-title="Supprimer <?php echo $type; ?> n° <?php echo $quotation->getQuotationNumber(); ?> ?" data-content="ATTENTION ! La suppression est irréversible !" data-btn-ok-label="Supprimer" data-btn-ok-class="btn-success" data-btn-cancel-label="Annuler" data-btn-cancel-class="btn-danger" data-href="<?php echo URLHOST.'_pages/_post/supprimer_devis.php?idQuotation='.$quotation->getIdQuotation().'&quotationNumber='.$quotation->getQuotationNumber().'&type='.$type; ?>"><i class="fas fa-trash-alt" alt="Supprimer"></i> Supprimer</a></td>
+                                <td><a class="btn red-mint" data-placement="top" data-toggle="confirmation" data-title="Supprimer <?php echo $type; ?> n° <?php echo $quotation->getQuotationNumber(); ?> ?" data-content="ATTENTION ! La suppression est irréversible !" data-btn-ok-label="Supprimer" data-btn-ok-class="btn-success" data-btn-cancel-label="Annuler" data-btn-cancel-class="btn-danger" data-href="<?php echo URLHOST.'_pages/_post/supprimer_devis.php?idQuotation='.$quotation->getIdQuotation().'&quotationNumber='.$quotation->getQuotationNumber().'&type='.$typeMini.'&compId='.$folder->getCompanyId(); ?>"><i class="fas fa-trash-alt" alt="Supprimer"></i> Supprimer</a></td>
                             </tr>
                             <?php
                         }
