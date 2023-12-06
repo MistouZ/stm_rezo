@@ -22,7 +22,7 @@ $folderId = $folder->getIdFolder();
 $companyId = $folder->getCompanyId();
 $quotationGet = new Quotation($array);
 $quotationmanager = new QuotationManager($bdd);
-$quotationGet = $quotationmanager->getByQuotationNumber($quotationNumber);
+$quotationGet = $quotationmanager->getByQuotationNumber($quotationNumber,"D", $companyId););
 $customerId = $quotationGet->getCustomerId();
 $contactId = $quotationGet->getContactId();
 $seller = $_POST["seller-select"];
@@ -100,7 +100,7 @@ while(($postDescription = current($_POST["descriptionDevis"])) !== FALSE ){
     next($_POST["descriptionDevis"]);
 }
 
-$test2 = $descriptionmanager->update($descriptions,$quotationNumber,$type);
+$test2 = $descriptionmanager->update($descriptions,$quotationNumber,$type,$companyId);
 
 echo "modif insérée";
 
@@ -140,7 +140,7 @@ else{
         next($_POST["descriptionOption"]);
     }
     $quotationNumberOption = $quotationNumber.'_option';
-    $test3 = $descriptionmanager->update($descriptionsOption,$quotationNumberOption,$type);
+    $test3 = $descriptionmanager->update($descriptionsOption,$quotationNumberOption,$type,$companyId);
 }
 
 if(empty(current($_POST["descriptionCout"]))){
@@ -164,11 +164,13 @@ else{
             $descriptionCout = new Cost($dataDescriptionCout);
             $descriptionsCout[$i] = $descriptionCout;
         }
+	else{
+            $costmanager->delete($_POST["idCout"][$j]);
+        }
         $i++;
         next($_POST["descriptionCout"]);
     }
-    $test4 = $costmanager->update($descriptionsCout,$quotationNumber);
-}
+    $test4 = $costmanager->update($descriptionsCout,$quotationNumber, $type,$companyId);
 
 
 if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4))

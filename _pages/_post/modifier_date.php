@@ -7,24 +7,28 @@ ini_set('display_errors',1); error_reporting(E_ALL | E_STRICT);
  
 include("../../_cfg/cfg.php");
 
+$companyNameData = $_GET["section"];
 $idQuotation = $_POST['quotationNumber'];
 $dateTab = explode("/",$_POST['date']);
 $type2 = $_POST['type'];
+$currentType = $_POST['currentType'];
 
 $array = array();
 $quotationNumber = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-$quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation);
+$company = new Company($array);
+$companymanager = new CompaniesManager($bdd);
 
-$year = $dateTab[2];
-$month = $dateTab[1];
-$day = $dateTab[0];
+$company = $companymanager->getByNameData($companyNameData);
+$companyId = $company->getIdcompany();
+
+$quotationNumber = $quotationmanagerNumber->getByQuotationNumber($idQuotation,$currentType, $companyId);
+
+$date = $_POST['date'];
 
 $data = array(
     'idQuotation' => $quotationNumber->getIdQuotation(),
-    'year' => $year,
-    'month' => $month,
-    'day' => $day,
+    'date' => $date,
 );
 
 $quotation = new Quotation($data);

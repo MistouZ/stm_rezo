@@ -98,7 +98,7 @@ $taxes = $taxes->getList();
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-4">
-                                <input name="account" id="account" type="text" class="form-control" value="000"/>
+                                <input name="account" id="account" type="text" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group" id="hidden_fields">
@@ -111,7 +111,7 @@ $taxes = $taxes->getList();
                                 ?>
                                 <div class="form-row col-md-1" id="subaccount[<?php echo $company->getIdCompany(); ?>]">
                                     <?php
-                                    echo '<input type="text" class="form-control" placeholder="'.$company->getNameData().'"  name="subaccount['.$company->getIdCompany().']" value="00">';
+                                    echo '<input type="text" class="form-control" placeholder="'.$company->getNameData().'"  name="subaccount['.$company->getIdCompany().']">';
                                     ?>
                                 </div>
                                 <?php
@@ -138,7 +138,24 @@ $taxes = $taxes->getList();
                                     ?>
                                 </div>
                                 <span class="help-block"> Cocher la ou les taxe(s) affiliée(s) au client </span>
-                                <div id="company_error"> </div>
+                                <div id="tax_error"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Modalité de facturation
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="radio-list" data-error-container="#modalite_error">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="modalite" name="modalite" value="IMME"/> Comptant immédiat
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" id="modalite" name="modalite" value="30JF"/> 30 jour fin de mois
+                                    </label>
+                                </div>
+                                <span class="help-block"> Cocher la modalité de facturation du client </span>
+                                <div id="modalite_error"> </div>
                             </div>
                         </div>
                     </div>

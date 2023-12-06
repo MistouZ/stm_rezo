@@ -46,7 +46,6 @@ if(isset($_GET['cat5'])){
 
 switch($type){
     case "devis":
-
         $entete = "du devis";
         $enteteIcon = '<i class="fas fa-file-invoice"></i>';
         break;
@@ -145,7 +144,7 @@ switch($type){
                             $date = date('d/m/y', strtotime( $quotation->getDate()));
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType(),$companyId);
                             $montant = 0;
                             foreach($descriptions as $description){
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -215,7 +214,7 @@ switch($type){
                             $date = date('d/m/Y',strtotime(str_replace('/','-',"".$quotation->getDate()."")));
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType(),$companyId);
                             $montant = 0;
                             foreach($descriptions as $description){
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -286,7 +285,7 @@ switch($type){
                             $date = date('d/m/Y',strtotime(str_replace('/','-',"".$quotation->getDate()."")));
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(), $quotation->getType());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType(),$companyId);
                             $montant = 0;
                             foreach($descriptions as $description){
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -357,7 +356,7 @@ switch($type){
                                 $date = date('d/m/Y',strtotime(str_replace('/','-',"".$quotation->getDate()."")));
                                 $descriptions = new Description($array);
                                 $descriptionmanager = new DescriptionManager($bdd);
-                                $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(), $quotation->getType());
+                                $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType(),$companyId);
                                 $montant = 0;
                                 foreach($descriptions as $description){
                                     $montant = calculMontantTotalTTC($description, $montant);
@@ -449,7 +448,7 @@ switch($type){
     </div>
     <form action="<?php echo URLHOST.$_COOKIE['company']."/dossier/imprimer/".$folder->getIdFolder(); ?>" target="_blank" method="post" class="form-horizontal form-row-seperated">
         <div class="modal-footer">
-            <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn grey-salsa btn-outline" onclick="history.back()" >Fermer</button>
             <button type="submit" class="btn green" name="imprimer">
                 <i class="fas fa-print"></i> Imprimer page de garde</button>
         </div>

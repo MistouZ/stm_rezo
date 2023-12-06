@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors',1); error_reporting(E_ALL | E_STRICT);
 /**
- * @author Nicolas
- * @copyright 2019
+ * @author Amaury
+ * @copyright 2023
  */
  
 include("../../_cfg/cfg.php");
@@ -13,9 +13,18 @@ $type2 = $_POST['type'];
 $percent = $_POST["shattered_percent"];
 
 $array = array();
+$company = new Company($array);
+$companymanager = new CompaniesManager($bdd);
+$companyNameData = $_POST["company"];
+$company = $companymanager->getByNameData($companyNameData);
+$companyId = $company->getIdcompany();
+
 $quotationGet = new Quotation($array);
 $quotationmanager = new QuotationManager($bdd);
-$quotationGet = $quotationmanager->getByQuotationNumber($quotationNumber);
+$quotationGet = $quotationmanager->getByQuotationNumber($quotationNumber,"D",$companyId);
+$costGet = new Cost($array);
+$costmanager = new CostManager($bdd);
+//$costGet = $costmanager->getByQuotationNumber($quotationNumber, $currentType);
 
 $date = $_POST['date'];
 
@@ -35,6 +44,7 @@ if($_POST["shattered"] == "full" || $percent == 100)
     $quotation = new Quotation($data);
 
     $test = $quotationmanager->changeType($quotation);
+    $test6 = $costmanager->UpdateCostType($quotationNumber,$quotationNumber,"P",$companyId);
     if($type2 == "partiels")
     {
         $descriptionmanager = new DescriptionManager($bdd);
@@ -43,11 +53,12 @@ if($_POST["shattered"] == "full" || $percent == 100)
         $shatteredQuotationInit = $shatteredQuotationManager->getByQuotationNumberChild($quotationNumber);
         $quotationNumberInit = $shatteredQuotationInit->getQuotationNumberInit();
         $quotationInit = $quotationNumberInit."_init";
-        $test2 = $descriptionmanager->delete($quotationInit);
+        $test2 = $descriptionmanager->delete($quotationInit,"D");
         $test3 = $shatteredQuotationManager->delete($quotationInit);
     }
     else{
-        $test2 = "ok";
+         $descriptionmanager = new DescriptionManager($bdd);
+        $test2 = $descriptionmanager->changeQuotationType($quotation->getQuotationNumber(),$quotation->getType());
         $test3 = "ok";
     }
     $test4a = "ok";
@@ -113,7 +124,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $quotationNumberInit = $shatteredQuotationInit->getQuotationNumberInit();
         $quotationNumberChild = $shatteredQuotationInit->getQuotationNumberChild();
         $quotationInit = $quotationNumberInit."_init";
-        $getDescription = $descriptionmanager->getByQuotationNumber($quotationInit);
+        $getDescription = $descriptionmanager->getByQuotationNumber($quotationInit,"S",$companyId);
         $rest = $shatteredQuotationInit->getPercent();
         $rest = $rest - $percent;
         $idShatteredQuotation = $shatteredQuotationInit->getIdShatteredQuotation();
@@ -124,7 +135,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     {
         //fonctionne bien lors du premier partiel
         $quotationNumberInit = $quotationNumber;
-        $getDescription = $descriptionmanager->getByQuotationNumber($quotationNumber);
+        $getDescription = $descriptionmanager->getByQuotationNumber($quotationNumber,"D",$companyId);
         $quotationInit = $quotationGet->getQuotationNumber()."_init";
         $rest = 100 - $percent;
         $i = 0;
@@ -136,7 +147,7 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
             $i++;
         }
         // Duplication des descriptions pour garder l'original
-        $test = $descriptionmanager->add($descriptions,$quotationInit);
+        $test = $descriptionmanager->add($descriptions,$quotationInit,"S");
 
     }
 
@@ -177,16 +188,16 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
         $j++;
     }
     if($type3 == "S"){
-        $test3 = $descriptionmanager->update($descriptionsReduced,$quotationNumberChild);
+        $test3 = $descriptionmanager->update($descriptionsReduced,$quotationNumberChild,"S");
     }
     else{
-        $test3 = $descriptionmanager->update($descriptionsReduced,$quotationNumber);
+        $test3 = $descriptionmanager->update($descriptionsReduced,$quotationNumber,"S");
     }
    
 
     if($rest != 0)
     {   //il reste à facturer alors je stocke les données restantes
-        $getDescriptionInit = $descriptionmanager->getByQuotationNumber($quotationInit);
+        $getDescriptionInit = $descriptionmanager->getByQuotationNumber($quotationInit,"S",$companyId);
         $descriptionRest = new Description($array);
         $k = 0;
         foreach ($getDescriptionInit as $descriptionRest)
@@ -198,13 +209,13 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
             $k++;
         }
         //insertion du reste à payer
-        $test4a = $descriptionmanager->add($descriptions,$newquotationNumber);
+        $test4a = $descriptionmanager->add($descriptions,$newquotationNumber,"S");
         $test4b = "ok";
     }
     else
     {
         //il ne reste rien à facturer alors je supprime les données partielles
-        $test4a = $descriptionmanager->delete($quotationInit);
+        $test4a = $descriptionmanager->delete($quotationInit,"S");
         $test4b = $shatteredQuotationManager->delete($quotationInit);
     }
 
@@ -220,11 +231,13 @@ elseif ($_POST["shattered"] == "partial" && $percent < 100)
     );
     $quotation = new Quotation($data);
     $test5 = $quotationmanager->changeType($quotation);
+    $test5b = $descriptionmanager->changeQuotationType($quotation->getQuotationNumber(),$quotation->getType());
+    
     
 }
 
-if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || is_null($test4b) || is_null($test5)){
-  //header('Location: '.$_SERVER['HTTP_REFERER'].'/errorProforma');
+if(is_null($test) || is_null($test2) || is_null($test3) || is_null($test4a) || is_null($test4b) || is_null($test5) || is_null($test6)){
+  header('Location: '.$_SERVER['HTTP_REFERER'].'/errorProforma');
 }else{
 
     //Ajout d'un objet logs pour tracer l'action de passage du devis en proforma

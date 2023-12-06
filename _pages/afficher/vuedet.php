@@ -28,18 +28,28 @@ $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 $shatteredQuotation = new ShatteredQuotation($array);
 $shatteredManager = new ShatteredQuotationManager($bdd);
+$supplier = new Suppliers($array);
+$suppliermanager = new SuppliersManager($bdd);
 
 $dateToProforma = date('d/m/Y');
 
+$company = $companymanager->getByNameData($companyNameData);
+$companyId = $company->getIdcompany();
+
 switch($type){
     case "devis":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"D");
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"D",$companyId);
+	$costType = "D";
         $entete = "du devis";
         $enteteIcon = '<i class="fas fa-file-invoice"></i>';
+	$enteteIconOption = '<i class="fas fa-sliders-h"></i>';
+        $enteteIconCout = '<i class="fas fa-hand-holding-usd"></i>';
         $buttons = '<div class="actions">
                         <a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
                             <i class="fas fa-edit"></i> Modifier </a>
-                        <a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                        <!--<a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                            <i class="fas fa-print"></i> Imprimer </a>-->
+                        <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
                             <i class="fas fa-print"></i> Imprimer </a>
                         <a data-toggle="modal" href="#to_proforma" class="btn btn-default btn-sm">
                             <i class="fas fa-file-alt"></i> => Proforma </a>
@@ -47,16 +57,17 @@ switch($type){
                             <i class="fas fa-file-invoice-dollar"></i> => Facture </a>
                         <!--<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/dupliquer/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
                             <i class="fas fa-edit"></i> Dupliquer </a>-->
-                            <a href="'.URLHOST.'_pages/_post/dupliquer_devis.php?quotationNumber='.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                            <a href="'.URLHOST.'_pages/_post/dupliquer_devis.php?quotationNumber='.$quotation->getQuotationNumber().'&compId='.$companyId.'" class="btn btn-default btn-sm">
                             <i class="fas fa-edit"></i> Dupliquer </a>
                     </div>';
         break;
     case "proforma":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"P");
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"P",$companyId);
+	$costType = "P";
         $entete = "de la proforma";
         $enteteIcon = '<i class="fas fa-file-alt"></i>';
         $buttons = '<div class="actions">
-                        <a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                        <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
                             <i class="fas fa-print"></i> Imprimer </a>
                         <a data-toggle="modal" href="#to_facture" class="btn btn-default btn-sm">
                             <i class="fas fa-file-invoice-dollar"></i> => Facture </a>
@@ -65,11 +76,12 @@ switch($type){
                     </div>';
         break;
     case "facture":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"F");
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"F",$companyId);
+	$costType = "F";
         $entete = "de la facture";
         $enteteIcon = '<i class="fas fa-file-invoice-dollar"></i>';
         $buttons = '<div class="actions">
-                        <a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                        <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
                             <i class="fas fa-print"></i> Imprimer </a>
                         <a data-toggle="modal" href="#to_avoir" class="btn btn-default btn-sm">
                             <i class="fas fa-file-prescription"></i> => Avoir </a>
@@ -78,11 +90,12 @@ switch($type){
                     </div>';
         break;
     case "avoir":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"A");
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"A",$companyId);
+        $costType = "A";
         $entete = "de l'avoir";
         $enteteIcon = '<i class="fas fa-file-prescription"></i>';
         $buttons = '<div class="actions">
-                        <a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                        <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
                             <i class="fas fa-print"></i> Imprimer </a>
                     </div>';
         break;
@@ -166,7 +179,8 @@ if(isset($_GET['cat5'])){
                         </div>
                         <div class="row static-info">
                             <div class="col-md-5 name"> Date : </div>
-                            <div class="col-md-7 value"> <?php echo $date; ?> <a data-toggle="modal" href="#modif_date" ><i class="fas fa-edit"></i></a></div>
+                            <div class="col-md-7 value"> <?php echo $date; if($_COOKIE["credential"] == "A" || $_COOKIE["credential"] == "C"){?>
+                                <a data-toggle="modal" href="#modif_date" ><i class="fas fa-edit"></i></a><?php }?></div>
                         </div>
                         <div class="row static-info">
                             <div class="col-md-5 name"> Dossier N° : </div>
@@ -403,7 +417,8 @@ if(isset($_GET['cat5'])){
                             </div>
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
-                            <div class="modal-footer">
+			    <input type="hidden" id="company" name="company" value="<?php echo $companyNameData; ?>">                                                        
+			    <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
                                     <i class="fa fa-check"></i> Valider</button>
@@ -443,6 +458,7 @@ if(isset($_GET['cat5'])){
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
                             <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
+                            <input type="hidden" id="company" name="company" value="<?php echo $companyNameData; ?>">
                             <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
@@ -559,6 +575,7 @@ if(isset($_GET['cat5'])){
                             </div>
                             <input type="hidden" id="quotationNumber" name="quotationNumber" value="<?php echo $quotation->getQuotationNumber(); ?>">
                             <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+			    <input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">                           
                             <div class="modal-footer">
                                 <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
                                 <button type="submit" class="btn green" name="valider">
@@ -566,6 +583,37 @@ if(isset($_GET['cat5'])){
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="select_print" data-keyboard="false" data-backdrop="static" class="modal fade" role="dialog" aria-hidden="true">
+            <!--<a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                            <i class="fas fa-print"></i> Imprimer </a>-->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Sélection du type d'impression</h4>
+                    </div>
+                    <div class="modal-body form">
+                        <form action="" method="" id="" class="form-horizontal form-row-seperated">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <a target="_blank" href="<?php print URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'/noheader'; ?>" class="btn btn-default btn-sm">
+                                    <i class="fas fa-file"></i> Sans logo (papier entête) </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a target="_blank" href="<?php print URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'/header'; ?>" class="btn btn-default btn-sm">
+                                    <i class="fas fa-file-invoice"></i> Avec logo (PDF) </a>
+                                </div>
+                            </div>
+                            <input type="hidden" id="quotationId" name="quotationId" value="<?php echo $quotation->getQuotationNumber(); ?>">
+                            <div class="modal-footer">
+                                <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>

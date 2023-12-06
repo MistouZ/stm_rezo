@@ -78,6 +78,7 @@ class Description extends Features
     {
         $this->quotationType = $quotationType;
     }
+    
 
     /**
      * @return mixed

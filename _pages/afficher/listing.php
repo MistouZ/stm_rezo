@@ -22,16 +22,31 @@ $customermanager = new CustomersManager($bdd);
 $quotations = new Quotation($array);
 $quotationmanager = new QuotationManager($bdd);
 $company = $companymanager->getByNameData($companyNameData);
+$companyId = $company->getIdcompany();
 
 $verif= $_GET['soussoussouscat'];
-$retour = $verif;
+if($verif != $username){
+    $retour = $verif;
+}
+else{
+    $folder2 = new Folder($array);
+    $foldermanager2 = new FoldersManager($bdd);
+}
 
 
 switch($type){
     case "devis":
-        $typeMini = 'D';
-        if($type2=="cours"){            
-            $quotations = $quotationmanager->getListQuotation($company->getIdcompany());
+        $fa = "fas fa-file-invoice";
+        if($type2=="cours"){
+            if($verif == $username){
+                $foldermanager2 = $foldermanager2->getListByUser($company->getIdcompany(),$username);
+                $quotations = $quotationmanager->getListQuotationByFilteredFolders($foldermanager2, $folder2);
+                print "company : ".$company->getIdcompany(); 
+                print_r($foldermanager2);
+            }
+            else{
+                $quotations = $quotationmanager->getListQuotation($company->getIdcompany());
+            }
             $buttons = '<div id="actions" style="display:none;">
                         <a data-toggle="modal" href="#to_proforma" class="btn grey-mint btn-sm" title="Passer la sélection en proforma">
                             <i class="fas fa-file-alt"></i> => Proforma </a>
@@ -75,33 +90,35 @@ switch($type){
                     </div>';
         break;
     case "facture":
-        $typeMini = 'F';
-    if($type2=="cours"){
-        $quotations = $quotationmanager->getListInvoice($company->getIdcompany());
-        $buttons = '<div id="actions" style="display:none;">
-                        <a data-toggle="modal" href="#to_avoir" class="btn grey-mint btn-sm">
-                            <i class="fas fa-file-prescription"></i> => Avoir </a>
-                        <a data-toggle="modal" href="#to_devis" class="btn grey-mint btn-sm">
-                            <i class="fas fa-file-invoice"></i> => Devis </a>
-                        <a data-toggle="modal" href="#to_validate" class="btn grey-mint btn-sm">
-                            <i class="fa fa-check"></i> => Valider </a>
-                    </div>';
-        break;
-    }
-    elseif($type2=="valides"){
-        $typeMini = 'V';
-        $quotations = $quotationmanager->getListValidatedInvoice($company->getIdcompany());
-        $buttons = '<div id="actions" style="display:none;">
-                        <a data-toggle="modal" href="#to_avoir" class="btn grey-mint btn-sm">
-                            <i class="fas fa-file-prescription"></i> => Avoir </a>
-                        <a data-toggle="modal" href="#to_devis" class="btn grey-mint btn-sm">
-                            <i class="fas fa-file-invoice"></i> => Devis </a>
-                    </div>';
-        break;
-    }
+        $fa = "fas fa-file-invoice-dollar";
+        if($type2=="cours"){
+            $typeMini = 'F';
+            $quotations = $quotationmanager->getListInvoice($company->getIdcompany());
+            $buttons = '<div id="actions" style="display:none;">
+                            <a data-toggle="modal" href="#to_avoir" class="btn grey-mint btn-sm">
+                                <i class="fas fa-file-prescription"></i> => Avoir </a>
+                            <a data-toggle="modal" href="#to_devis" class="btn grey-mint btn-sm">
+                                <i class="fas fa-file-invoice"></i> => Devis </a>
+                            <a data-toggle="modal" href="#to_validate" class="btn grey-mint btn-sm">
+                                <i class="fa fa-check"></i> => Valider </a>
+                        </div>';
+            break;
+        }
+        elseif($type2=="valides"){
+            $typeMini = 'V';
+            $quotations = $quotationmanager->getListValidatedInvoice($company->getIdcompany());
+            $buttons = '<div id="actions" style="display:none;">
+                            <a data-toggle="modal" href="#to_avoir" class="btn grey-mint btn-sm">
+                                <i class="fas fa-file-prescription"></i> => Avoir </a>
+                            <a data-toggle="modal" href="#to_devis" class="btn grey-mint btn-sm">
+                                <i class="fas fa-file-invoice"></i> => Devis </a>
+                        </div>';
+            break;
+        }
 
     case "avoir":
         $typeMini = 'A';
+	$fa = "fas fa-file-prescription";
         $quotations = $quotationmanager->getListAsset($company->getIdcompany());
         $buttons = '<div id="actions" style="display:none;">
                         
@@ -115,7 +132,7 @@ switch($type){
     <div class="col-md-12">
         <?php if($retour == "errorsuppr") { ?>
             <div class="alert alert-danger">
-                <button class="close" data-close="alert"></button> Une erreur est survenue, le devis n'a donc pas pu être être supprimé !</div>
+                <button class="close" onclick="window.location.href='<?php echo URLHOST.$_COOKIE['company'].'/devis/afficher/'.$type2.'/'.$quotationNumber; ?>'" data-close="alert"></button> Une erreur est survenue, le devis n'a donc pas pu être être supprimé !</div>
         <?php }elseif($retour == "successsupprdevis"){ ?>
             <div class="alert alert-success">
                 <button class="close" data-close="alert"></button> Le devis a bien été supprimé !</div>
@@ -139,7 +156,7 @@ switch($type){
                 <button class="close" data-close="alert"></button> La date a bien été modifiée !</div>
         <?php }elseif($retour == "errorFacture") { ?>
             <div class="alert alert-danger">
-                <button class="close" data-close="alert"></button> Erreur lors du passage en facture !</div>
+                <button class="close" onclick="window.location.href='<?php echo URLHOST.$_COOKIE['company'].'/devis/afficher/'.$type2.'/'.$quotationNumber; ?>'" data-close="alert"></button> Erreur lors du passage en facture !</div>
         <?php }elseif($retour == "successFacture"){ ?>
             <div class="alert alert-success">
                 <button class="close" data-close="alert"></button> Passage en facture effectué avec succès !</div>
@@ -148,13 +165,13 @@ switch($type){
                 <button class="close" data-close="alert"></button> Erreur lors du passage en devis !</div>
         <?php }elseif($retour == "successDevis"){ ?>
             <div class="alert alert-success">
-                <button class="close" data-close="alert"></button> Passage en devis effectué avec succès !</div>
+                <button class="close" onclick="window.location.href='<?php echo URLHOST.$_COOKIE['company'].'/devis/afficher/'.$type2.'/'.$quotationNumber; ?>'" data-close="alert"></button> Passage en devis effectué avec succès !</div>
         <?php } ?>
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>Liste des <?php print ucwords($_GET['cat']); if($_GET['cat'] != "devis"){echo "s";}?>  </div>
+                    <i class="<?php print $fa; ?>"></i>Liste des <?php print ucwords($_GET['cat']); if($_GET['cat'] != "devis"){echo "s";}?>  </div>
                 <div class="actions">
                     <a data-toggle="modal" href="<?php echo URLHOST.$_COOKIE['company'].'/devis/afficher/cours/'.$username; ?>" class="btn btn-sm grey-salsa">
                         <i class="far fa-list-alt""></i> Voir mes devis</a>
@@ -176,7 +193,12 @@ switch($type){
                             <th class="desktop">Libellé</th>
                             <th class="none">Montant total</th>
                             <th class="desktop">Détail</th>
+                            <?php if($_GET['cat'] != "facture"){
+                                ?>
                             <th class="desktop">Modifier</th>
+                            <?php
+                            }
+                            ?>
                             <th class="desktop">Supprimer</th>
                         </tr>
                         </thead>
@@ -190,7 +212,7 @@ switch($type){
                             $folder = $foldermanager->get($quotation->getFolderId());
                             $descriptions = new Description($array);
                             $descriptionmanager = new DescriptionManager($bdd);
-                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType());
+                            $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType(),$companyId);
                             $montant = 0;
                             foreach ($descriptions as $description) {
                                 $montant = calculMontantTotalTTC($description, $montant);
@@ -205,8 +227,13 @@ switch($type){
                                 <td><?php echo $folder->getLabel(); ?></td>
                                 <td><?php echo number_format($montant,0,","," "); ?> XPF</td>
                                 <td><a class="btn green-meadow" href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/afficher/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i class="fas fa-eye" alt="Détail"></i> Afficher</a></td>
+                                <?php if($_GET['cat'] != "facture"){
+                                ?>
                                 <td><a class="btn blue-steel" href="<?php echo URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber(); ?>"><i class="fas fa-edit" alt="Editer"></i> Modifier</a></td>
-                                <td><a class="btn red-mint" data-placement="top" data-toggle="confirmation" data-title="Supprimer <?php echo $type; ?> n° <?php echo $quotation->getQuotationNumber(); ?> ?" data-content="ATTENTION ! La suppression est irréversible !" data-btn-ok-label="Supprimer" data-btn-ok-class="btn-success" data-btn-cancel-label="Annuler" data-btn-cancel-class="btn-danger" data-href="<?php echo URLHOST.'_pages/_post/supprimer_devis.php?idQuotation='.$quotation->getIdQuotation().'&quotationNumber='.$quotation->getQuotationNumber().'&type='.$typeMini.'&compId='.$folder->getCompanyId(); ?>"><i class="fas fa-trash-alt" alt="Supprimer"></i> Supprimer</a></td>
+                                <?php
+                                }
+                                ?>
+				<td><a class="btn red-mint" data-placement="top" data-toggle="confirmation" data-title="Supprimer <?php echo $type; ?> n° <?php echo $quotation->getQuotationNumber(); ?> ?" data-content="ATTENTION ! La suppression est irréversible !" data-btn-ok-label="Supprimer" data-btn-ok-class="btn-success" data-btn-cancel-label="Annuler" data-btn-cancel-class="btn-danger" data-href="<?php echo URLHOST.'_pages/_post/supprimer_devis.php?idQuotation='.$quotation->getIdQuotation().'&quotationNumber='.$quotation->getQuotationNumber().'&type='.$typeMini.'&compId='.$folder->getCompanyId(); ?>"><i class="fas fa-trash-alt" alt="Supprimer"></i> Supprimer</a></td>
                             </tr>
                             <?php
                         }
@@ -255,6 +282,7 @@ if(count($quotations)>0) {
                         <input type="hidden" id="quotationNumber" name="quotationNumber"
                                value="<?php echo $quotation->getQuotationNumber(); ?>">
                         <input type="hidden" id="type" name="type" value="<?php echo $type2; ?>">
+			<input type="hidden" id="currentType" name="currentType" value="<?php echo $quotation->getType(); ?>">
                         <div class="modal-footer">
                             <button type="button" class="btn grey-salsa btn-outline" data-dismiss="modal">Fermer
                             </button>

@@ -38,36 +38,40 @@ if(isset($_POST['imprimer'])) {
     $costmanager = new CostManager($bdd);
 
     $company = $companymanager->getByNameData($companyNameData);
-    $idCompany = $company->getIdcompany();
+ 	$companyId = $company->getIdcompany();
 
     if (empty($seller) && empty($datefrom)) {
-        $filteredFolder = $foldermanager->getList($idCompany);
+        $filteredFolder = $foldermanager->getList($companyId);
     } elseif (empty($seller)) {
-        $filteredFolder = $foldermanager->getListByDate($idCompany, $datefrom, $dateto);
+        $filteredFolder = $foldermanager->getListByDate($companyId, $datefrom, $dateto);
     } elseif (!empty($seller) && empty($datefrom)) {
-        $filteredFolder = $foldermanager->getListByUser($idCompany, $seller);
+        $filteredFolder = $foldermanager->getListByUser($companyId, $seller);
     } elseif (!empty($seller) && !empty($datefrom)) {
-        $filteredFolder = $foldermanager->getListByDateAndUser($idCompany, $seller, $datefrom, $dateto);
+        $filteredFolder = $foldermanager->getListByDateAndUser($companyId, $seller, $datefrom, $dateto);
     }
 
     if ($type == "devis") {
         $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
+	$costType = "D";
         $enteteIcon = '<i class="fas fa-chart-pie"></i>';
     } elseif ($type == "proforma") {
         $quotations = $quotationmanager->getListProformaByFilteredFolders($filteredFolder, $folder);
+	$costType = "P";
         $enteteIcon = '<i class="fas fa-chart-area"></i>';
     } elseif ($type == "facture") {
         $quotations = $quotationmanager->getListInvoiceByFilteredFolders($filteredFolder, $folder);
+	$costType = "F";
         $enteteIcon = '<i class="fas fa-chart-line"></i>';
     } elseif ($type == "avoir") {
         $quotations = $quotationmanager->getListAssetsByFilteredFolders($filteredFolder, $folder);
+	$costType = "A";
         $enteteIcon = '<i class="fas fa-chart-bar"></i>';
     }
 
 
 //récupération des coûts liés au dossier.
 
-    $costs = $costmanager->getCostByFilteredQuotation($quotations, $quotation);
+    $costs = $costmanager->getCostByFilteredQuotation($quotations, $quotation,$costType);
 }
 ?>
 <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -139,7 +143,7 @@ if(isset($_POST['imprimer'])) {
                                 $descriptions = new Description($array);
                                 $descriptionmanager = new DescriptionManager($bdd);
 
-                                $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                                $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(), $quotation->getType(),$companyId);
 
                                 //Calcul du montant des devis / factures et cumul pour le Palmares
                                 $montant = 0;
@@ -253,25 +257,30 @@ if(isset($_POST['imprimer'])) {
     <button id="Exporter" onclick="ExportPdf()">Exporter</button>
 </div>
 
-<script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>
-<script src="https://kendo.cdn.telerik.com/2019.2.619/js/jszip.min.js"></script>
-<script src="https://kendo.cdn.telerik.com/2019.2.619/js/kendo.all.min.js"></script>
-<script src="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.common-material.min.css"></script>
-<script src="https://kendo.cdn.telerik.com/2019.2.619/styles/kendo.material.min.css"></script>
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.default-v2.min.css"/>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2020.2.513/js/jszip.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.common-boostrap.min.css"></script>
+<script src="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.boostrap.min.css"></script>
+src="
 <script>
     // Import DejaVu Sans font for embedding
     kendo.pdf.defineFont({
         "DejaVu Sans":
-            "https://cdn.kendostatic.com/2019.2.619/styles/fonts/DejaVu/DejaVuSans.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans.ttf",
 
         "DejaVu Sans|Bold":
-            "https://cdn.kendostatic.com/2019.2.619/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
 
         "DejaVu Sans|Bold|Italic":
-            "https://cdn.kendostatic.com/2019.2.619/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
 
         "DejaVu Sans|Italic":
-            "https://cdn.kendostatic.com/2019.2.619/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+            "https://cdn.kendostatic.com/2020.2.513/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+
+        "WebComponentsIcons"      :
+            "https://kendo.cdn.telerik.com/2020.2.513/styles/fonts/glyphs/WebComponentsIcons.ttf",
 
         "FontAwesome":
             "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/webfonts/fa-solid-900.ttf"
@@ -297,7 +306,7 @@ if(isset($_POST['imprimer'])) {
     function closeWindow() {
         setTimeout(function() {
             window.close();
-        }, 2000); // 300 pour NC sur serveur MLS
+        }, 300); // 300 pour NC sur serveur MLS
     }
 
     function ExportPdf(){

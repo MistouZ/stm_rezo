@@ -34,22 +34,21 @@ $suppliermanager = new SuppliersManager($bdd);
 $cost = new Cost($array);
 $costmanager = new CostManager($bdd);
 
-$quotation = $quotationmanager->getByQuotationNumber($quotationNumber,"D");
 $company = $companymanager->getByNameData($companyNameData);
-$idCompany = $company->getIdcompany();
+$companyId = $company->getIdcompany();
+$quotation = $quotationmanager->getByQuotationNumber($quotationNumber,"D",$companyId);
 
-$foldermanager = $foldermanager->getListActive($idCompany);
+$foldermanager = $foldermanager->getListActive($companyId);
 
 $folderRecup = $foldermanagerRecup->get($quotation->getFolderId());
 
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
-$descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType());
-$descriptionsOption = $descriptionmanager->getOption($quotation->getQuotationNumber());
-$contact = $contactmanager->getById($quotation->getContactId());
+$descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),"D",$companyId);
+$descriptionsOption = $descriptionmanager->getOption($quotation->getQuotationNumber());$contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
-$costmanager = $costmanager->getByQuotationNumber($quotation->getQuotationNumber());
+$costmanager = $costmanager->getByQuotationNumber($quotation->getQuotationNumber(),"D",$companyId);
 $usermanager = $usermanager->getListByCompany($company->getIdcompany());
 
 $suppliermanager = $suppliermanager->getListAllByCompany($company->getIdcompany());
@@ -539,7 +538,7 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
                                 <button type="submit" class="btn green"><i class="fas fa-save"></i> Enregistrer</button>
-                                <button type="button" class="btn default"><i class="fas fa-ban"></i> Annuler</button>
+                                <button type="button" class="btn default" onclick="history.back()"><i class="fas fa-ban"></i> Annuler</button>
                             </div>
                         </div>
                     </div>

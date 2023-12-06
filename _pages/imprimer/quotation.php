@@ -11,6 +11,7 @@ $companyNameData = $_GET["section"];
 $type = $_GET['cat'];
 $type2 = $_GET['soussouscat'];
 $idQuotation = $_GET['soussoussouscat'];
+$printType = $_GET['cat5'];
 
 $company = new Company($array);
 $companymanager = new CompaniesManager($bdd);
@@ -28,30 +29,36 @@ $tax = new Tax($array);
 $taxmanager = new TaxManager($bdd);
 $shatteredQuotation = new ShatteredQuotation($array);
 $shatteredManager = new ShatteredQuotationManager($bdd);
+$company = $companymanager->getByNameData($companyNameData);
+$companyId = $company->getIdcompany();
 
 switch($type){
     case "devis":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"D",$companyId);
         $entete = "du devis";
         $enteteIcon = '<i class="fas fa-file-invoice"></i>';
+        $typeQuotation = "D";
         break;
 
     case "proforma":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"P",$companyId);
         $entete = "de la proforma";
         $enteteIcon = '<i class="fas fa-file-alt"></i>';
+        $typeQuotation = "P";
         break;
 
     case "facture":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"F",$companyId);
         $entete = "de la facture";
         $enteteIcon = '<i class="fas fa-file-invoice-dollar"></i>';
+        $typeQuotation = "F";
         break;
 
     case "avoir":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation);
+        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"A",$companyId);
         $entete = "de l'avoir";
         $enteteIcon = '<i class="fas fa-file-prescription"></i>';
+        $typeQuotation = "A";
         break;
 }
 
@@ -59,7 +66,7 @@ $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
-$descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+$descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$typeQuotation,$companyId);
 $contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
@@ -293,13 +300,23 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
 </script>
 <script type="x/kendo-template" id="page-template">
     <div class="page-template">
-        <div class="header" >
-            <img src="<?php echo URLHOST; ?>images/societe/<?php echo $companyNameData; ?>.jpg" alt="<?php echo $companyNameData; ?>" class="logo-default" style="max-height:80px;" />
-        </div>
-        <div class="footer">
-            <h5> #:pageNum# / #:totalPages# </h5>  
-            <img src="<?php echo URLHOST; ?>images/societe/footers/<?php echo $companyNameData; ?>.jpg" alt="<?php echo $companyNameData; ?>" class="logo-default" style="display: block;  margin-left: auto; margin-right: auto; width: 100%; bottom : 0px" />        
-        </div>
+        <?php if($printType=='header'){ ?>
+            <div class="header" >
+                <img src="<?php echo URLHOST; ?>images/societe/<?php echo $companyNameData; ?>.jpg" alt="<?php echo $companyNameData; ?>" class="logo-default" style="max-height: 60px;" />
+            </div>
+            <div class="footer">
+                <h5> #:pageNum# / #:totalPages# </h5>  
+                <img src="<?php echo URLHOST; ?>images/societe/footers/<?php echo $companyNameData; ?>.jpg" alt="<?php echo $companyNameData; ?>" class="logo-default" style="display: block;  margin-left: auto; margin-right: auto; width: 100%; bottom : 0px" />        
+            </div>
+        <?php }else{ ?>
+            <div class="header" >
+                <div style="height : 60px;"></div>
+            </div>
+            <div class="footer">
+                <h5> #:pageNum# / #:totalPages# </h5>  
+                <div style="height : 30px;"></div> 
+            </div>
+        <?php } ?>
     </div>
 </script>
 <script type="text/javascript" language="javascript">
@@ -308,10 +325,10 @@ $date = date('d/m/Y',strtotime($quotation->getDate()));
         document.getElementById('Exporter').click();
     }
 
-    function closeWindow() {
+   function closeWindow() {
         setTimeout(function() {
             window.close();
-        }, 3000); // 300 pour NC sur serveur MLS
+        }, 500); // 300 pour NC sur serveur MLS
     }
 
     function ExportPdf(){

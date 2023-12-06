@@ -32,7 +32,11 @@ class LogsManager
     }
 
     /**
-     * @param Logs $logs
+     * @param username $username
+     * @param type $type
+     * @param action $action
+     * @param id $id
+     * @param date $date
      * @return string|null
      */
     

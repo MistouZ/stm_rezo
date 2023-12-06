@@ -36,59 +36,47 @@ if(isset($_POST['valider'])) {
     $costmanager = new CostManager($bdd);
 
     $company = $companymanager->getByNameData($companyNameData);
-    $idCompany = $company->getIdcompany();
+    $companyId = $company->getIdcompany();
 
-    if(empty($datefrom)){
-        $filteredFolder = $foldermanager->getList($idCompany);
+    if(empty($seller) && empty($datefrom)){
+        $filteredFolder = $foldermanager->getList($companyId);
     }
-    else
+    elseif(empty($seller))
     {
-        $filteredFolder = $foldermanager->getListByDate($idCompany,$datefrom,$dateto);
+        $filteredFolder = $foldermanager->getListByDate($companyId,$datefrom,$dateto);
     }
-    /*elseif(!empty($seller) && empty($datefrom))
+    elseif(!empty($seller) && empty($datefrom))
     {
-        $filteredFolder = $foldermanager->getListByUser($idCompany, $seller);
+        $filteredFolder = $foldermanager->getListByUser($companyId, $seller);
     }
     elseif (!empty($seller) && !empty($datefrom))
     {
-        $filteredFolder = $foldermanager->getListByDateAndUser($idCompany,$seller,$datefrom,$dateto);
-    }*/
+        $filteredFolder = $foldermanager->getListByDateAndUser($companyId,$seller,$datefrom,$dateto);
+    }
 
     if ($type == "devis") {
-        if(!empty($seller))
-        {
-            $quotations = $quotationmanager->getListQuotationByFilteredFoldersAndSeller($filteredFolder, $folder,$seller);
-        }
-        else{
-            $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
-        }
+        $quotations = $quotationmanager->getListQuotationByFilteredFolders($filteredFolder, $folder);
+        $typeCost = "D";
         $enteteIcon = '<i class="fas fa-chart-pie"></i>';
     } elseif ($type == "proforma") {
-        if(!empty($seller)){
-            $quotations = $quotationmanager->getListProformaByFilteredFoldersAndSeller($filteredFolder, $folder,$seller);
-        }
-        else{
-            $quotations = $quotationmanager->getListProformaByFilteredFolders($filteredFolder, $folder);
-        }
+        $quotations = $quotationmanager->getListProformaByFilteredFolders($filteredFolder, $folder);
+        $typeCost = "P";
         $enteteIcon = '<i class="fas fa-chart-area"></i>';
     } elseif ($type == "facture") {
-        if(!empty($seller)){
-            $quotations = $quotationmanager->getListInvoiceByFilteredFoldersAndSeller($filteredFolder, $folder,$seller);
-        }
-        else{
-            $quotations = $quotationmanager->getListInvoiceByFilteredFolders($filteredFolder, $folder);
-        }
+        $quotations = $quotationmanager->getListInvoiceByFilteredFolders($filteredFolder, $folder);
+        $typeCost = "F";
         $enteteIcon = '<i class="fas fa-chart-line"></i>';
     } elseif ($type == "avoir") {
         $quotations = $quotationmanager->getListAssetsByFilteredFolders($filteredFolder, $folder);
+        $typeCost = "A";
         $enteteIcon = '<i class="fas fa-chart-bar"></i>';
+	
     }
 
-    
 
     //récupération des coûts liés au dossier.
 
-    $costs = $costmanager->getCostByFilteredQuotation($quotations,$quotation);
+    $costs = $costmanager->getCostByFilteredQuotation($quotations,$quotation, $typeCost);
 }
 
 ?>
@@ -159,7 +147,7 @@ if(isset($_POST['valider'])) {
                         $descriptions = new Description($array);
                         $descriptionmanager = new DescriptionManager($bdd);
 
-                        $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber());
+                        $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(), $quotation->getType(),$companyId);
 
                         //Calcul du montant des devis / factures et cumul pour le Palmares
                         $montant = 0;

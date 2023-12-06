@@ -12,13 +12,22 @@ $type2 = $_POST['type'];
 $currentType = $_POST['currentType'];
 
 $array = array();
+$company = new Company($array);
+$companymanager = new CompaniesManager($bdd);
+$companyNameData = $_GET["section"];
+$company = $companymanager->getByNameData($companyNameData);
+$companyId = $company->getIdcompany();
+
 $quotation = new Quotation($array);
 $quotationmanagerNumber = new QuotationManager($bdd);
-$quotation = $quotationmanagerNumber->getByQuotationNumber($quotationNumber,$currentType);
+$quotation = $quotationmanagerNumber->getByQuotationNumber($quotationNumber,$currentType, $companyId);
 
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
-$descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber,$currentType);
+$descriptions = $descriptionmanager->getByQuotationNumber($quotationNumber,$currentType, $companyId);
+
+$costGet = new Cost($array);
+$costmanager = new CostManager($bdd);
 
 $date = $_POST['date'];
 
@@ -35,10 +44,11 @@ $quotation = new Quotation($data);
 $quotationmanager = new QuotationManager($bdd);
 
 $test = $quotationmanager->changeType($quotation);
-$test2 = $descriptionmanager->update($descriptions,$test,"D");
+$test2 = $descriptionmanager->update($descriptions,$test,"D",$companyId);
+$test3 = $costmanager->UpdateCostType($test,$quotationNumber,"D",$companyId);
 
 
-if(is_null($test) || is_null($test2)){
+if(is_null($test) || is_null($test2) || is_null($test3)){
     header('Location: '.$_SERVER['HTTP_REFERER'].'/errorDevis');
 }else{
 

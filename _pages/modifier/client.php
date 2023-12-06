@@ -75,18 +75,6 @@ $taxmanager = $taxmanager->getList();
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Fournisseur
-                            </label>
-                            <div class="col-md-4">
-                                <div class="checkbox-list">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" value="is_supplier" name="is_supplier" id="is_supplier" /></label>
-                                </div>
-                                <span class="help-block"> Cocher si ce client est aussi un fournisseur </span>
-                                <div id="form_2_services_error"> </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="control-label col-md-3">Société
                                 <span class="required"> * </span>
                             </label>
@@ -183,6 +171,31 @@ $taxmanager = $taxmanager->getList();
                                 </div>
                                 <span class="help-block">Cocher la ou les taxe(s) affiliée(s) au client </span>
                                 <div id="company_error"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Taxes
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="radio-list" data-error-container="#modalite_error">
+                                    <label class="radio-inline">
+                                        <?php
+                                            echo'<input type="radio" id="modalite" name="modalite" value="30JF" ';
+                                            if($customer->getModalite() == "30JF"){ echo "checked=\"checked\""; }
+                                            echo '/> 30 jours fin de mois';
+                                        ?>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <?php
+                                            echo'<input type="radio" id="modalite" name="modalite" value="IMME" ';
+                                            if($customer->getModalite() == "IMME"){ echo "checked=\"checked\""; }
+                                            echo '/> Comptant immédiat';
+                                        ?>
+                                    </label>
+                                </div>
+                                <span class="help-block">Cocher la modalité du client </span>
+                                <div id="modalite_error"> </div>
                             </div>
                         </div>
                         <input type="hidden" id="customerId" name="customerId" value="<?php echo $customerId; ?>">

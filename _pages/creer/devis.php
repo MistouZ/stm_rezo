@@ -27,8 +27,8 @@ $supplier = new Suppliers($array);
 $suppliermanager = new SuppliersManager($bdd);
 
 $company = $companymanager->getByNameData($companyNameData);
-$idCompany = $company->getIdcompany();
-$foldermanager = $foldermanager->getListActive($idCompany);
+$companyId = $company->getIdcompany();
+$foldermanager = $foldermanager->getListActive($companyId);
 $customermanager = $customermanager->getListByCompany($company->getIdcompany());
 $usermanager = $usermanager->getListByCompany($company->getIdcompany());
 

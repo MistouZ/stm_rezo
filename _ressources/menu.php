@@ -24,11 +24,17 @@
             <span class="arrow"></span>
         </a>
         <ul class="sub-menu">
+        <?php
+            if($_COOKIE["credential"] == "A" || $_COOKIE["credential"] == "C") {
+        ?>
            <li class="nav-item  ">
                     <a href="<?php echo URLHOST . $_COOKIE['company'] . '/client/creer'; ?>" class="nav-link ">
                         <span class="title"><i class="far fa-plus-square"></i> Créer</span>
                     </a>
            </li>
+        <?php
+            }
+        ?>
            <li class="nav-item  ">
                 <a href="<?php echo URLHOST.$_COOKIE['company'].'/client/afficher'; ?>" class="nav-link ">
                     <span class="title"><i class="far fa-list-alt"></i> Listing</span>
@@ -43,11 +49,17 @@
             <span class="arrow"></span>
         </a>
         <ul class="sub-menu">
+        <?php
+            if($_COOKIE["credential"] == "A" || $_COOKIE["credential"] == "C") {
+        ?>
             <li class="nav-item  ">
                     <a href="<?php echo URLHOST . $_COOKIE['company'] . '/fournisseur/creer'; ?>" class="nav-link ">
                         <span class="title"><i class="far fa-plus-square"></i> Créer</span>
                     </a>
             </li>
+            <?php
+            }
+        ?>
             <li class="nav-item  ">
                 <a href="<?php echo URLHOST.$_COOKIE['company'].'/fournisseur/afficher'; ?>" class="nav-link ">
                     <span class="title"><i class="far fa-list-alt"></i> Listing</span>
@@ -194,14 +206,45 @@
                 <span class="title">Analyse des coûts</span>
             </a>
         </li>
+        <li class="nav-item  ">
+            <a href="<?php echo URLHOST . $_COOKIE['company'] . '/export/creer'; ?>" class="nav-link nav-toggle">
+                <i class="fas fa-file-export"></i>
+                <span class="title">Exports</span>
+            </a>
+        </li>
         <?php
     }
-    if($_COOKIE["credential"] == "A") {
+    if($_COOKIE["credential"] == "A" || $_COOKIE["credential"] == "C"){
 
         ?>
         <li class="heading">
             <h3 class="uppercase"><i class="fas fa-toolbox"></i> Administration</h3>
         </li>
+        <li class="nav-item  ">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fas fa-sort-numeric-down"></i>
+                    <span class="title">Compteurs</span>
+                    <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-item  ">
+                    <a href="<?php echo URLHOST . $_COOKIE['company'] . '/compteurs/creer'; ?>" class="nav-link "
+                            target="_blank">
+                        <span class="title"><i class="fas fa-undo-alt"></i> Réinitilisation</span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                <a href="<?php echo URLHOST.$_COOKIE['company'].'/compteurs/afficher'; ?>" class="nav-link ">
+                    <span class="title"><i class="far fa-list-alt"></i> Listing</span>
+                </a>
+            </li>
+            </ul>
+        </li>
+        <?php
+    }
+    if($_COOKIE["credential"] == "A"){
+
+        ?>
         <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fas fa-user-shield"></i>
