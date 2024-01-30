@@ -38,32 +38,75 @@ $companyId = $company->getIdcompany();
 
 switch($type){
     case "devis":
-        $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"D",$companyId);
-	$costType = "D";
-        $entete = "du devis";
-        $enteteIcon = '<i class="fas fa-file-invoice"></i>';
-	$enteteIconOption = '<i class="fas fa-sliders-h"></i>';
-        $enteteIconCout = '<i class="fas fa-hand-holding-usd"></i>';
-        $buttons = '<div class="actions">
-                        <a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
-                            <i class="fas fa-edit"></i> Modifier </a>
-                        <!--<a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
-                            <i class="fas fa-print"></i> Imprimer </a>-->
-                        <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
-                            <i class="fas fa-print"></i> Imprimer </a>
-                        <a data-toggle="modal" href="#to_proforma" class="btn btn-default btn-sm">
-                            <i class="fas fa-file-alt"></i> => Proforma </a>
-                        <a data-toggle="modal" href="#to_facture" class="btn btn-default btn-sm">
-                            <i class="fas fa-file-invoice-dollar"></i> => Facture </a>
-                        <!--<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/dupliquer/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
-                            <i class="fas fa-edit"></i> Dupliquer </a>-->
+        if($type2=="valides"){
+            $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"P",$companyId);;
+                $costType = "P";
+                $entete = "du devis";
+                $enteteIcon = '<i class="fas fa-file-invoice"></i>';
+                $enteteIconOption = '<i class="fas fa-sliders-h"></i>';
+                $enteteIconCout = '<i class="fas fa-hand-holding-usd"></i>';
+                $buttons = '<div class="actions">
+                            <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
+                                <i class="fas fa-print"></i> Imprimer </a>
                             <a href="'.URLHOST.'_pages/_post/dupliquer_devis.php?quotationNumber='.$quotation->getQuotationNumber().'&compId='.$companyId.'" class="btn btn-default btn-sm">
                             <i class="fas fa-edit"></i> Dupliquer </a>
-                    </div>';
+                        </div>';
+        }
+        elseif($type2=="partiels")
+        {
+                $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"S",$companyId);
+                $costType = "D";
+                $entete = "du devis";
+                $enteteIcon = '<i class="fas fa-file-invoice"></i>';
+                $enteteIconOption = '<i class="fas fa-sliders-h"></i>';
+                $enteteIconCout = '<i class="fas fa-hand-holding-usd"></i>';
+                $buttons = '<div class="actions">
+                            <a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                                <i class="fas fa-edit"></i> Modifier </a>
+                            <!--<a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                                <i class="fas fa-print"></i> Imprimer </a>-->
+                            <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
+                                <i class="fas fa-print"></i> Imprimer </a>
+                            <a data-toggle="modal" href="#to_proforma" class="btn btn-default btn-sm">
+                                <i class="fas fa-file-alt"></i> => Proforma </a>
+                            <a data-toggle="modal" href="#to_facture" class="btn btn-default btn-sm">
+                                <i class="fas fa-file-invoice-dollar"></i> => Facture </a>
+                            <!--<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/dupliquer/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                                <i class="fas fa-edit"></i> Dupliquer </a>-->
+                            <a href="'.URLHOST.'_pages/_post/dupliquer_devis.php?quotationNumber='.$quotation->getQuotationNumber().'&compId='.$companyId.'" class="btn btn-default btn-sm">
+                                <i class="fas fa-edit"></i> Dupliquer </a>
+                        </div>';
+            
+        }
+        else
+        {
+            $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"D",$companyId);
+                $costType = "D";
+                $entete = "du devis";
+                $enteteIcon = '<i class="fas fa-file-invoice"></i>';
+                $enteteIconOption = '<i class="fas fa-sliders-h"></i>';
+                $enteteIconCout = '<i class="fas fa-hand-holding-usd"></i>';
+                $buttons = '<div class="actions">
+                            <a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                                <i class="fas fa-edit"></i> Modifier </a>
+                            <!--<a target="_blank" href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/imprimer/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                                <i class="fas fa-print"></i> Imprimer </a>-->
+                            <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
+                                <i class="fas fa-print"></i> Imprimer </a>
+                            <a data-toggle="modal" href="#to_proforma" class="btn btn-default btn-sm">
+                                <i class="fas fa-file-alt"></i> => Proforma </a>
+                            <a data-toggle="modal" href="#to_facture" class="btn btn-default btn-sm">
+                                <i class="fas fa-file-invoice-dollar"></i> => Facture </a>
+                            <!--<a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/dupliquer/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                                <i class="fas fa-edit"></i> Dupliquer </a>-->
+                            <a href="'.URLHOST.'_pages/_post/dupliquer_devis.php?quotationNumber='.$quotation->getQuotationNumber().'&compId='.$companyId.'" class="btn btn-default btn-sm">
+                                <i class="fas fa-edit"></i> Dupliquer </a>
+                        </div>';
+        }
         break;
     case "proforma":
         $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"P",$companyId);
-	$costType = "P";
+        $costType = "P";
         $entete = "de la proforma";
         $enteteIcon = '<i class="fas fa-file-alt"></i>';
         $buttons = '<div class="actions">
@@ -77,10 +120,13 @@ switch($type){
         break;
     case "facture":
         $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"F",$companyId);
-	$costType = "F";
+        $costType = "F";
         $entete = "de la facture";
         $enteteIcon = '<i class="fas fa-file-invoice-dollar"></i>';
-        $buttons = '<div class="actions">
+        if($_COOKIE["credential"] == "A" || $_COOKIE["credential"] == "C"){
+            $buttons = '<div class="actions">
+                        <a href="'.URLHOST.$_COOKIE['company'].'/'.$type.'/modifier/'.$type2.'/'.$quotation->getQuotationNumber().'" class="btn btn-default btn-sm">
+                            <i class="fas fa-edit"></i> Modifier </a>
                         <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
                             <i class="fas fa-print"></i> Imprimer </a>
                         <a data-toggle="modal" href="#to_avoir" class="btn btn-default btn-sm">
@@ -88,6 +134,18 @@ switch($type){
                         <a data-toggle="modal" href="#to_devis" class="btn btn-default btn-sm">
                             <i class="fas fa-file-invoice"></i> => Devis </a>
                     </div>';
+
+        }
+        else{
+            $buttons = '<div class="actions">
+            <a data-toggle="modal" href="#select_print" class="btn btn-default btn-sm">
+                <i class="fas fa-print"></i> Imprimer </a>
+            <a data-toggle="modal" href="#to_devis" class="btn btn-default btn-sm">
+                <i class="fas fa-file-invoice"></i> => Devis </a>
+            </div>';
+        }
+
+        
         break;
     case "avoir":
         $quotation = $quotationmanager->getByQuotationNumber($idQuotation,"A",$companyId);
