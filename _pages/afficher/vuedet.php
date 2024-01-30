@@ -12,6 +12,8 @@ $type = $_GET['cat'];
 $type2 = $_GET['soussouscat'];
 $idQuotation = $_GET['soussoussouscat'];
 
+echo $idQuotation;
+
 $company = new Company($array);
 $companymanager = new CompaniesManager($bdd);
 $folder = new Folder($array);
@@ -35,8 +37,6 @@ $dateToProforma = date('d/m/Y');
 
 $company = $companymanager->getByNameData($companyNameData);
 $companyId = $company->getIdcompany();
-
-echo $companyId;
 
 switch($type){
     case "devis":
