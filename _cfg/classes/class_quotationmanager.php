@@ -15,7 +15,7 @@ class QuotationManager
     private $_db;
 
     /**
-     * folderManager constructor.
+     * QuotationManager constructor.
      * @param $_db
      */
     public function __construct($_db)

@@ -15,7 +15,7 @@ class DescriptionManager
     private $_db;
 
     /**
-     * folderManager constructor.
+     * DescriptionManager constructor.
      * @param $_db
      */
     public function __construct($_db)
