@@ -8,14 +8,14 @@
 
 class DescriptionManager
 {
-    /**
+   /**
      * PDO Database instance PDO
      * @var
      */
     private $_db;
 
     /**
-     * UsersManager constructor.
+     * folderManager constructor.
      * @param $_db
      */
     public function __construct($_db)
