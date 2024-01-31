@@ -8,14 +8,14 @@
 
 class DescriptionManager
 {
-   /**
+    /**
      * PDO Database instance PDO
      * @var
      */
     private $_db;
 
     /**
-     * folderManager constructor.
+     * UsersManager constructor.
      * @param $_db
      */
     public function __construct($_db)
@@ -66,16 +66,14 @@ class DescriptionManager
     /**
      * Find a Quotation by his iD
      * @param $quotationNumber
-     * @return description from quotationNumber
+     * @return quotation
      */
     public function getByQuotationNumber($quotationNumber, $quotationType,$companyId)
     {
         $description = array();
         try{
             $quotationNumber = (string) $quotationNumber;
-            $query = "SELECT * FROM description WHERE quotationNumber = '$quotationNumber' AND quotationType = '$quotationType' AND companyId='$companyId' ";
-            echo $query;
-            $q = $this->_db->query($query);
+            $q = $this->_db->query("SELECT * FROM description WHERE quotationNumber = '$quotationNumber' and quotationType = '$quotationType' AND companyId='$companyId' ");
             while($donnees = $q->fetch(PDO::FETCH_ASSOC))
             {
                 $description[] =new Description($donnees);
@@ -84,7 +82,6 @@ class DescriptionManager
             return $description;
         }
         catch(Exception $e){
-            echo $e;
             return null;
         }
     }
