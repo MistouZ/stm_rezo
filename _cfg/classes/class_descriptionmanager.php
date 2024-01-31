@@ -73,8 +73,8 @@ class DescriptionManager
         $description = array();
         try{
             $quotationNumber = (string) $quotationNumber;
-            echo "je suis ici".$quotationNumber." ".$quotationType." ".$companyId;
             $query = "SELECT * FROM description WHERE quotationNumber = '$quotationNumber' and quotationType = '$quotationType' AND companyId='$companyId' ";
+            echo $query;
             $q = $this->_db->query($query);
             while($donnees = $q->fetch(PDO::FETCH_ASSOC))
             {
