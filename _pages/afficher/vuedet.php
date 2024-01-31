@@ -164,6 +164,7 @@ $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
 $descriptions = new Description($array);
 $descriptionmanager = new DescriptionManager($bdd);
+print_r($descriptionmanager);
 $descriptions = $descriptionmanager->getByQuotationNumber($quotation->getQuotationNumber(),$quotation->getType(),$companyId);
 $contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($quotation->getSeller());
