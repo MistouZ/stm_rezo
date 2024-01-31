@@ -86,6 +86,7 @@ class DescriptionManager
             return $description;
         }
         catch(Exception $e){
+            echo "y a une couille dans le paté";
             return null;
         }
     }
