@@ -84,6 +84,7 @@ class DescriptionManager
             return $description;
         }
         catch(Exception $e){
+            echo $e;
             return null;
         }
     }
