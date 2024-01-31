@@ -66,7 +66,7 @@ class DescriptionManager
     /**
      * Find a Quotation by his iD
      * @param $quotationNumber
-     * @return quotation
+     * @return description from quotationNumber
      */
     public function getByQuotationNumber($quotationNumber, $quotationType,$companyId)
     {
