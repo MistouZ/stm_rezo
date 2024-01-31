@@ -77,6 +77,7 @@ class DescriptionManager
             while($donnees = $q->fetch(PDO::FETCH_ASSOC))
             {
                 $description[] =new Description($donnees);
+                print_r($description);
             }
 
             return $description;
