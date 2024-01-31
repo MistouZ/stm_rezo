@@ -16,7 +16,6 @@ class Description extends Features
     private $discount;
     private $price;
     private $tax;
-    private $companyId;
 
     /**
      * Description constructor.
@@ -159,22 +158,6 @@ class Description extends Features
     public function setTax($tax): void
     {
         $this->tax = $tax;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCompanyId()
-    {
-        return $this->companyId;
-    }
-
-    /**
-     * @param mixed $companyId
-     */
-    public function setCompanyId($companyId)
-    {
-        $this->companyId = $companyId;
     }
 
 }
