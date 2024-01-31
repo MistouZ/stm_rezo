@@ -159,6 +159,7 @@ switch($type){
         break;
 }
 
+print_r($quotation);
 
 $folder = $foldermanager->get($quotation->getFolderId());
 $company = $companymanager->getByNameData($companyNameData);
@@ -169,7 +170,7 @@ $contact = $contactmanager->getById($quotation->getContactId());
 $user = $usermanager->get($quotation->getSeller());
 $customer = $customermanager->getById($quotation->getCustomerId());
 
-print_r($quotation);
+
 print_r($descriptions);
 
 
