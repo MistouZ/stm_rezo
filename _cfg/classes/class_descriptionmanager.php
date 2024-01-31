@@ -82,7 +82,7 @@ class DescriptionManager
             return $description;
         }
         catch(Exception $e){
-            print_r($e);
+           echo $e;
             return null;
         }
     }
